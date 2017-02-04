@@ -13,6 +13,8 @@ import com.typesafe.scalalogging.LazyLogging
 import scalafx.scene.control.{Accordion, ButtonType, Dialog, TitledPane}
 import scalafx.scene.text.Text
 
+import com.github.sesquipedalian_dev.jukebox.engine.ui.I18nManager._
+
 case class AboutModal()(implicit gameLoop: GameLoop) extends LazyLogging {
   val textFilesToLoad = List(
     "developer.statement" -> "/aboutinfo/summary.txt",
@@ -33,8 +35,8 @@ case class AboutModal()(implicit gameLoop: GameLoop) extends LazyLogging {
           * when about menu clicked, create a dialog to display some text blurbs
           */
         val diag = new Dialog[Boolean]() {
-          title = I18nManager.L("about.modal.title")
-          headerText = I18nManager.L("about.modal.header")
+          title = L("about.modal.title")
+          headerText = L("about.modal.header")
           resizable = true
         }
 

@@ -16,7 +16,7 @@ import com.github.sesquipedalian_dev.util.scalafx.{MenuLookup, SimpleModalDialog
 import scalafx.geometry.Rectangle2D
 import scalafx.stage.FileChooser
 import scalafx.stage.FileChooser.ExtensionFilter
-
+import com.github.sesquipedalian_dev.jukebox.engine.ui.I18nManager._
 
 case class LoadModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
   val UI_ICONS_FILE = "/fxml/ui-icons-222222-256x240.png"
@@ -37,7 +37,7 @@ case class LoadModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
           val fileChooser = new FileChooser() {
             title = "Load Saved Game"
             initialDirectory = GameSave.getSavesDir()
-            extensionFilters.add(new ExtensionFilter(I18nManager.L("modal.save.savefiletype"), "*.json"))
+            extensionFilters.add(new ExtensionFilter(L("modal.save.savefiletype"), "*.json"))
           }
 
           // when done configuring, show dialog
@@ -50,10 +50,10 @@ case class LoadModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
           }
         } catch {
           case x: IOException => {
-            SimpleModalDialogs.showException(I18nManager.L("exception.load.ioerror"), x)
+            SimpleModalDialogs.showException(L("exception.load.ioerror"), x)
           }
           case y: Exception => {
-            SimpleModalDialogs.showException(I18nManager.L("exception.load.unknownerror"), y)
+            SimpleModalDialogs.showException(L("exception.load.unknownerror"), y)
           }
         } finally {
           gameLoop.unpause()

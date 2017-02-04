@@ -13,6 +13,8 @@ import scalafx.geometry.Rectangle2D
 import scalafx.scene.control.{Accordion, ButtonType, Dialog, TitledPane}
 import scalafx.scene.image.ImageView
 
+import com.github.sesquipedalian_dev.jukebox.engine.ui.I18nManager._
+
 case class PreferencesModal()(implicit gameLoop: GameLoop) {
   val UI_ICONS_FILE = "/fxml/ui-icons-222222-256x240.png"
   val UI_SETTINGS_ICON_BOUNDS = new Rectangle2D(196.0, 116.0, 10.0, 10.0)
@@ -38,8 +40,8 @@ case class PreferencesModal()(implicit gameLoop: GameLoop) {
           * when pref menu clicked, create dialog to edit user prefs
           */
         val diag = new Dialog[Boolean]() {
-          title = I18nManager.L("preferences.modal.title")
-          headerText = I18nManager.L("preferences.modal.header")
+          title = L("preferences.modal.title")
+          headerText = L("preferences.modal.header")
           resizable = true
         }
 

@@ -18,6 +18,8 @@ import scalafx.geometry.Rectangle2D
 import scalafx.stage.FileChooser
 import scalafx.stage.FileChooser.ExtensionFilter
 
+import com.github.sesquipedalian_dev.jukebox.engine.ui.I18nManager._
+
 case class SaveModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
   val UI_ICONS_FILE = "/fxml/ui-icons-222222-256x240.png"
   val UI_SETTINGS_ICON_BOUNDS = new Rectangle2D(110.0, 116.0, 10.0, 10.0)
@@ -36,7 +38,7 @@ case class SaveModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
           val fileChooser = new FileChooser() {
             title = "Save Game"
             initialDirectory = GameSave.getSavesDir()
-            extensionFilters.add(new ExtensionFilter(I18nManager.L("modal.save.savefiletype"), "*.json"))
+            extensionFilters.add(new ExtensionFilter(L("modal.save.savefiletype"), "*.json"))
           }
 
           // when done configuring, show dialog
@@ -54,10 +56,10 @@ case class SaveModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
           }
         } catch {
           case x: IOException => {
-            SimpleModalDialogs.showException(I18nManager.L("exception.save.ioerror"), x)
+            SimpleModalDialogs.showException(L("exception.save.ioerror"), x)
           }
           case y: Exception => {
-            SimpleModalDialogs.showException(I18nManager.L("exception.save.unknownerror"), y)
+            SimpleModalDialogs.showException(L("exception.save.unknownerror"), y)
           }
         }
       }
