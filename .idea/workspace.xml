@@ -15,6 +15,9 @@
     <ignored path="$PROJECT_DIR$/scalego-serialization-json/target/" />
     <ignored path="$PROJECT_DIR$/scalego-serialization-json/project/project/target/" />
     <ignored path="$PROJECT_DIR$/scalego-serialization-json/project/target/" />
+    <ignored path="$PROJECT_DIR$/util/target/" />
+    <ignored path="$PROJECT_DIR$/util/project/project/target/" />
+    <ignored path="$PROJECT_DIR$/util/project/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/build.sbt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="563">
-              <caret line="35" column="48" lean-forward="false" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -241,7 +244,7 @@
     </configuration>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1486222791237" />
+    <option name="lastUpdateTimestamp" value="1486223293328" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -270,6 +273,10 @@
                 <option name="path" value="$PROJECT_DIR$/scalego-serialization-json" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
+                <option name="name" value="sesquipedalian_dev_util" />
+                <option name="path" value="$PROJECT_DIR$/util" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
                 <option name="name" value="trunk-build" />
                 <option name="path" value="$PROJECT_DIR$/project" />
               </ExternalProjectPojo>
@@ -285,6 +292,10 @@
                 <option name="name" value="scalego_serialization_json-build" />
                 <option name="path" value="$PROJECT_DIR$/scalego-serialization-json/project" />
               </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value="sesquipedalian_dev_util-build" />
+                <option name="path" value="$PROJECT_DIR$/util/project" />
+              </ExternalProjectPojo>
             </list>
           </value>
         </entry>
@@ -293,6 +304,8 @@
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$/scalego-serialization" value="1486222539597" />
+        <entry key="$PROJECT_DIR$/scalego-serialization-json" value="1486222777939" />
+        <entry key="$PROJECT_DIR$/scalego-serialization-json/project" value="1486222777939" />
         <entry key="$PROJECT_DIR$/scalego-serialization/project" value="1486222539597" />
         <entry key="$PROJECT_DIR$/../../sw-dev-tycoon.git/trunk" value="1479471747278" />
       </map>
@@ -371,7 +384,7 @@
     <entry file="file://$PROJECT_DIR$/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="563">
-          <caret line="35" column="48" lean-forward="false" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>

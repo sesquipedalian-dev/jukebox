@@ -42,3 +42,46 @@ lazy val scalego_serialization_json = (project in file("scalego-serialization-js
     scalego_core,
     scalego_serialization
   )
+
+lazy val sesquipedalianSettings = Seq(
+  organization := "com.github.sesquipedalian_dev",
+  version := "1.0",
+  scalaVersion := "2.11.8",
+  scalacOptions ++= Seq("-feature", "-unchecked", "-deprecation")
+)
+
+lazy val sesquipedalian_dev_util = (project in file("util"))
+  .settings(
+    sesquipedalianSettings ++ Seq(
+      name := "sesquipedalian-dev-util",
+      libraryDependencies ++= Seq(
+        "com.typesafe" % "config" % "1.3.1",
+        "org.scalafx" %% "scalafx" % "8.0.92-R10",
+        "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0",
+        "ch.qos.logback" % "logback-classic" % "1.1.2"
+      )
+    )
+  )
+  .dependsOn(
+    scalego_core,
+    scalego_serialization,
+    scalego_serialization_json
+  )
+
+//lazy val engine_core = (project in file("engine-core"))
+//  .settings(
+//    sesquipedalianSettings ++ Seq(
+//      name := "engine-core",
+//      libraryDependencies ++= Seq(
+//        "org.scalafx" %% "scalafx" % "8.0.92-R10",
+//        "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0",
+//        "ch.qos.logback" % "logback-classic" % "1.1.2"
+//      )
+//    )
+//  )
+//  .dependsOn(
+//    scalego_core,
+//    scalego_serialization,
+//    scalego_serialization_json,
+//    sesquipedalian_dev_util
+//  )

@@ -9,6 +9,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalego_serialization-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scalego_serialization-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalego_serialization_json.iml" filepath="$PROJECT_DIR$/.idea/modules/scalego_serialization_json.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalego_serialization_json-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scalego_serialization_json-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sesquipedalian_dev_util.iml" filepath="$PROJECT_DIR$/.idea/modules/sesquipedalian_dev_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sesquipedalian_dev_util-build.iml" filepath="$PROJECT_DIR$/.idea/modules/sesquipedalian_dev_util-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/trunk.iml" filepath="$PROJECT_DIR$/.idea/modules/trunk.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/trunk-build.iml" filepath="$PROJECT_DIR$/.idea/modules/trunk-build.iml" />
     </modules>
