@@ -36,7 +36,7 @@ case class Spritesheet(
 ) extends LazyLogging {
 
   // TODO generalize for other OS; make user-editable config setting
-  val SPLIT_SPRITES_LOC = System.getenv("AppData") + "/Tycoon/sprites"
+  val SPLIT_SPRITES_LOC = System.getenv("AppData") + "/Jukebox/sprites"
 
   def getParts(): List[Image] = {
     // parse out file name info from the source path
