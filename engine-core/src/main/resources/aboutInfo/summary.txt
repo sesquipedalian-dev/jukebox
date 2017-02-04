@@ -1,0 +1,9 @@
+This is a learning project for Scott.  A simple game engine built on the following main components:
+- JavaFX 8 drives the UI / graphics canvas
+- Scalafx is a scala wrapper around javafx that provides some nicer DSL syntax and such
+- Scalego entity-component system in scala, for representing the game entities / scene graph, and providing
+  serialization of same
+
+Source code / project files located at https://github.com/sesquipedalian-dev/jukebox
+
+Additionally, the engine can load in various modules to play a specific game.

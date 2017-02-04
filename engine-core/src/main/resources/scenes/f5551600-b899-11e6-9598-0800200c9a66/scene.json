@@ -1,0 +1,522 @@
+{
+  "systems" : [ {
+    "systemId" : "renderer",
+    "components" : [ {
+      "id" : "f5551600-b899-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-renderer"
+    }, {
+      "id": "de502560-b977-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }, {
+      "id": "f9c00f60-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }, {
+      "id": "f9c00f61-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }, {
+      "id": "f9c03670-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }, {
+      "id": "f9c03671-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }, {
+      "id": "f9c03672-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }, {
+      "id": "bd3def70-b994-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }, {
+      "id": "fc8d4e40-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }, {
+      "id": "fc8d4e41-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    } , {
+      "id": "fc8d4e42-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    } , {
+      "id": "fc8d4e43-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    } , {
+      "id": "fc8d4e44-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    } , {
+      "id": "fc8d4e45-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-renderer"
+    }   ]
+  }, {
+    "systemId" : "updater",
+    "components" : [ {
+      "id": "de502560-b977-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }, {
+      "id": "bd3def70-b994-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }, {
+      "id": "f9c00f60-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }, {
+      "id": "f9c00f61-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }, {
+      "id": "f9c03670-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }, {
+      "id": "f9c03671-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }, {
+      "id": "f9c03672-c0eb-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }, {
+      "id": "fc8d4e40-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }, {
+      "id": "fc8d4e41-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    } , {
+      "id": "fc8d4e42-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    } , {
+      "id": "fc8d4e43-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    } , {
+      "id": "fc8d4e44-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    } , {
+      "id": "fc8d4e45-c0ed-11e6-9598-0800200c9a66",
+      "data" : {
+      },
+      "subType" : "scene-object-updater"
+    }   ]
+  }, {
+    "systemId" : "scene",
+    "components" : [ {
+      "id" : "f5551600-b899-11e6-9598-0800200c9a66",
+      "data" : {
+        "sceneObjects" : [],
+        "backgroundImagePath" : "/scenes/f5551600-b899-11e6-9598-0800200c9a66/img/background.jpg",
+        "size": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 3200,
+            "y": 900
+          }
+        ]
+      }
+    } ]
+  }, {
+    "systemId" : "sceneObject",
+    "components": [{
+      "id": "de502560-b977-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 270,
+            "y": 0
+          },
+          {
+            "x": 436,
+            "y": 0
+          },
+          {
+            "x": 436,
+            "y": 900
+          },
+          {
+            "x": 276,
+            "y": 900
+          }
+        ],
+        "zSort": -50,
+        "mouseOverText": "Broadway St"
+      }
+    }, {
+      "id": "bd3def70-b994-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 280,
+            "y": 180
+          },
+          {
+            "x": 430,
+            "y": 180
+          },
+          {
+            "x": 430,
+            "y": 230
+          },
+          {
+            "x": 280,
+            "y": 230
+          }
+        ],
+        "mouseOverText": "Broadway Crossing 1",
+        "zSort": -30
+      }
+    }, {
+      "id": "f9c00f60-c0eb-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 280,
+            "y": 660
+          },
+          {
+            "x": 430,
+            "y": 660
+          },
+          {
+            "x": 430,
+            "y": 710
+          },
+          {
+            "x": 280,
+            "y": 710
+          }
+        ],
+        "mouseOverText": "Broadway Crossing 2",
+        "zSort": -30
+      }
+    }, {
+      "id": "f9c00f61-c0eb-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 30,
+            "y": 0
+          },
+          {
+            "x": 150,
+            "y": 0
+          },
+          {
+            "x": 258,
+            "y": 43
+          },
+          {
+            "x": 580,
+            "y": 53
+          },
+          {
+            "x": 701,
+            "y": 110
+          },
+          {
+            "x": 927,
+            "y": 106
+          },
+          {
+            "x": 1064,
+            "y": 50
+          },
+          {
+            "x": 1600,
+            "y": 50
+          },
+          {
+            "x": 1600,
+            "y": 140
+          },
+          {
+            "x": 1064,
+            "y": 140
+          },
+          {
+            "x": 813,
+            "y": 230
+          },
+          {
+            "x": 670,
+            "y": 223
+          },
+          {
+            "x": 570,
+            "y": 163
+          },
+          {
+            "x": 203,
+            "y": 135
+          },
+          {
+            "x": 74,
+            "y": 67
+          }
+        ],
+        "mouseOverText": "Colfax St",
+        "zSort": -45
+      }
+    }, {
+      "id": "f9c03670-c0eb-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 590,
+            "y": 170
+          },
+          {
+            "x": 670,
+            "y": 94
+          },
+          {
+            "x": 712,
+            "y": 106
+          },
+          {
+            "x": 635,
+            "y": 200
+          }
+        ],
+        "mouseOverText": "Colfax Crossing 1",
+        "zSort": -30
+      }
+    }, {
+      "id": "f9c03671-c0eb-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 885,
+            "y": 110
+          },
+          {
+            "x": 930,
+            "y": 105
+          },
+          {
+            "x": 970,
+            "y": 181
+          },
+          {
+            "x": 925,
+            "y": 200
+          }
+        ],
+        "mouseOverText": "Colfax Crossing 2",
+        "zSort": -30
+      }
+    }, {
+      "id": "f9c03672-c0eb-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 640,
+            "y": 0
+          },
+          {
+            "x": 970,
+            "y": 0
+          },
+          {
+            "x": 970,
+            "y": 100
+          },
+          {
+            "x": 640,
+            "y": 100
+          }
+        ],
+        "mouseOverText": "16th Street Recruitment Zone",
+        "zSort": -25
+      }
+    }, {
+      "id": "fc8d4e40-c0ed-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 20,
+            "y": 150
+          },
+          {
+            "x": 250,
+            "y": 150
+          },
+          {
+            "x": 250,
+            "y": 700
+          },
+          {
+            "x": 20,
+            "y": 700
+          }
+        ],
+        "mouseOverText": "Food Trucks",
+        "zSort": -25
+      }
+    }, {
+      "id": "fc8d4e41-c0ed-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 1290,
+            "y": 375
+          },
+          {
+            "x": 1465,
+            "y": 375
+          },
+          {
+            "x": 1465,
+            "y": 645
+          },
+          {
+            "x": 1290,
+            "y": 645
+          }
+        ],
+        "mouseOverText": "Protest Zone",
+        "zSort": -25
+      }
+    }, {
+      "id": "fc8d4e42-c0ed-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 450,
+            "y": 800
+          },
+          {
+            "x": 1090,
+            "y": 800
+          },
+          {
+            "x": 1090,
+            "y": 890
+          },
+          {
+            "x": 450,
+            "y": 890
+          }
+        ],
+        "mouseOverText": "Supplies Store",
+        "zSort": -25
+      }
+    }, {
+      "id": "fc8d4e43-c0ed-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 1115,
+            "y": 0
+          },
+          {
+            "x": 1235,
+            "y": 0
+          },
+          {
+            "x": 1235,
+            "y": 900
+          },
+          {
+            "x": 1115,
+            "y": 900
+          }
+        ],
+        "mouseOverText": "Lincoln St",
+        "zSort": -50
+      }
+    }, {
+      "id": "fc8d4e44-c0ed-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 1110,
+            "y": 260
+          },
+          {
+            "x": 1240,
+            "y": 260
+          },
+          {
+            "x": 1240,
+            "y": 320
+          },
+          {
+            "x": 1110,
+            "y": 320
+          }
+        ],
+        "mouseOverText": "Lincoln Crossing 1",
+        "zSort": -30
+      }
+    }, {
+      "id": "fc8d4e45-c0ed-11e6-9598-0800200c9a66",
+      "data": {
+        "polygon": [
+          {
+            "x": 1110,
+            "y": 670
+          },
+          {
+            "x": 1240,
+            "y": 670
+          },
+          {
+            "x": 1240,
+            "y": 730
+          },
+          {
+            "x": 1110,
+            "y": 730
+          }
+        ],
+        "mouseOverText": "Lincoln Crossing 2",
+        "zSort": -30
+      }
+    }]
+  }]
+}
