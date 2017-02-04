@@ -17,3 +17,13 @@ lazy val scalegoSettings = Seq(
 
 lazy val scalego_core = (project in file("scalego-core"))
   .settings(scalegoSettings)
+
+lazy val scalego_serialization = (project in file("scalego-serialization"))
+  .settings(
+    scalegoSettings ++ Seq(
+      name := "scalego-serialization"
+    )
+  )
+  .dependsOn(
+    scalego_core
+  )
