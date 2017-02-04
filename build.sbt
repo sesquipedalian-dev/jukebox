@@ -27,3 +27,18 @@ lazy val scalego_serialization = (project in file("scalego-serialization"))
   .dependsOn(
     scalego_core
   )
+
+lazy val scalego_serialization_json = (project in file("scalego-serialization-json"))
+  .settings(
+    scalegoSettings ++ Seq(
+      name := "scalego-serialization-json",
+      libraryDependencies ++= Seq(
+        "org.json4s" %% "json4s-core" % "3.4.0",
+        "org.json4s" %% "json4s-jackson" % "3.4.0"
+      )
+    )
+  )
+  .dependsOn(
+    scalego_core,
+    scalego_serialization
+  )

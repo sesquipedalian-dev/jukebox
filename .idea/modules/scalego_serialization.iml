@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="scalego_serialization" external.linked.project.path="$MODULE_DIR$/../../scalego-serialization" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../scalego-serialization/target/scala-2.11/classes" />
+    <output-test url="file://$MODULE_DIR$/../../scalego-serialization/target/scala-2.11/test-classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../scalego-serialization">
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/src/main/scala" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/src/main/scala-2.11" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/target/scala-2.11/src_managed/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/src/test/scala" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/src/test/scala-2.11" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/target/scala-2.11/src_managed/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/target/scala-2.11/resource_managed/main" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../scalego-serialization/target/scala-2.11/resource_managed/test" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../scalego-serialization/target" />
+      <excludeFolder url="file://$MODULE_DIR$/../../scalego-serialization/target/resolution-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/../../scalego-serialization/target/streams" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="scalego_core" exported="" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.hamcrest:hamcrest-core:1.1:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.mockito:mockito-core:1.10.19:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.objenesis:objenesis:2.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.11.8:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scala-lang:scala-reflect:2.11.8:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scala-lang.modules:scala-xml_2.11:1.0.2:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scalatest:scalatest_2.11:2.2.4:jar" level="project" />
+  </component>
+</module>

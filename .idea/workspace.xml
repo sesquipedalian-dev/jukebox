@@ -9,6 +9,12 @@
     <ignored path="$PROJECT_DIR$/scalego-core/target/" />
     <ignored path="$PROJECT_DIR$/scalego-core/project/project/target/" />
     <ignored path="$PROJECT_DIR$/scalego-core/project/target/" />
+    <ignored path="$PROJECT_DIR$/scalego-serialization/target/" />
+    <ignored path="$PROJECT_DIR$/scalego-serialization/project/project/target/" />
+    <ignored path="$PROJECT_DIR$/scalego-serialization/project/target/" />
+    <ignored path="$PROJECT_DIR$/scalego-serialization-json/target/" />
+    <ignored path="$PROJECT_DIR$/scalego-serialization-json/project/project/target/" />
+    <ignored path="$PROJECT_DIR$/scalego-serialization-json/project/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +43,8 @@
       <file leaf-file-name="build.sbt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.sbt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+            <state relative-caret-position="563">
+              <caret line="35" column="48" lean-forward="false" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -235,7 +241,7 @@
     </configuration>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1486222016276" />
+    <option name="lastUpdateTimestamp" value="1486222791237" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -256,12 +262,28 @@
                 <option name="path" value="$PROJECT_DIR$/scalego-core" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
+                <option name="name" value="scalego_serialization" />
+                <option name="path" value="$PROJECT_DIR$/scalego-serialization" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value="scalego_serialization_json" />
+                <option name="path" value="$PROJECT_DIR$/scalego-serialization-json" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
                 <option name="name" value="trunk-build" />
                 <option name="path" value="$PROJECT_DIR$/project" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
                 <option name="name" value="scalego_core-build" />
                 <option name="path" value="$PROJECT_DIR$/scalego-core/project" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value="scalego_serialization-build" />
+                <option name="path" value="$PROJECT_DIR$/scalego-serialization/project" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value="scalego_serialization_json-build" />
+                <option name="path" value="$PROJECT_DIR$/scalego-serialization-json/project" />
               </ExternalProjectPojo>
             </list>
           </value>
@@ -270,6 +292,8 @@
     </option>
     <option name="modificationStamps">
       <map>
+        <entry key="$PROJECT_DIR$/scalego-serialization" value="1486222539597" />
+        <entry key="$PROJECT_DIR$/scalego-serialization/project" value="1486222539597" />
         <entry key="$PROJECT_DIR$/../../sw-dev-tycoon.git/trunk" value="1479471747278" />
       </map>
     </option>
@@ -346,8 +370,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+        <state relative-caret-position="563">
+          <caret line="35" column="48" lean-forward="false" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
           <folding />
         </state>
       </provider>

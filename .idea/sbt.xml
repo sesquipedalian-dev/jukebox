@@ -11,6 +11,10 @@
             <option value="$PROJECT_DIR$/project" />
             <option value="$PROJECT_DIR$/scalego-core" />
             <option value="$PROJECT_DIR$/scalego-core/project" />
+            <option value="$PROJECT_DIR$/scalego-serialization" />
+            <option value="$PROJECT_DIR$/scalego-serialization-json" />
+            <option value="$PROJECT_DIR$/scalego-serialization-json/project" />
+            <option value="$PROJECT_DIR$/scalego-serialization/project" />
           </set>
         </option>
         <option name="resolveSbtClassifiers" value="true" />
