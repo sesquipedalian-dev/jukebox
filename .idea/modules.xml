@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jukebox.iml" filepath="$PROJECT_DIR$/.idea/modules/jukebox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalego_core.iml" filepath="$PROJECT_DIR$/.idea/modules/scalego_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalego_core-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scalego_core-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trunk.iml" filepath="$PROJECT_DIR$/.idea/modules/trunk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trunk-build.iml" filepath="$PROJECT_DIR$/.idea/modules/trunk-build.iml" />
     </modules>
   </component>
 </project>
