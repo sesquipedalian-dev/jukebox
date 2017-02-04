@@ -1,13 +1,13 @@
 /**
   * Copyright 12/6/2016 sesquipedalian.dev@gmail.com, All Rights Reserved.
   */
-package com.github.sesquipedalian_dev.jukebox.engine.components.game
+package com.github.sesquipedalian_dev.jukebox.engine.components.objects
 
 import javafx.scene.input.MouseButton
 
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.{InputManager, UUIDIdType}
-import com.github.sesquipedalian_dev.jukebox.engine.components.framework.Updater
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Updater
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
 import com.typesafe.scalalogging.LazyLogging
 

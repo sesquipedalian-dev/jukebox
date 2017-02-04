@@ -1,13 +1,13 @@
 /**
   * Copyright 12/2/2016 sesquipedalian.dev@gmail.com, All Rights Reserved.
   */
-package com.github.sesquipedalian_dev.jukebox.engine.components.game
+package com.github.sesquipedalian_dev.jukebox.engine.components.objects
 
 import javafx.scene.canvas.GraphicsContext
 
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.UUIDIdType
-import com.github.sesquipedalian_dev.jukebox.engine.components.framework.{Renderer, RendersOutlinePolygon}
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.{Renderer, RendersOutlinePolygon}
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
 import com.typesafe.scalalogging.LazyLogging
 

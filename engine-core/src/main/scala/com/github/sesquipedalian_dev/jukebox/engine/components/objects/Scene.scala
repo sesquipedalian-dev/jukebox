@@ -1,14 +1,14 @@
 /**
   * Copyright 11/30/2016 sesquipedalian.dev@gmail.com, All Rights Reserved.
   */
-package com.github.sesquipedalian_dev.jukebox.engine.components.game
+package com.github.sesquipedalian_dev.jukebox.engine.components.objects
 
 import javafx.scene.canvas.GraphicsContext
 import javafx.scene.image.Image
 
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.UUIDIdType
-import com.github.sesquipedalian_dev.jukebox.engine.components.framework.Renderer
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Renderer
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.scalalogging.LazyLogging

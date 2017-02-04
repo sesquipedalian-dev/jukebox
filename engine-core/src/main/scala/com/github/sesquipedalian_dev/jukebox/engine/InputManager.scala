@@ -7,7 +7,7 @@ import javafx.event.EventHandler
 import javafx.scene.input.KeyCode
 
 import com.github.gigurra.scalego.core.ECS
-import com.github.sesquipedalian_dev.jukebox.engine.components.game.{SceneController, SceneObject}
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.{SceneController, SceneObject}
 import com.github.sesquipedalian_dev.jukebox.engine._
 import com.github.sesquipedalian_dev.util.config.ConfigSetting
 import com.typesafe.config.Config

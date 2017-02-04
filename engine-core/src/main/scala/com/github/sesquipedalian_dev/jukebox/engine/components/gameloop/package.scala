@@ -8,7 +8,7 @@ import com.github.sesquipedalian_dev.jukebox.engine.UUIDIdType
 
 import scala.collection.mutable
 
-package object framework {
+package object gameloop {
   val knownSubtypes: KnownSubTypes = KnownSubTypes.empty +
     ("renderer" -> classOf[Renderer]) +
     ("updater" -> classOf[Updater])

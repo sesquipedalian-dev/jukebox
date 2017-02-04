@@ -12,8 +12,8 @@ import javafx.stage.WindowEvent
 import com.github.gigurra.scalego.core.ECS
 import com.github.gigurra.scalego.serialization.json.JsonSerializer
 import com.github.gigurra.scalego.serialization.{IdTypeMapper, KnownSubTypes}
-import com.github.sesquipedalian_dev.jukebox.engine.components.framework.{Renderer, Updater}
-import com.github.sesquipedalian_dev.jukebox.engine.components.game.{SceneController, SceneObject, SceneObjectRenderer, SceneRenderer}
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.{Renderer, Updater}
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.{SceneController, SceneObject, SceneObjectRenderer, SceneRenderer}
 import com.github.sesquipedalian_dev.jukebox.engine.ui._
 import com.github.sesquipedalian_dev.util.config._
 import com.github.sesquipedalian_dev.util.ecs.{SerializablePoint2D, USER_SAVES_LOC}

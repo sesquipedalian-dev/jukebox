@@ -8,7 +8,7 @@ import com.github.sesquipedalian_dev.jukebox.engine.UUIDIdType
 
 import scala.collection.mutable
 
-package object game {
+package object objects {
   val knownSubtypes: KnownSubTypes = KnownSubTypes.empty +
     ("scene-renderer" -> classOf[SceneRenderer]) +
     ("scene-object-renderer" -> classOf[SceneObjectRenderer]) +

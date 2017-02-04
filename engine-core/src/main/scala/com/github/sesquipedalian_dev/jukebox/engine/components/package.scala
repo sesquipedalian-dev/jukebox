@@ -25,8 +25,8 @@ package object components {
 
   // mapper required for serialization
   implicit val knownSubtypes: KnownSubTypes =
-    framework.knownSubtypes +
-    game.knownSubtypes
+    gameloop.knownSubtypes +
+    objects.knownSubtypes
 
   // generate a blank set of ECS systems for the application.  The returned callback puts the systems into the
   // associated implicit vars (finalizes the operation).
@@ -34,8 +34,8 @@ package object components {
   // to get their blank ECS systems, then they are registered here to loop through them all and get the
   // stuff we need
   def blankSystemsSet: (() => Unit, List[com.github.gigurra.scalego.core.System[_, UUIDIdType]]) = {
-    val (gameCb, gameLst) = game.blankSystemsSet
-    val (frameworkCb, frameworkLst) = framework.blankSystemsSet
+    val (gameCb, gameLst) = objects.blankSystemsSet
+    val (frameworkCb, frameworkLst) = gameloop.blankSystemsSet
 
     val cb = () => {
       gameCb()

@@ -1,11 +1,11 @@
 /**
   * Copyright 12/17/2016 sesquipedalian.dev@gmail.com, All Rights Reserved.
   */
-package com.github.sesquipedalian_dev.jukebox.engine.components.framework
+package com.github.sesquipedalian_dev.jukebox.engine.components.gameloop
 
 import javafx.scene.canvas.GraphicsContext
 
-import com.github.sesquipedalian_dev.jukebox.engine.components.game.{SceneController, SceneObject}
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.{SceneController, SceneObject}
 
 import scalafx.scene.paint.Color
 

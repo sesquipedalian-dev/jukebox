@@ -1,7 +1,7 @@
 /**
   * Copyright 12/2/2016 sesquipedalian.dev@gmail.com, All Rights Reserved.
   */
-package com.github.sesquipedalian_dev.jukebox.engine.components.game
+package com.github.sesquipedalian_dev.jukebox.engine.components.objects
 
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.github.sesquipedalian_dev.util.scalafx.Spritesheet
