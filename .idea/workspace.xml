@@ -52,8 +52,8 @@
       <file leaf-file-name="GameLoop.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GameLoop.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="177" column="62" lean-forward="true" selection-start-line="177" selection-start-column="62" selection-end-line="177" selection-end-column="62" />
+            <state relative-caret-position="311">
+              <caret line="180" column="31" lean-forward="false" selection-start-line="180" selection-start-column="31" selection-end-line="180" selection-end-column="31" />
               <folding>
                 <element signature="e#139#182#0" expanded="true" />
               </folding>
@@ -61,35 +61,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MovesBehaviour.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/MovesBehaviour.scala">
+      <file leaf-file-name="ResourceLoader.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ResourceLoader.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+            <state relative-caret-position="513">
+              <caret line="29" column="6" lean-forward="false" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
               <folding>
-                <element signature="e#147#189#0" expanded="true" />
+                <element signature="e#127#158#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WaitForStartUpdater.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/WaitForStartUpdater.scala">
+      <file leaf-file-name="ModuleController.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/modules/ModuleController.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="12" column="60" lean-forward="true" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
+            <state relative-caret-position="228">
+              <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="56" />
               <folding>
-                <element signature="e#147#189#0" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#145#164#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsteroidsModule.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/Main.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphicsConfig.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GraphicsConfig.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="23" column="62" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+              <folding>
+                <element signature="e#137#230#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AsteroidsModule.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="829">
-              <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+            <state relative-caret-position="392">
+              <caret line="80" column="59" lean-forward="false" selection-start-line="80" selection-start-column="59" selection-end-line="80" selection-end-column="59" />
               <folding>
                 <element signature="e#147#180#0" expanded="true" />
               </folding>
@@ -97,11 +120,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SceneObjectRenderer.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.sbt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.sbt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuLookup.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/scalafx/MenuLookup.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+              <folding>
+                <element signature="e#137#172#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SceneObjectRenderer.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/SceneObjectRenderer.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="26" />
+            <state relative-caret-position="437">
+              <caret line="62" column="77" lean-forward="false" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
               <folding>
                 <element signature="e#157#199#0" expanded="true" />
               </folding>
@@ -109,60 +154,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SceneController.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/SceneController.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-152">
-              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
-              <folding>
-                <element signature="e#158#200#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Random.scala" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.11.8-sources.jar!/scala/util/Random.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="48" column="6" lean-forward="false" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
-              <folding>
-                <element signature="n#!!doc" expanded="false" />
-                <element signature="e#554#597#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SerializablePoint2D.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ecs/SerializablePoint2D.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Math.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/Math.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="152" column="25" lean-forward="false" selection-start-line="152" selection-start-column="25" selection-end-line="152" selection-end-column="25" />
-              <folding>
-                <element signature="e#5875#5876#0" expanded="true" />
-                <element signature="e#5956#5957#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SceneObject.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/SceneObject.scala">
+      <file leaf-file-name="Image.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.scalafx/scalafx_2.11/srcs/scalafx_2.11-8.0.92-R10-sources.jar!/scalafx/scene/image/Image.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="95">
-              <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-              <folding />
+              <caret line="36" column="7" lean-forward="false" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="e#1635#1661#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,7 +178,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dep</find>
       <find>dependencies</find>
       <find>def dependencies</find>
       <find>tycoon_en.properties</find>
@@ -208,6 +207,7 @@
       <find>lignment</find>
       <find>KEY_MAP</find>
       <find>protected</find>
+      <find>util</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -218,7 +218,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/framework/Updater.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/game/GameObjectAbs.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/game/SceneController.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/game/SceneObjectUpdater.scala" />
@@ -244,7 +243,6 @@
         <option value="$PROJECT_DIR$/engine-core/src/main/resources/i18n/jukebox_en.properties" />
         <option value="$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ecs/GameSave.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/ui/Quicksave.scala" />
-        <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/AsteroidsModule.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/java/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/asteroids/AsteroidsModule.scala" />
@@ -255,12 +253,10 @@
         <option value="$PROJECT_DIR$/engine-core/src/main/resources/i18n/jukebox_fr.properties" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/ui/AboutModal.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/gameloop/GameLoopModule.scala" />
-        <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/modules/ModuleController.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/InputManager.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/gameloop/HasRenderOrder.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/gameloop/Renderer.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/Scene.scala" />
-        <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/SceneObjectRenderer.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/ScoreRenderer.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/StartRenderer.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/BackgroundRenderer.scala" />
@@ -268,6 +264,10 @@
         <option value="$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ecs/SerializablePoint2D.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/MovesBehaviour.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/WaitForStartUpdater.scala" />
+        <option value="$PROJECT_DIR$/build.sbt" />
+        <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/SceneObjectRenderer.scala" />
+        <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/modules/ModuleController.scala" />
+        <option value="$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ResourceLoader.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala" />
       </list>
     </option>
@@ -315,6 +315,196 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="trunk" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jukebox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jukebox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jukebox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jukebox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jukebox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jukebox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jukebox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConfigSetting.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -679,40 +869,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jukebox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GameLoop.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1238,7 +1394,7 @@
     </configuration>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1486267882543" />
+    <option name="lastUpdateTimestamp" value="1486312251824" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -1375,35 +1531,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/ui/SaveModal.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="31" column="73" lean-forward="false" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
-          <folding>
-            <element signature="e#142#168#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/resources/i18n/jukebox_en.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/scalafx/MenuLookup.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.scalafx/scalafx_2.11/srcs/scalafx_2.11-8.0.92-R10-sources.jar!/scalafx/scene/control/Menu.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1447,39 +1574,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.sbt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="79" column="5" lean-forward="false" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/asteroids/AsteroidsModule.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="71" lean-forward="false" selection-start-line="5" selection-start-column="71" selection-end-line="5" selection-end-column="71" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GraphicsConfig.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding>
-            <element signature="e#137#230#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/Main.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1552,14 +1651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/ui/I18nManager.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="59" column="82" lean-forward="true" selection-start-line="59" selection-start-column="82" selection-end-line="59" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/ui/AboutModal.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1589,14 +1680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="329" column="27" lean-forward="false" selection-start-line="329" selection-start-column="27" selection-end-line="329" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/gameloop/GameLoopModule.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1612,17 +1695,6 @@
         <state relative-caret-position="174">
           <caret line="471" column="18" lean-forward="false" selection-start-line="471" selection-start-column="18" selection-end-line="471" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/modules/ModuleController.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#145#164#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1761,16 +1833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GameLoop.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="177" column="62" lean-forward="true" selection-start-line="177" selection-start-column="62" selection-end-line="177" selection-end-column="62" />
-          <folding>
-            <element signature="e#139#182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ecs/SerializablePoint2D.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1822,7 +1884,7 @@
     <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/WaitForStartUpdater.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="12" column="60" lean-forward="true" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
+          <caret line="12" column="60" lean-forward="false" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
           <folding>
             <element signature="e#147#189#0" expanded="true" />
           </folding>
@@ -1839,22 +1901,116 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/Class.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="829">
-          <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+        <state relative-caret-position="462">
+          <caret line="2259" column="24" lean-forward="false" selection-start-line="2259" selection-start-column="24" selection-end-line="2259" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/ui/I18nManager.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="61" column="24" lean-forward="false" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/scalafx/MenuLookup.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
           <folding>
-            <element signature="e#147#180#0" expanded="true" />
+            <element signature="e#137#172#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.scalafx/scalafx_2.11/srcs/scalafx_2.11-8.0.92-R10-sources.jar!/scalafx/scene/image/Image.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="36" column="7" lean-forward="false" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#1635#1661#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/SceneObjectRenderer.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="26" />
+        <state relative-caret-position="437">
+          <caret line="62" column="77" lean-forward="false" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
           <folding>
             <element signature="e#157#199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/modules/ModuleController.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="56" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#145#164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ResourceLoader.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="29" column="6" lean-forward="false" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+          <folding>
+            <element signature="e#127#158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GameLoop.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="180" column="31" lean-forward="false" selection-start-line="180" selection-start-column="31" selection-end-line="180" selection-end-column="31" />
+          <folding>
+            <element signature="e#139#182#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/Main.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GraphicsConfig.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="23" column="62" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+          <folding>
+            <element signature="e#137#230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="80" column="59" lean-forward="false" selection-start-line="80" selection-start-column="59" selection-end-line="80" selection-end-column="59" />
+          <folding>
+            <element signature="e#147#180#0" expanded="true" />
           </folding>
         </state>
       </provider>

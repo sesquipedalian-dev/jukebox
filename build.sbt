@@ -2,7 +2,6 @@ name := "jukebox"
 version := "1.0"
 scalaVersion := "2.12.1"
 
-
 lazy val scalegoSettings = Seq(
   name := "scalego-core",
   organization := "com.github.gigurra",
@@ -59,6 +58,7 @@ lazy val sesquipedalian_dev_util = (project in file("util"))
         "org.scalafx" %% "scalafx" % "8.0.92-R10",
         "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0",
         "ch.qos.logback" % "logback-classic" % "1.1.2"
+
       )
     )
   )

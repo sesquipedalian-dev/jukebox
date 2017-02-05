@@ -10,6 +10,7 @@ import javafx.event.{ActionEvent, EventHandler}
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.components.ComponentModule
 import com.github.sesquipedalian_dev.jukebox.engine.{GameLoop, Main, UUIDIdType, components}
+import com.github.sesquipedalian_dev.util.ResourceLoader
 import com.github.sesquipedalian_dev.util.scalafx.MenuLookup
 import com.typesafe.scalalogging.LazyLogging
 
@@ -29,6 +30,7 @@ object ModuleController extends LazyLogging {
     val urlArray = Array[URL](myModulePath.toURI.toURL)
     println("resource path for my URL {" + myModulePath.toURI.toURL + "}")
     val newClassLoader = new URLClassLoader(urlArray, this.getClass.getClassLoader)
+    ResourceLoader.installResourceLoader(newClassLoader)
 
     // load module from class path
     val moduleClassName = "com.github.sesquipedalian_dev.jukebox.module." + name.toLowerCase() + "." + name + "Module"

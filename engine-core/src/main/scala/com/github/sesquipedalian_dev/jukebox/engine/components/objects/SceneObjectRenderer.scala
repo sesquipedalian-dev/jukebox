@@ -10,6 +10,7 @@ import com.github.sesquipedalian_dev.jukebox.engine.UUIDIdType
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.{Renderer, RendersOutlinePolygon}
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
+import com.github.sesquipedalian_dev.util.ResourceLoader
 import com.typesafe.scalalogging.LazyLogging
 
 import scalafx.scene.image.Image
@@ -59,7 +60,7 @@ case class SceneObjectRenderer(
       } else if (sceneObject.texturePath.nonEmpty) {
         if(loadedStaticImage.isEmpty) {
           val image = sceneObject.texturePath.get
-          loadedStaticImage = Some(new Image(image))
+          loadedStaticImage = ResourceLoader.loadImage(image).map(img => new scalafx.scene.image.Image(img))
         }
         loadedStaticImage
       } else {

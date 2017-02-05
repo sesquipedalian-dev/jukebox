@@ -78,6 +78,7 @@ class AsteroidsModule extends ComponentModule {
       SerializablePoint2D(200, 200),
       SerializablePoint2D(200, 100)
     )
+    // TODO no asteroids bounding box: 630, 350 // 970, 550
 
     // build the entity
     val newAsteroid = Entity.Builder +
