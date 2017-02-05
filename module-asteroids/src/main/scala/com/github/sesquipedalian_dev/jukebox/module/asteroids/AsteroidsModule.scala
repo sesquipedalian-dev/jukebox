@@ -6,7 +6,7 @@ package com.github.sesquipedalian_dev.jukebox.module.asteroids
 import com.github.gigurra.scalego.core.{Entity, System}
 import com.github.gigurra.scalego.serialization.KnownSubTypes
 import com.github.sesquipedalian_dev.jukebox.engine.UUIDIdType
-import com.github.sesquipedalian_dev.jukebox.engine.components._
+import com.github.sesquipedalian_dev.jukebox.engine.components.{randomEntityID, _}
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
 
 
@@ -17,7 +17,8 @@ import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoop
  */
 class AsteroidsModule extends ComponentModule {
   override def subtypes: KnownSubTypes = KnownSubTypes.empty +
-    ("scoreRenderer" -> classOf[ScoreRenderer])
+    ("scoreRenderer" -> classOf[ScoreRenderer]) +
+    ("backgroundRenderer" -> classOf[BackgroundRenderer])
 
   // TODO lives / score renderers?
   // background renderer
@@ -31,6 +32,8 @@ class AsteroidsModule extends ComponentModule {
 
   def onLoad(): Unit = {
     val scoreRenderer = Entity.Builder + ScoreRenderer() build randomEntityID
+    val backgroundRenderer = Entity.Builder + BackgroundRenderer() build randomEntityID
+
   }
 
   var score: Int = 0
