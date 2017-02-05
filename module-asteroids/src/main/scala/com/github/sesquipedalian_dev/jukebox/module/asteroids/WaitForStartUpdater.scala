@@ -20,9 +20,19 @@ case class WaitForStartUpdater() extends Updater {
         AsteroidsModule.instance.startRenderer = None
 
         // testing
-        val asteroidId = AsteroidsModule.instance.spawnAsteroid()
+        val asteroidId = AsteroidsModule.instance.spawnAsteroid(
+          directionRadians = Some(Math.PI)
+        )
         val asteroidSceneObject = ecs.system[SceneObject].get(asteroidId)
-        AsteroidsModule.instance.spawnBullet(asteroidSceneObject.get, SerializablePoint2D(1.0, 0))
+
+        AsteroidsModule.instance.spawnBullet(
+          source = asteroidSceneObject.get,
+          direction = SerializablePoint2D(1.0, 0)
+        )
+
+        asteroidSceneObject.get.polygon = asteroidSceneObject.get.polygon.map(p => {
+          SerializablePoint2D(p.x + 500, p.y)
+        })
       }
     }
   }

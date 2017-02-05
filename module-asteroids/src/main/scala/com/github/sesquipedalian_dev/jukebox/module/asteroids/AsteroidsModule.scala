@@ -13,16 +13,15 @@ import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoop
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.{SceneObject, SceneObjectRenderer}
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
+import com.typesafe.scalalogging.LazyLogging
 
 import scala.util.Random
-
-
 
 /*
  * 'Main' class for the asteroids module in jukebox.
  * Handles the systems for the asteroids game as well as top-level variables (score & lives remaining)
  */
-class AsteroidsModule extends ComponentModule {
+class AsteroidsModule extends ComponentModule with LazyLogging {
   override def subtypes: KnownSubTypes = KnownSubTypes.empty +
     ("scoreRenderer" -> classOf[ScoreRenderer]) +
     ("backgroundRenderer" -> classOf[BackgroundRenderer]) +
@@ -91,19 +90,24 @@ class AsteroidsModule extends ComponentModule {
       BulletRenderer() build randomEntityID
   }
 
-  def spawnAsteroid(): UUIDIdType#EntityId = {
+  def spawnAsteroid(
+    _params: Option[AsteroidParams] = None,
+    _initialPosition: Option[SerializablePoint2D] = None,
+    directionRadians: Option[Double] = None
+  ): UUIDIdType#EntityId = {
     // pick a random asteroid type to spawn?
-    val params = Random.shuffle(ASTEROID_PARAMS_MAP().values).head
+    val params = _params.getOrElse(Random.shuffle(ASTEROID_PARAMS_MAP().values).head)
 
     // calculate a random initial velocity / direction
     val initialSpeed = Random.nextFloat() + params.initialVelocityScale
-    val randomDirection = Random.nextFloat() * 2 * Math.PI
+    val randomDirection = directionRadians.getOrElse(Random.nextFloat() * 2 * Math.PI)
     val velocityX = Math.cos(randomDirection) * initialSpeed
     val velocityY = Math.sin(randomDirection) * initialSpeed
+    logger.info("making a new asteroid; initial speed {" + initialSpeed + "} initial direction = {" + randomDirection + "}")
 
     // TODO calculate a random initial position
     // TODO no asteroids bounding box: 630, 350 // 970, 550 should keep them out of where the player is
-    val initialPosition = SerializablePoint2D(100, 100)
+    val initialPosition = _initialPosition.getOrElse(SerializablePoint2D(100, 100))
     val position = List[SerializablePoint2D](
       SerializablePoint2D(initialPosition.x, initialPosition.y),
       SerializablePoint2D(initialPosition.x + params.width, initialPosition.y),
@@ -121,7 +125,8 @@ class AsteroidsModule extends ComponentModule {
         0
       ) +
       MovesBehaviour(destroyAfterDistance = None, SerializablePoint2D(velocityX, velocityY)) +
-      SceneObjectRenderer() build randomEntityID
+      SceneObjectRenderer() +
+      AsteroidCollisionWatcher(params.size) build randomEntityID
 
     newAsteroid.id
   }

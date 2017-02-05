@@ -24,8 +24,9 @@ case class MovesBehaviour(
       val velocityAngle = Math.atan2(velocityVector.y, velocityVector.x)
       val distanceThisTick = velocityVector.x / Math.cos(velocityAngle)
       distanceTraveled += Math.abs(distanceThisTick)
-      logger.info("checking distance traveled by movesbehaviour {" +
+      logger.trace("checking distance traveled by movesbehaviour {" +
         distanceTraveled + "}{" + distanceThisTick + "}")
+
       if(destroyAfterDistance.map(_ <= distanceTraveled).getOrElse(false)) {
         ecs -= eid
       } else {
