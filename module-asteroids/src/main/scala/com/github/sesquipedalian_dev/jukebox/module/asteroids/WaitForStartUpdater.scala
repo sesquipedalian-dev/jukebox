@@ -7,6 +7,9 @@ import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.{InputManager, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Updater
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.SceneObject
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
+import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 
 case class WaitForStartUpdater() extends Updater {
   override def update(eid: EntityIdType)(implicit ecs: ECS[UUIDIdType]): Unit = {
@@ -17,7 +20,9 @@ case class WaitForStartUpdater() extends Updater {
         AsteroidsModule.instance.startRenderer = None
 
         // testing
-        AsteroidsModule.instance.spawnAsteroid()
+        val asteroidId = AsteroidsModule.instance.spawnAsteroid()
+        val asteroidSceneObject = ecs.system[SceneObject].get(asteroidId)
+        AsteroidsModule.instance.spawnBullet(asteroidSceneObject.get, SerializablePoint2D(1.0, 0))
       }
     }
   }

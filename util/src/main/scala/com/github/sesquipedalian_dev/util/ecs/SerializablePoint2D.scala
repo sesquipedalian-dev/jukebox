@@ -9,4 +9,5 @@ case class SerializablePoint2D(
   y: Double
 ) {
   def +(rhs: SerializablePoint2D) = SerializablePoint2D(x + rhs.x, y + rhs.y)
+  def *(rhs: Double) = SerializablePoint2D(x * rhs, y * rhs)
 }

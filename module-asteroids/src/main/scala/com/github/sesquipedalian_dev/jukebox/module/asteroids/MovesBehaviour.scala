@@ -13,18 +13,29 @@ import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.scalalogging.LazyLogging
 
 case class MovesBehaviour(
-  velocityVector: SerializablePoint2D
+  destroyAfterDistance: Option[Double],
+  velocityVector: SerializablePoint2D,
+  var distanceTraveled: Double = 0.0
 ) extends Updater
   with LazyLogging
 {
   override def update(eid: EntityIdType)(implicit ecs: ECS[UUIDIdType]): Unit = {
     ecs.system[SceneObject].get(eid).foreach(sceneObject => {
-      val applyVelocity = sceneObject.polygon.map(point => point + velocityVector)
-      val checkBounds = List(checkXMax _, checkYMax _, checkXMin _, checkYMin _)
-        .foldLeft(applyVelocity)((soFar, next) => {
-          next(soFar)
-        })
-      sceneObject.polygon = checkBounds
+      val velocityAngle = Math.atan2(velocityVector.y, velocityVector.x)
+      val distanceThisTick = velocityVector.x / Math.cos(velocityAngle)
+      distanceTraveled += Math.abs(distanceThisTick)
+      logger.info("checking distance traveled by movesbehaviour {" +
+        distanceTraveled + "}{" + distanceThisTick + "}")
+      if(destroyAfterDistance.map(_ <= distanceTraveled).getOrElse(false)) {
+        ecs -= eid
+      } else {
+        val applyVelocity = sceneObject.polygon.map(point => point + velocityVector)
+        val checkBounds = List(checkXMax _, checkYMax _, checkXMin _, checkYMin _)
+          .foldLeft(applyVelocity)((soFar, next) => {
+            next(soFar)
+          })
+        sceneObject.polygon = checkBounds
+      }
     })
   }
 

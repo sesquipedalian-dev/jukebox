@@ -28,7 +28,8 @@ class AsteroidsModule extends ComponentModule {
     ("backgroundRenderer" -> classOf[BackgroundRenderer]) +
     ("startRenderer" -> classOf[StartRenderer]) +
     ("waitForStartUpdater" -> classOf[WaitForStartUpdater]) +
-    ("movesBehaviour" -> classOf[MovesBehaviour])
+    ("movesBehaviour" -> classOf[MovesBehaviour]) +
+    ("bulletRenderer" -> classOf[BulletRenderer])
 
   override def makeSystems(): List[System[_, UUIDIdType]] = {
     Nil
@@ -63,8 +64,34 @@ class AsteroidsModule extends ComponentModule {
 
   AsteroidsModule.instance = this
 
+  def spawnBullet(source: SceneObject, direction: SerializablePoint2D): Unit = {
+    // calculate a initial velocity / direction
+    val initialSpeed = Random.nextFloat() + 4.0
+    val velocity = direction * initialSpeed
 
-  def spawnAsteroid(): Unit = {
+    // initial position
+    val initialPosition = source.polygon.head
+    val position = List[SerializablePoint2D](
+      SerializablePoint2D(initialPosition.x, initialPosition.y),
+      SerializablePoint2D(initialPosition.x + 10, initialPosition.y),
+      SerializablePoint2D(initialPosition.x + 10, initialPosition.y + 10),
+      SerializablePoint2D(initialPosition.x, initialPosition.y + 10)
+    )
+
+    // build the entity
+    val newAsteroid = Entity.Builder +
+      SceneObject(
+        position,
+        None,
+        None,
+        None,
+        0
+      ) +
+      MovesBehaviour(destroyAfterDistance = Some(800.0), SerializablePoint2D(velocity.x, velocity.y)) +
+      BulletRenderer() build randomEntityID
+  }
+
+  def spawnAsteroid(): UUIDIdType#EntityId = {
     // pick a random asteroid type to spawn?
     val params = Random.shuffle(ASTEROID_PARAMS_MAP().values).head
 
@@ -93,8 +120,10 @@ class AsteroidsModule extends ComponentModule {
         None,
         0
       ) +
-      MovesBehaviour(SerializablePoint2D(velocityX, velocityY)) +
+      MovesBehaviour(destroyAfterDistance = None, SerializablePoint2D(velocityX, velocityY)) +
       SceneObjectRenderer() build randomEntityID
+
+    newAsteroid.id
   }
 }
 
