@@ -15,6 +15,8 @@ import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.scalalogging.LazyLogging
 
 case class BackgroundRenderer() extends Renderer with LazyLogging {
+  def renderOrder(ecs: ECS[UUIDIdType], eid: UUIDIdType#EntityId): Int = -1000 // background layer
+
   var image: Option[Image] = None
   override def render(eid: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
     try {

@@ -20,6 +20,13 @@ case class SceneObjectRenderer(
   with LazyLogging
   with RendersOutlinePolygon
 {
+  def renderOrder(ecs: ECS[UUIDIdType], eid: UUIDIdType#EntityId): Int = {
+    // use the scene object's z-sort
+    ecs.system[SceneObject].get(eid).map(scene => {
+      scene.zSort
+    }).getOrElse(0)
+  }
+
   var currentFrame: Int = 0 // for animations
 
   var loadedStaticImage: Option[Image] = None

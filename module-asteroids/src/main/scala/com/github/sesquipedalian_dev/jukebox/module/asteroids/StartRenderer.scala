@@ -14,6 +14,8 @@ import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Renderer
 import scalafx.scene.paint.Color
 
 case class StartRenderer() extends Renderer {
+  def renderOrder(ecs: ECS[UUIDIdType], eid: UUIDIdType#EntityId): Int = 5 // text layer
+
   override def render(eid: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
     gc.setLineWidth(2)
     gc.setStroke(Color.White)

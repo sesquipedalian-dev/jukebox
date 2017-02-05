@@ -3,7 +3,6 @@
   */
 package com.github.sesquipedalian_dev.jukebox.engine.components.objects
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
-
 import javafx.scene.canvas.GraphicsContext
 import javafx.scene.image.Image
 
@@ -23,7 +22,9 @@ case class Scene(
 )
 
 case class SceneRenderer(
-) extends Renderer with LazyLogging {
+) extends Renderer
+  with LazyLogging
+{
   var image: Option[Image] = None
   def render(entId: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
     logger.trace("rendering scene 1 {}", entId)
@@ -38,4 +39,7 @@ case class SceneRenderer(
       gc.drawImage(image.get, -offset.x, -offset.y)
     })
   }
+
+  // scene background should render behind everything
+  override def renderOrder(ecs: ECS[UUIDIdType], eid: EntityIdType): Int = -1000
 }

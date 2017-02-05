@@ -26,6 +26,8 @@ case object KEY_MAP extends ConfigSetting[Map[KeyCode, String]] {
     KeyCode.SHIFT -> "HighlightObjects"
   )
 
+  value = Some(defaultValue)
+
   override def populateFromConfig(newConfig: Config): Unit = {
     // TODO??
   }

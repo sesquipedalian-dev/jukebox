@@ -177,12 +177,9 @@ class GameLoop() extends EventHandler[ActionEvent] with LazyLogging  {
 
       renderCallbacks.sortBy(_._1).foreach(f => f._2(gc, ecs))
 
-      ecs.system[Renderer].toList.sortBy(_ match {
-        case (eid, x: SceneRenderer) => -1000 // background has to render before the rest of the scene objects
-        case (eid, x: SceneObjectRenderer) => ecs.system[SceneObject].get(eid).map(scene => { // scene objects use their z sort
-          scene.zSort
-        }).getOrElse(0)
-        case _ => -1
+      ecs.system[Renderer].toList.sortBy(p => {
+        val (eid, renderer) = p
+        renderer.renderOrder(ecs, eid)
       }).foreach(p => {
         // TODO only render the object if it is within the viewport?
         val (eid, renderer) = p

@@ -11,5 +11,6 @@ import com.github.sesquipedalian_dev.jukebox.engine.components._
 
 // components that game loop calls to render
 trait Renderer {
+  def renderOrder(ecs: ECS[UUIDIdType], eid: UUIDIdType#EntityId): Int
   def render(eid: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit
 }
