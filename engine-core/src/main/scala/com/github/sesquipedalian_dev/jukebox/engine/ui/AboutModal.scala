@@ -17,12 +17,12 @@ import com.github.sesquipedalian_dev.jukebox.engine.ui.I18nManager._
 
 case class AboutModal()(implicit gameLoop: GameLoop) extends LazyLogging {
   val textFilesToLoad = List(
-    "developer.statement" -> "/aboutinfo/summary.txt",
-    "logback.license" -> "/aboutinfo/logback/Eclipse Public License - Version 1.0.html",
-    "scalafx.license" -> "/aboutinfo/scalafx/LICENSE.txt",
-    "scalego.license" -> "/aboutinfo/scalego/LICENSE",
-    "typesafe.config.license" -> "/aboutinfo/typesafehub.config/LICENSE-2.0.txt",
-    "typesafe.logging.license" -> "/aboutinfo/typesafehub.scala-logging/LICENSE.txt"
+    "developer.statement" -> "/aboutInfo/summary.txt",
+    "logback.license" -> "/aboutInfo/logback/Eclipse Public License - Version 1.0.html",
+    "scalafx.license" -> "/aboutInfo/scalafx/LICENSE.txt",
+    "scalego.license" -> "/aboutInfo/scalego/LICENSE",
+    "typesafe.config.license" -> "/aboutInfo/typesafehub.config/LICENSE-2.0.txt",
+    "typesafe.logging.license" -> "/aboutInfo/typesafehub.scala-logging/LICENSE.txt"
   )
 
   // find the menu item that should load up our modal
@@ -52,7 +52,9 @@ case class AboutModal()(implicit gameLoop: GameLoop) extends LazyLogging {
         textFilesToLoad.foreach(pair => {
           val (key, filename) = pair
           logger.debug(s"loading resource file ${filename}")
-          val resourceStream = getClass().getResource(filename).openStream()
+          val c = getClass()
+          val r = c.getResource(filename)
+          val resourceStream = r.openStream()
           val br = new BufferedReader(new InputStreamReader(resourceStream))
 
           val sb = new StringBuffer()
