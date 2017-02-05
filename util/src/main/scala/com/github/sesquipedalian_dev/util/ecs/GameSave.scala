@@ -48,7 +48,7 @@ object GameSave extends LazyLogging {
     (implicit EidTypeMapper: IdTypeMapper[ECSIdType#EntityId],
      SystemTypeMapper: IdTypeMapper[ECSIdType#SystemId],
      knownSubtypes: KnownSubTypes
-  ): ECS[ECSIdType] = {
+  ): (String, ECS[ECSIdType]) = {
     val savesDir = getSavesDir()
     val saveFile = new File(savesDir, filename)
 
@@ -57,7 +57,13 @@ object GameSave extends LazyLogging {
     val inputReader = new BufferedReader(new FileReader(saveFile))
     val sb = new StringBuilder
     var line = inputReader.readLine()
+    var first = true
+    var moduleName: String = ""
     while(line != null) {
+      if(first) {
+        moduleName = line
+        first = false
+      }
       sb.append(line)
       sb.append(System.lineSeparator())
       line = inputReader.readLine()
@@ -79,7 +85,7 @@ object GameSave extends LazyLogging {
     val pretty2 = newEcs.toJson(pretty = true)
     logger.info("Pretty JSON Afta: " + pretty2)
 
-    newEcs
+    (moduleName, newEcs)
   }
 
   /**
@@ -92,7 +98,7 @@ object GameSave extends LazyLogging {
     * @throws java.io.IOException
     */
   def saveGame[ECSIdType <: IdTypes]
-    (ecs: ECS[ECSIdType], filename: String, shouldOverwrite: Boolean = false)
+    (ecs: ECS[ECSIdType], filename: String, moduleName: String, shouldOverwrite: Boolean = false)
     (implicit EidTypeMapper: IdTypeMapper[ECSIdType#EntityId], SystemTypeMapper: IdTypeMapper[ECSIdType#SystemId], knownSubtypes: KnownSubTypes): Boolean =
   {
     val savesDir = getSavesDir
@@ -114,6 +120,7 @@ object GameSave extends LazyLogging {
     logger.info("Pretty JSON: " + pretty)
 
     val outStream = new PrintWriter(new FileOutputStream(saveFile))
+    outStream.print(moduleName + "\n") // TODO
     outStream.print(pretty)
     outStream.close
 

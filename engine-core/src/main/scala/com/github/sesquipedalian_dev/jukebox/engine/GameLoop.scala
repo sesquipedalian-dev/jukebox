@@ -65,11 +65,14 @@ class GameLoop() extends EventHandler[ActionEvent] with LazyLogging  {
 
   def unpause(): Unit = {
     state = RUNNING
+    // lastTime = System.currentTimeMillis() // make sure we don't accidentally run a bunch of frames after getting back from pause TODO unsure if this is necessary
   }
 
   override def handle(event: ActionEvent): Unit = {
     state match {
-      case PAUSED => // nop
+      case PAUSED => {
+        // nop
+      }
       case START => {
         init()
       }

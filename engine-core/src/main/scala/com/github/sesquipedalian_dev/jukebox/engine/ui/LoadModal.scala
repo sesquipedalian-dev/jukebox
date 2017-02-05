@@ -9,6 +9,7 @@ import javafx.event.{ActionEvent, EventHandler}
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.{GameLoop, Main, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components._
+import com.github.sesquipedalian_dev.jukebox.engine.modules.ModuleController
 import com.github.sesquipedalian_dev.jukebox.engine.{Main, components}
 import com.github.sesquipedalian_dev.util.ecs.GameSave
 import com.github.sesquipedalian_dev.util.scalafx.{MenuLookup, SimpleModalDialogs}
@@ -26,6 +27,8 @@ case class LoadModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
   val saveMenu = MenuLookup.oneLevelLookup(Main.stage.scene(), "fileMenu", "loadMenu")
 
   saveMenu.foreach(menu => {
+    menu.setDisable(true)
+    ModuleController.onModuleLoad((moduleName) => menu.setDisable(false))
     menu.setOnAction(new EventHandler[ActionEvent] {
       override def handle(event: ActionEvent) = {
         /*************************************
@@ -45,8 +48,13 @@ case class LoadModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
 
           val (cb, newSystems) = components.makeNewECSSystems
           if(chosenSaveFile != null) { // it's null if user canceled dialog
-            val newEcs: ECS[UUIDIdType] = GameSave.loadGame[UUIDIdType](chosenSaveFile.getName, newSystems)
-            cb()
+            val (moduleName: String, newEcs: ECS[UUIDIdType]) = GameSave.loadGame[UUIDIdType](chosenSaveFile.getName, newSystems)
+            if(moduleName != ModuleController.currentModule.getOrElse("Unknown")) {
+              SimpleModalDialogs.showException(L("exception.load.ioerror"), new Exception())
+            } else {
+              gameLoop.ecs = newEcs
+              cb()
+            }
           }
         } catch {
           case x: IOException => {

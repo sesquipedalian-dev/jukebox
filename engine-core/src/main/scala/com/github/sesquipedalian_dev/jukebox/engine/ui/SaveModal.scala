@@ -10,6 +10,7 @@ import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.{GameLoop, Main, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components._
 import com.github.sesquipedalian_dev.jukebox.engine.Main
+import com.github.sesquipedalian_dev.jukebox.engine.modules.ModuleController
 import com.github.sesquipedalian_dev.util.config.ConfigSettings
 import com.github.sesquipedalian_dev.util.ecs.{GameSave, USER_SAVES_LOC}
 import com.github.sesquipedalian_dev.util.scalafx.{MenuLookup, SimpleModalDialogs}
@@ -17,7 +18,6 @@ import com.github.sesquipedalian_dev.util.scalafx.{MenuLookup, SimpleModalDialog
 import scalafx.geometry.Rectangle2D
 import scalafx.stage.FileChooser
 import scalafx.stage.FileChooser.ExtensionFilter
-
 import com.github.sesquipedalian_dev.jukebox.engine.ui.I18nManager._
 
 case class SaveModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
@@ -28,6 +28,8 @@ case class SaveModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
   val saveMenu = MenuLookup.oneLevelLookup(Main.stage.scene(), "fileMenu", "saveMenu")
 
   saveMenu.foreach(menu => {
+    menu.setDisable(true)
+    ModuleController.onModuleLoad((moduleName) => menu.setDisable(false))
     menu.setOnAction(new EventHandler[ActionEvent] {
       override def handle(event: ActionEvent) = {
         /*************************************
@@ -52,7 +54,7 @@ case class SaveModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
               ConfigSettings.saveUserConfig()
             }
 
-            GameSave.saveGame(ecs, chosenSaveFile.getName, shouldOverwrite = true) // FileChooser dialog already confirmed overwrite
+            GameSave.saveGame(ecs, chosenSaveFile.getName, ModuleController.currentModule.getOrElse("UnknownModule"), shouldOverwrite = true) // FileChooser dialog already confirmed overwrite
           }
         } catch {
           case x: IOException => {

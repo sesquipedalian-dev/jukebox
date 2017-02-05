@@ -9,6 +9,8 @@ import javafx.event.{ActionEvent, EventHandler}
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.{GameLoop, Main, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components._
+import com.github.sesquipedalian_dev.jukebox.engine.modules.ModuleController
+import com.github.sesquipedalian_dev.jukebox.engine.ui.I18nManager.L
 import com.github.sesquipedalian_dev.jukebox.engine.{Main, components}
 import com.github.sesquipedalian_dev.util.config.LoadableStringConfigSetting
 import com.github.sesquipedalian_dev.util.ecs.{GameSave, USER_SAVES_LOC}
@@ -25,15 +27,29 @@ case object QUICKSAVE_FILENAME extends LoadableStringConfigSetting with StringCo
 case class Quicksave()(implicit ecs: ECS[UUIDIdType], gameLoop: GameLoop) extends LazyLogging {
   // lookup save menu item and hook up our handler
   val saveMenu = MenuLookup.oneLevelLookup(Main.stage.scene(), "fileMenu", "quickSave")
-  saveMenu.foreach(_.setOnAction(new EventHandler[ActionEvent]() {
-    override def handle(event: ActionEvent): Unit = save()
-  }))
+  saveMenu.foreach(menu => {
+    menu.setDisable(true)
+    ModuleController.onModuleLoad((moduleName) => menu.setDisable(false))
+    menu.setOnAction(new EventHandler[ActionEvent]() {
+      override def handle(event: ActionEvent): Unit = save()
+    })
+  })
+
+  // hook up our quick load handler to the menu item
+  val loadMenu = MenuLookup.oneLevelLookup(Main.stage.scene(), "fileMenu", "quickLoad")
+  loadMenu.foreach(menu => {
+    menu.setDisable(true)
+    ModuleController.onModuleLoad((moduleName) => menu.setDisable(false))
+    menu.setOnAction(new EventHandler[ActionEvent]() {
+      override def handle(event: ActionEvent): Unit = load()
+    })
+  })
 
   // save to the quicksave file when requested
   def save() {
     try {
       gameLoop.pause()
-      GameSave.saveGame(ecs, QUICKSAVE_FILENAME.getValue + ".json", shouldOverwrite = true)
+      GameSave.saveGame(ecs, getQuicksaveFilename, ModuleController.currentModule.getOrElse("UnknownModule"), shouldOverwrite = true)
       loadMenu.foreach(_.setDisable(false)) // if we've successfully saved, we can re-enable the quickload menu
     } catch {
       case x: Exception => {
@@ -43,12 +59,6 @@ case class Quicksave()(implicit ecs: ECS[UUIDIdType], gameLoop: GameLoop) extend
       gameLoop.unpause()
     }
   }
-
-  // hook up our quick load handler to the menu item
-  val loadMenu = MenuLookup.oneLevelLookup(Main.stage.scene(), "fileMenu", "quickLoad")
-  loadMenu.foreach(_.setOnAction(new EventHandler[ActionEvent]() {
-    override def handle(event: ActionEvent): Unit = load()
-  }))
 
   // when quick save filename changes, we have to check if we have a file to load
   QUICKSAVE_FILENAME.onChange(possibleVal => {
@@ -71,8 +81,13 @@ case class Quicksave()(implicit ecs: ECS[UUIDIdType], gameLoop: GameLoop) extend
     try {
       gameLoop.pause()
       val (cb, newSystems) = components.makeNewECSSystems
-      val newEcs: ECS[UUIDIdType] = GameSave.loadGame[UUIDIdType](QUICKSAVE_FILENAME.getValue + ".json", newSystems)
-      cb()
+      val (moduleName: String, newEcs: ECS[UUIDIdType]) = GameSave.loadGame[UUIDIdType](getQuicksaveFilename, newSystems)
+      if(moduleName != ModuleController.currentModule.getOrElse("Unknown")) {
+        SimpleModalDialogs.showException(L("exception.load.ioerror"), new Exception())
+      } else {
+        gameLoop.ecs = newEcs
+        cb()
+      }
     } catch {
       case y: Exception => {
         SimpleModalDialogs.showException("Unknown Error while loading file!", y)
@@ -84,7 +99,11 @@ case class Quicksave()(implicit ecs: ECS[UUIDIdType], gameLoop: GameLoop) extend
 
   // verify the quicksave file exists (used to enable / disable the quickload menu item)
   def checkExists: Boolean = {
-    logger.trace("checking if quicksave file exists {} {} {}", USER_SAVES_LOC.getValue, QUICKSAVE_FILENAME.getValue, ".json")
-    new File(USER_SAVES_LOC.getValue + "/" + QUICKSAVE_FILENAME.getValue + ".json").exists()
+    logger.trace("checking if quicksave file exists {} {} {}", USER_SAVES_LOC.getValue, getQuicksaveFilename, ".json")
+    new File(USER_SAVES_LOC.getValue + "/" + getQuicksaveFilename).exists()
+  }
+
+  def getQuicksaveFilename: String = {
+    QUICKSAVE_FILENAME.getValue + "_" + "CURRENT MODULE NAME" + ".json"
   }
 }
