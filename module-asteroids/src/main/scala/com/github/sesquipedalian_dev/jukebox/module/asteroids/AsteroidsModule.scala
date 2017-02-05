@@ -65,26 +65,30 @@ class AsteroidsModule extends ComponentModule {
 
 
   def spawnAsteroid(): Unit = {
+    // pick a random asteroid type to spawn?
+    val params = Random.shuffle(ASTEROID_PARAMS_MAP().values).head
+
     // calculate a random initial velocity / direction
-    val initialSpeed = Random.nextFloat() + 1.0
+    val initialSpeed = Random.nextFloat() + params.initialVelocityScale
     val randomDirection = Random.nextFloat() * 2 * Math.PI
     val velocityX = Math.cos(randomDirection) * initialSpeed
     val velocityY = Math.sin(randomDirection) * initialSpeed
 
     // TODO calculate a random initial position
+    // TODO no asteroids bounding box: 630, 350 // 970, 550 should keep them out of where the player is
+    val initialPosition = SerializablePoint2D(100, 100)
     val position = List[SerializablePoint2D](
-      SerializablePoint2D(100, 100),
-      SerializablePoint2D(100, 200),
-      SerializablePoint2D(200, 200),
-      SerializablePoint2D(200, 100)
+      SerializablePoint2D(initialPosition.x, initialPosition.y),
+      SerializablePoint2D(initialPosition.x + params.width, initialPosition.y),
+      SerializablePoint2D(initialPosition.x + params.width, initialPosition.y + params.height),
+      SerializablePoint2D(initialPosition.x, initialPosition.y + params.height)
     )
-    // TODO no asteroids bounding box: 630, 350 // 970, 550
 
     // build the entity
     val newAsteroid = Entity.Builder +
       SceneObject(
         position,
-        Some("img/mediumAsteroid.jpg"),
+        Some(params.spriteImg),
         None,
         None,
         0

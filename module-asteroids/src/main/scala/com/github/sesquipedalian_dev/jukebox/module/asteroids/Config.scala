@@ -13,3 +13,38 @@ case object STARTING_PLAYER_LIVES extends ConfigSetting[Int] {
 
   override def populateFromConfig(newConfig: Config): Unit = {} // nop
 }
+
+case class AsteroidParams(
+  name: String,
+  width: Double,
+  height: Double,
+  initialVelocityScale: Double,
+  spriteImg: String
+)
+case object ASTEROID_PARAMS_MAP extends ConfigSetting[Map[String, AsteroidParams]] {
+  override def defaultValue: Map[String, AsteroidParams] = List(
+    AsteroidParams(
+      name = "small",
+      width = 50,
+      height = 50,
+      initialVelocityScale = 4.0,
+      spriteImg = "img/smallAsteroid.jpg"
+    ),
+    AsteroidParams(
+      name = "medium",
+      width = 100,
+      height = 100,
+      initialVelocityScale = 2.0,
+      spriteImg = "img/mediumAsteroid.jpg"
+    ),
+    AsteroidParams(
+      name = "large",
+      width = 200,
+      height = 200,
+      initialVelocityScale = 1.0,
+      spriteImg = "img/largeAsteroid.jpg"
+    )
+  ).map(ap => (ap.name -> ap)).toMap
+
+  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
+}
