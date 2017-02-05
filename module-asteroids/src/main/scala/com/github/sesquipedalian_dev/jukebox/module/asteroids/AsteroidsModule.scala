@@ -10,6 +10,11 @@ import com.github.gigurra.scalego.serialization.KnownSubTypes
 import com.github.sesquipedalian_dev.jukebox.engine.{KEY_MAP, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components.{randomEntityID, _}
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.{SceneObject, SceneObjectRenderer}
+import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
+
+import scala.util.Random
 
 
 
@@ -22,10 +27,8 @@ class AsteroidsModule extends ComponentModule {
     ("scoreRenderer" -> classOf[ScoreRenderer]) +
     ("backgroundRenderer" -> classOf[BackgroundRenderer]) +
     ("startRenderer" -> classOf[StartRenderer]) +
-    ("waitForStartUpdater" -> classOf[WaitForStartUpdater])
-
-  // TODO lives / score renderers?
-  // background renderer
+    ("waitForStartUpdater" -> classOf[WaitForStartUpdater]) +
+    ("movesBehaviour" -> classOf[MovesBehaviour])
 
   override def makeSystems(): List[System[_, UUIDIdType]] = {
     Nil
@@ -41,8 +44,6 @@ class AsteroidsModule extends ComponentModule {
     val startRendererEnt = Entity.Builder + StartRenderer() build randomEntityID
     startRenderer = Some(startRendererEnt.id)
 
-    val waitForStartUpdater = Entity.Builder + WaitForStartUpdater() build randomEntityID
-
     // set up inputs
     KEY_MAP.value = Some(KEY_MAP.getValue ++ Map(
       KeyCode.LEFT -> "TurnLeft",
@@ -52,6 +53,7 @@ class AsteroidsModule extends ComponentModule {
     ))
 
     // set up wait for start button
+    val waitForStartUpdater = Entity.Builder + WaitForStartUpdater() build randomEntityID
   }
 
   // globally accessible data in this module
@@ -60,6 +62,35 @@ class AsteroidsModule extends ComponentModule {
   var startRenderer: Option[UUIDIdType#EntityId] = None
 
   AsteroidsModule.instance = this
+
+
+  def spawnAsteroid(): Unit = {
+    // calculate a random initial velocity / direction
+    val initialSpeed = Random.nextFloat() + 1.0
+    val randomDirection = Random.nextFloat() * 2 * Math.PI
+    val velocityX = Math.cos(randomDirection) * initialSpeed
+    val velocityY = Math.sin(randomDirection) * initialSpeed
+
+    // TODO calculate a random initial position
+    val position = List[SerializablePoint2D](
+      SerializablePoint2D(100, 100),
+      SerializablePoint2D(100, 200),
+      SerializablePoint2D(200, 200),
+      SerializablePoint2D(200, 100)
+    )
+
+    // build the entity
+    val newAsteroid = Entity.Builder +
+      SceneObject(
+        position,
+        Some("img/mediumAsteroid.jpg"),
+        None,
+        None,
+        0
+      ) +
+      MovesBehaviour(SerializablePoint2D(velocityX, velocityY)) +
+      SceneObjectRenderer() build randomEntityID
+  }
 }
 
 object AsteroidsModule {

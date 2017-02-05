@@ -7,4 +7,6 @@ package com.github.sesquipedalian_dev.util.ecs
 case class SerializablePoint2D(
   x: Double,
   y: Double
-)
+) {
+  def +(rhs: SerializablePoint2D) = SerializablePoint2D(x + rhs.x, y + rhs.y)
+}
