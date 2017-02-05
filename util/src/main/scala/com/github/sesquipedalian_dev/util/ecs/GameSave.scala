@@ -63,9 +63,10 @@ object GameSave extends LazyLogging {
       if(first) {
         moduleName = line
         first = false
+      } else {
+        sb.append(line)
+        sb.append(System.lineSeparator())
       }
-      sb.append(line)
-      sb.append(System.lineSeparator())
       line = inputReader.readLine()
     }
     inputReader.close()

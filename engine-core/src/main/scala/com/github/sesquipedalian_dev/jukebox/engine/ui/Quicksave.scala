@@ -104,6 +104,6 @@ case class Quicksave()(implicit ecs: ECS[UUIDIdType], gameLoop: GameLoop) extend
   }
 
   def getQuicksaveFilename: String = {
-    QUICKSAVE_FILENAME.getValue + "_" + "CURRENT MODULE NAME" + ".json"
+    QUICKSAVE_FILENAME.getValue + "_" + ModuleController.currentModule.getOrElse("Unknown") + ".json"
   }
 }
