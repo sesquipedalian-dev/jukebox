@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="jukebox">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="jukebox.jar">
+      <element id="module-output" name="scalego_core" />
+      <element id="module-output" name="engine_core" />
+      <element id="module-output" name="scalego_serialization" />
+      <element id="module-output" name="scalego_serialization_json" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="sesquipedalian_dev_util" />
+    </root>
+  </artifact>
+</component>
