@@ -43,7 +43,7 @@ case class LoadModal()(implicit val ecs: ECS[UUIDIdType], gameLoop: GameLoop) {
           // when done configuring, show dialog
           val chosenSaveFile = fileChooser.showOpenDialog(Main.stage)
 
-          val (cb, newSystems) = components.blankSystemsSet
+          val (cb, newSystems) = components.makeNewECSSystems
           if(chosenSaveFile != null) { // it's null if user canceled dialog
             val newEcs: ECS[UUIDIdType] = GameSave.loadGame[UUIDIdType](chosenSaveFile.getName, newSystems)
             cb()

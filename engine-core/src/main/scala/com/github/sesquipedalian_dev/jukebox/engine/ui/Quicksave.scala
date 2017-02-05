@@ -70,7 +70,7 @@ case class Quicksave()(implicit ecs: ECS[UUIDIdType], gameLoop: GameLoop) extend
   def load(): Unit = {
     try {
       gameLoop.pause()
-      val (cb, newSystems) = components.blankSystemsSet
+      val (cb, newSystems) = components.makeNewECSSystems
       val newEcs: ECS[UUIDIdType] = GameSave.loadGame[UUIDIdType](QUICKSAVE_FILENAME.getValue + ".json", newSystems)
       cb()
     } catch {

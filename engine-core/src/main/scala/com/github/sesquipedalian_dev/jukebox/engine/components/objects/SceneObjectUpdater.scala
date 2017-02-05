@@ -8,6 +8,7 @@ import javafx.scene.input.MouseButton
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.{InputManager, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Updater
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
 import com.typesafe.scalalogging.LazyLogging
 

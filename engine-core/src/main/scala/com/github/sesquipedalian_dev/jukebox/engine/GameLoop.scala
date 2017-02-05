@@ -12,8 +12,10 @@ import javafx.stage.WindowEvent
 import com.github.gigurra.scalego.core.ECS
 import com.github.gigurra.scalego.serialization.json.JsonSerializer
 import com.github.gigurra.scalego.serialization.{IdTypeMapper, KnownSubTypes}
-import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.{Renderer, Updater}
-import com.github.sesquipedalian_dev.jukebox.engine.components.objects.{SceneController, SceneObject, SceneObjectRenderer, SceneRenderer}
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.{GameLoopModule, Renderer, Updater}
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects._
 import com.github.sesquipedalian_dev.jukebox.engine.ui._
 import com.github.sesquipedalian_dev.util.config._
 import com.github.sesquipedalian_dev.util.ecs.{SerializablePoint2D, USER_SAVES_LOC}
@@ -103,7 +105,9 @@ class GameLoop() extends EventHandler[ActionEvent] with LazyLogging  {
     makeSureAllConfigLoaded()
 
     logger.info("GameLoop init!")
-    val (cb, systems) = components.blankSystemsSet
+    components.addComponent(ObjectsModule)
+    components.addComponent(GameLoopModule)
+    val (cb, systems) = components.makeNewECSSystems()
     cb()
     ecs = ECS[UUIDIdType](systems:_*)
     state = RUNNING

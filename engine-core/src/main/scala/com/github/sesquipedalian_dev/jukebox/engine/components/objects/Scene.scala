@@ -2,6 +2,7 @@
   * Copyright 11/30/2016 sesquipedalian.dev@gmail.com, All Rights Reserved.
   */
 package com.github.sesquipedalian_dev.jukebox.engine.components.objects
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
 
 import javafx.scene.canvas.GraphicsContext
 import javafx.scene.image.Image

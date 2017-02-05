@@ -5,6 +5,7 @@ package com.github.sesquipedalian_dev.jukebox.engine.components.objects
 
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine._
+import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
 import com.github.sesquipedalian_dev.util.config.{ConfigSetting, LoadableDoubleConfigSetting}
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.config.Config
