@@ -91,4 +91,9 @@ object Main extends JFXApp with LazyLogging {
       case x => logger.error("Couldn't find canvas {}", x)
     }
   }
+
+  def apply() {
+    throw new Exception("testing what this gets compiled to?")
+  }
+  this()
 }

@@ -85,3 +85,14 @@ lazy val engine_core = (project in file("engine-core"))
     scalego_serialization_json,
     sesquipedalian_dev_util
   )
+
+lazy val module_asteroids = (project in file("module-asteroids"))
+  .settings(
+    sesquipedalianSettings ++ Seq(
+      name := "module-asteroids"
+    )
+  )
+  .dependsOn(
+    engine_core,
+    sesquipedalian_dev_util
+  )
