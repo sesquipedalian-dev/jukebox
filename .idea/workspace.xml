@@ -49,36 +49,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ModuleController.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/modules/ModuleController.scala">
+      <file leaf-file-name="AsteroidsModule.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="439">
+              <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#145#164#0" expanded="true" />
+                <element signature="e#147#202#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="File.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/io/File.java">
+      <file leaf-file-name="StartRenderer.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/StartRenderer.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="471" column="18" lean-forward="false" selection-start-line="471" selection-start-column="18" selection-end-line="471" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="323">
+              <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+              <folding>
+                <element signature="e#147#189#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsteroidsModule.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala">
+      <file leaf-file-name="GraphicsContext.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/canvas/GraphicsContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="33" column="77" lean-forward="false" selection-start-line="33" selection-start-column="77" selection-end-line="33" selection-end-column="77" />
+            <state relative-caret-position="139">
+              <caret line="1672" column="55" lean-forward="true" selection-start-line="1672" selection-start-column="55" selection-end-line="1672" selection-end-column="55" />
               <folding>
-                <element signature="e#147#202#0" expanded="true" />
+                <element signature="e#67333#67334#0" expanded="true" />
+                <element signature="e#67395#67396#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,6 +93,18 @@
               <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
               <folding>
                 <element signature="e#147#173#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoreRenderer.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/ScoreRenderer.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+              <folding>
+                <element signature="e#147#189#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,16 +157,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scene.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine-core/src/main/resources/scenes/f5551600-b899-11e6-9598-0800200c9a66/scene.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="148" column="19" lean-forward="false" selection-start-line="148" selection-start-column="9" selection-end-line="148" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="URLClassLoader.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/net/URLClassLoader.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -200,8 +204,9 @@
       <find>getPath</find>
       <find>background</find>
       <find>public URLClassLoader</find>
-      <find>protected</find>
       <find>render</find>
+      <find>lignment</find>
+      <find>protected</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -212,7 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/scalafx/Spritesheet.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/ScalegoLibTest.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GraphicsConfig.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/resources/aboutInfo/summary.txt" />
@@ -255,7 +259,6 @@
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/Main.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/ComponentModule.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/ObjectsModule.scala" />
-        <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/ScoreRenderer.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/resources/i18n/jukebox_fr.properties" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/ui/AboutModal.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/gameloop/GameLoopModule.scala" />
@@ -263,6 +266,8 @@
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/BackgroundRenderer.scala" />
         <option value="$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GameLoop.scala" />
         <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala" />
+        <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/StartRenderer.scala" />
+        <option value="$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/ScoreRenderer.scala" />
       </list>
     </option>
   </component>
@@ -1361,22 +1366,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/UUIDIdType.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/game/GameObjectAbs.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/SceneObject.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -1472,7 +1461,7 @@
         <state relative-caret-position="272">
           <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding>
-            <element signature="e#142#189#0" expanded="true" />
+            <element signature="e#142#189#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1492,7 +1481,7 @@
         <state relative-caret-position="260">
           <caret line="31" column="73" lean-forward="false" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
           <folding>
-            <element signature="e#142#168#0" expanded="true" />
+            <element signature="e#142#168#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1610,7 +1599,7 @@
         <state relative-caret-position="418">
           <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1621,16 +1610,6 @@
           <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
           <folding>
             <element signature="e#158#203#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/ScoreRenderer.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="3" lean-forward="false" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-          <folding>
-            <element signature="e#147#189#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1828,6 +1807,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/canvas/GraphicsContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="1672" column="55" lean-forward="true" selection-start-line="1672" selection-start-column="55" selection-end-line="1672" selection-end-column="55" />
+          <folding>
+            <element signature="e#67333#67334#0" expanded="true" />
+            <element signature="e#67395#67396#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/BackgroundRenderer.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1840,10 +1830,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/AsteroidsModule.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="33" column="77" lean-forward="false" selection-start-line="33" selection-start-column="77" selection-end-line="33" selection-end-column="77" />
+        <state relative-caret-position="439">
+          <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
           <folding>
             <element signature="e#147#202#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/StartRenderer.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+          <folding>
+            <element signature="e#147#189#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module-asteroids/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/asteroids/ScoreRenderer.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding>
+            <element signature="e#147#189#0" expanded="true" />
           </folding>
         </state>
       </provider>

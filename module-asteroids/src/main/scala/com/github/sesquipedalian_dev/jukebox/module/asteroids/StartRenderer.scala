@@ -1,5 +1,5 @@
 /**
-  * Copyright 2/4/2017 sesquipedalian.dev@gmail.com, All Rights Reserved.
+  * Copyright 2/5/2017 sesquipedalian.dev@gmail.com, All Rights Reserved.
   */
 package com.github.sesquipedalian_dev.jukebox.module.asteroids
 
@@ -13,11 +13,11 @@ import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Renderer
 
 import scalafx.scene.paint.Color
 
-case class ScoreRenderer() extends Renderer {
+case class StartRenderer() extends Renderer {
   override def render(eid: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
     gc.setLineWidth(2)
     gc.setStroke(Color.White)
-    gc.setFont(new Font(gc.getFont.getName, 15))
-    gc.strokeText(AsteroidsModule.instance.score.toString, 50, 50)
+    gc.setFont(new Font(gc.getFont.getName, 40))
+    gc.strokeText("***Press Enter to Start***", 500, 400)
   }
 }
