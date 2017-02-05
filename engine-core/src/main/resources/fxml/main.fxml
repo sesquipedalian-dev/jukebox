@@ -50,6 +50,7 @@
                      </accelerator></MenuItem>
                </items>
           </Menu>
+            <Menu fx:id="modulesMenu" mnemonicParsing="false" text="%menu.modules" />
           <Menu fx:id="helpMenu" mnemonicParsing="false" text="%menu.help">
             <items>
               <MenuItem fx:id="aboutMenu" mnemonicParsing="false" text="%menu.about" />

@@ -16,6 +16,7 @@ import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.{GameLoo
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects._
+import com.github.sesquipedalian_dev.jukebox.engine.modules.ModuleController
 import com.github.sesquipedalian_dev.jukebox.engine.ui._
 import com.github.sesquipedalian_dev.util.config._
 import com.github.sesquipedalian_dev.util.ecs.{SerializablePoint2D, USER_SAVES_LOC}
@@ -127,6 +128,7 @@ class GameLoop() extends EventHandler[ActionEvent] with LazyLogging  {
     SceneController()
     InputManager()
     I18nManager()
+    ModuleController()
 
     // also intercept alt-f4 and 'x' button on app
     Main.stage.setOnCloseRequest(new EventHandler[WindowEvent]() {
