@@ -3,26 +3,37 @@
   */
 package com.github.sesquipedalian_dev.jukebox.engine.modules
 
+import java.io.File
+import java.net.{URL, URLClassLoader}
 import javafx.event.{ActionEvent, EventHandler}
 
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.components.ComponentModule
 import com.github.sesquipedalian_dev.jukebox.engine.{GameLoop, Main, UUIDIdType, components}
 import com.github.sesquipedalian_dev.util.scalafx.MenuLookup
+import com.typesafe.scalalogging.LazyLogging
 
 import scalafx.scene.control.MenuItem
 
 /**
   * Maintain state of loaded modules
   */
-object ModuleController {
+object ModuleController extends LazyLogging {
   // name / id of the currently loaded module (or none if not loaded yet)
   var currentModule: Option[String] = None
 
   def loadModule(name: String, gameLoop: GameLoop): Unit = {
+    // make new class loader that knows about our jar
+    val myJarPath = ModuleController.getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath
+    val myModulePath = new File(new File(myJarPath).getParent + "/modules/module_" + name.toLowerCase +".jar")
+    val urlArray = Array[URL](myModulePath.toURI.toURL)
+    println("resource path for my URL {" + myModulePath.toURI.toURL + "}")
+    val newClassLoader = new URLClassLoader(urlArray, this.getClass.getClassLoader)
+
     // load module from class path
     val moduleClassName = "com.github.sesquipedalian_dev.jukebox.module." + name.toLowerCase() + "." + name + "Module"
-    val moduleClass = Class.forName(moduleClassName)
+    logger.info("Attempting to load module class from custom class loader {" + moduleClassName + "}")
+    val moduleClass = newClassLoader.loadClass(moduleClassName)
     val moduleInstance = moduleClass.newInstance()
 
     // reload ECS
