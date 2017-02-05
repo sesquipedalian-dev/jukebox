@@ -10,6 +10,7 @@ import com.github.gigurra.scalego.serialization.{IdTypeMapper, KnownSubTypes}
 import com.github.gigurra.scalego.serialization.json.JsonSerializer
 import com.github.sesquipedalian_dev.util.config.LoadableStringConfigSetting
 import com.github.sesquipedalian_dev.util.scalafx.StringConfigSettingWithUI
+import com.typesafe.scalalogging.LazyLogging
 
 case object USER_SAVES_LOC extends LoadableStringConfigSetting with StringConfigSettingWithUI {
   override def configFileName: String = "jukebox.saves.userSavesDir"
@@ -28,7 +29,7 @@ case object USER_SAVES_LOC extends LoadableStringConfigSetting with StringConfig
 
 // utility to assist with saving / restoring game states
 // based on the scalego Entity-Component System
-object GameSave {
+object GameSave extends LazyLogging {
   def getSavesDir(): File = {
     val f = new File(USER_SAVES_LOC.getValue)
     if(!f.exists()) {
@@ -73,10 +74,10 @@ object GameSave {
     val jsonToParse = sb.toString
     val newEcs = ECS[ECSIdType](systems:_*)
     val pretty = newEcs.toJson(pretty = true)
-    println("Pretty JSON B4: " + pretty) // TODO use logger instead
+    logger.info("Pretty JSON B4: " + pretty)
     newEcs.appendJson(jsonToParse)
     val pretty2 = newEcs.toJson(pretty = true)
-    println("Pretty JSON Afta: " + pretty2) // TODO user logger instead
+    logger.info("Pretty JSON Afta: " + pretty2)
 
     newEcs
   }
@@ -110,7 +111,7 @@ object GameSave {
 
     // pretty-print json ala jsonlint.com
     val pretty = ecs.toJson(pretty = true)
-    println("Pretty JSON: " + pretty) // TODO use logger
+    logger.info("Pretty JSON: " + pretty)
 
     val outStream = new PrintWriter(new FileOutputStream(saveFile))
     outStream.print(pretty)

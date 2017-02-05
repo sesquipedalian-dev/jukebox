@@ -12,10 +12,10 @@ import com.github.sesquipedalian_dev.util.scalafx.{ConfigSettingWithUI, ConfigSe
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.control.{Accordion, ButtonType, Dialog, TitledPane}
 import scalafx.scene.image.ImageView
-
 import com.github.sesquipedalian_dev.jukebox.engine.ui.I18nManager._
+import com.typesafe.scalalogging.LazyLogging
 
-case class PreferencesModal()(implicit gameLoop: GameLoop) {
+case class PreferencesModal()(implicit gameLoop: GameLoop) extends LazyLogging {
   val UI_ICONS_FILE = "/fxml/ui-icons-222222-256x240.png"
   val UI_SETTINGS_ICON_BOUNDS = new Rectangle2D(196.0, 116.0, 10.0, 10.0)
 
@@ -89,8 +89,7 @@ case class PreferencesModal()(implicit gameLoop: GameLoop) {
               false
             }
             case bt => {
-              // TODO log error
-              println("Unkonwn button type" + bt)
+              logger.info("Unknown button type" + bt)
               false
             }
           }
