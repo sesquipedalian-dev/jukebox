@@ -33,4 +33,6 @@ object GameLoopModule extends ComponentModule {
     rendererSystem = systemsMade.head.asInstanceOf[com.github.gigurra.scalego.core.System[Renderer, UUIDIdType]]
     updaterSystem = systemsMade.drop(1).head.asInstanceOf[com.github.gigurra.scalego.core.System[Updater, UUIDIdType]]
   }
+
+  def onLoad(): Unit = {}
 }

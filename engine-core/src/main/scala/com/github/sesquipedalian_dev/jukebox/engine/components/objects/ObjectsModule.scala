@@ -31,4 +31,6 @@ object ObjectsModule extends ComponentModule {
     sceneSystem = systemsMade.drop(0).head.asInstanceOf[com.github.gigurra.scalego.core.System[Scene, UUIDIdType]]
     sceneObjectSystem = systemsMade.drop(1).head.asInstanceOf[com.github.gigurra.scalego.core.System[SceneObject, UUIDIdType]]
   }
+
+  def onLoad(): Unit = {}
 }

@@ -28,4 +28,9 @@ trait ComponentModule {
    * This confirmation step is needed in case the ecs fails to load something
    */
   def systemsMadeCallback(systemsMade: List[com.github.gigurra.scalego.core.System[_, UUIDIdType]]): Unit
+
+  /*
+   * Called when the module is loaded dynamically, used for doing initial init.
+   */
+  def onLoad(): Unit
 }
