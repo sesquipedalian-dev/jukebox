@@ -7,12 +7,12 @@ This is a small learning project for me. I wanted to try and make a small 2D gam
 # How to Run
 1. Grab [Java](https://java.com/en/download/) > 1.8 Update 40 (when newest javafx library was added)
 2. Clone repo:
-..* download zip: https://github.com/sesquipedalian-dev/jukebox/archive/master.zip 
-..* svn: svn checkout https://github.com/sesquipedalian-dev/jukebox.git <target directory> 
-..* git: git clone https://github.com/sesquipedalian-dev/jukebox.git <target directory> 
+..1 download zip: https://github.com/sesquipedalian-dev/jukebox/archive/master.zip 
+..2 svn: svn checkout https://github.com/sesquipedalian-dev/jukebox.git <target directory> 
+..3 git: git clone https://github.com/sesquipedalian-dev/jukebox.git <target directory> 
 3. Run game from 'out' directory':
-..* windows: double-click jukebox.bat to get the command line right for you 
-..* command line start: java -cp jukebox.jar;libs/* com.github.sesquipedalian_dev.jukebox.engine.Main 
+..1 windows: double-click jukebox.bat to get the command line right for you 
+..2 command line start: java -cp jukebox.jar;libs/* com.github.sesquipedalian_dev.jukebox.engine.Main 
 4. Pick a module to play from the 'Modules' menu
 
 # Repository Components
