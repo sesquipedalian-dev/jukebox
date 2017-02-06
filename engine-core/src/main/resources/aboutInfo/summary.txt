@@ -2,7 +2,9 @@ This is a learning project for Scott.  A simple game engine built on the followi
 - JavaFX 8 drives the UI / graphics canvas
 - Scalafx is a scala wrapper around javafx that provides some nicer DSL syntax and such
 - Scalego entity-component system in scala, for representing the game entities / scene graph, and providing
-  serialization of same
+  serialization of same. I modified this library to allow for multiple Components within any System (e.g.
+  we have a generic Updater system that receives a callback on game ticks; entities can have multiple of these
+  and they'll all get called).
 
 Additionally, the engine can load in various modules to play a specific game.
 
