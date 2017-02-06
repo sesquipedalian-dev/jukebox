@@ -25,8 +25,8 @@ class JsonSerializerSpec
         val dut = JsonSerializer[StringIds]()
         import dut._
 
-        implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-        implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+        implicit val positionSystem = new System[Position, StringIds]("position")
+        implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
 
         val ecs = ECS(positionSystem, velocitySystem)
 
@@ -42,24 +42,46 @@ class JsonSerializerSpec
 
       }
 
+      "Transform ecs with multiple components into JSON" in {
+
+        val dut = JsonSerializer[StringIds]()
+        import dut._
+
+        implicit val positionSystem = new System[Position, StringIds]("position")
+        implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
+
+        val ecs = ECS(positionSystem, velocitySystem)
+
+        Entity.Builder + Position(1, 2) + Velocity(3, 4) + Velocity(5, 6) build(entityId = "1")
+        Entity.Builder + Position(5, 6) + Velocity(7, 8) + Velocity(9, 10) build(entityId = "2")
+
+        val ugly = ecs.toJson(pretty = false)
+        val pretty = ecs.toJson(pretty = true)
+
+        ugly shouldBe "{\"systems\":[{\"systemId\":\"position\",\"components\":[{\"id\":\"2\",\"data\":{\"x\":5,\"y\":6}},{\"id\":\"1\",\"data\":{\"x\":1,\"y\":2}}]},{\"systemId\":\"velocity\",\"components\":[{\"id\":\"2\",\"data\":{\"x\":7,\"y\":8}},{\"id\":\"2\",\"data\":{\"x\":9,\"y\":10}},{\"id\":\"1\",\"data\":{\"x\":3,\"y\":4}},{\"id\":\"1\",\"data\":{\"x\":5,\"y\":6}}]}]}"
+
+        parse(ugly) shouldBe parse(pretty)
+
+      }
+
       "Append json to ecs" in {
 
         val dut = JsonSerializer[StringIds]()
         import dut._
 
-        implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-        implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+        implicit val positionSystem = new System[Position, StringIds]("position")
+        implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
 
         val ecs = ECS(positionSystem, velocitySystem)
 
         val json = "{\"systems\":[{\"systemId\":\"position\",\"components\":[{\"id\":\"2\",\"data\":{\"x\":5,\"y\":6}},{\"id\":\"1\",\"data\":{\"x\":1,\"y\":2}}]},{\"systemId\":\"velocity\",\"components\":[{\"id\":\"2\",\"data\":{\"x\":7,\"y\":8}},{\"id\":\"1\",\"data\":{\"x\":3,\"y\":4}}]}]}"
         ecs.appendJson(json)
 
-        ecs.system[Position].get("1") shouldBe Some(Position(1,2))
-        ecs.system[Position].get("2") shouldBe Some(Position(5,6))
+        ecs.system[Position].get("1").getOrElse(Nil).headOption shouldBe Some(Position(1,2))
+        ecs.system[Position].get("2").getOrElse(Nil).headOption shouldBe Some(Position(5,6))
 
-        ecs.system[Velocity].get("1") shouldBe Some(Velocity(3,4))
-        ecs.system[Velocity].get("2") shouldBe Some(Velocity(7,8))
+        ecs.system[Velocity].get("1").getOrElse(Nil).headOption shouldBe Some(Velocity(3,4))
+        ecs.system[Velocity].get("2").getOrElse(Nil).headOption shouldBe Some(Velocity(7,8))
 
       }
     }
@@ -101,11 +123,11 @@ class JsonSerializerSpec
         val json = "{\"systems\":[{\"systemId\":\"4\",\"components\":[{\"id\":\"2\",\"data\":{\"x\":5,\"y\":6}},{\"id\":\"1\",\"data\":{\"x\":1,\"y\":2}}]},{\"systemId\":\"5\",\"components\":[{\"id\":\"2\",\"data\":{\"x\":7,\"y\":8}},{\"id\":\"1\",\"data\":{\"x\":3,\"y\":4}}]}]}"
         ecs.appendJson(json)
 
-        ecs.system[Position].get(1) shouldBe Some(Position(1,2))
-        ecs.system[Position].get(2) shouldBe Some(Position(5,6))
+        ecs.system[Position].get(1).getOrElse(Nil).headOption shouldBe Some(Position(1,2))
+        ecs.system[Position].get(2).getOrElse(Nil).headOption shouldBe Some(Position(5,6))
 
-        ecs.system[Velocity].get(1) shouldBe Some(Velocity(3,4))
-        ecs.system[Velocity].get(2) shouldBe Some(Velocity(7,8))
+        ecs.system[Velocity].get(1).getOrElse(Nil).headOption shouldBe Some(Velocity(3,4))
+        ecs.system[Velocity].get(2).getOrElse(Nil).headOption shouldBe Some(Velocity(7,8))
       }
     }
 

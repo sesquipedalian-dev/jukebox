@@ -18,8 +18,8 @@ class ECSSerializerSpec_write
 
     "Create a serializable representation of an ECS" in {
 
-      implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-      implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+      implicit val positionSystem = new System[Position, StringIds]("position")
+      implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
 
       val ecs = ECS(positionSystem, velocitySystem)
 
@@ -49,7 +49,7 @@ class ECSSerializerSpec_write
 
     "Fail to a serializable representation of an ECS if systems contain unregistered/unknown subtypes" in {
 
-      implicit val baseSystem = new System[BaseType, StringIds]("base-type", mutable.HashMap())
+      implicit val baseSystem = new System[BaseType, StringIds]("base-type")
 
       val serializer = ECSSerializer(TestMapper[StringIds]())
       import serializer._
@@ -62,7 +62,7 @@ class ECSSerializerSpec_write
 
     "Serializable representation of an ECS if systems contain registered/known subtypes" in {
 
-      implicit val baseSystem = new System[BaseType, StringIds]("base-type", mutable.HashMap())
+      implicit val baseSystem = new System[BaseType, StringIds]("base-type")
 
       val serializer = ECSSerializer(TestMapper[StringIds](), KnownSubTypes("cool-sub-type-id" -> classOf[SubType]))
       import serializer._

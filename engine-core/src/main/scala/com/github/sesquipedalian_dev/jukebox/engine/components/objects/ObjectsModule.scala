@@ -17,13 +17,13 @@ object ObjectsModule extends ComponentModule {
     ("scene-object-updater" -> classOf[SceneObjectUpdater])
 
   implicit var sceneSystem =
-    new com.github.gigurra.scalego.core.System[Scene, UUIDIdType]("scene", mutable.HashMap())
+    new com.github.gigurra.scalego.core.System[Scene, UUIDIdType]("scene")
   implicit var sceneObjectSystem =
-    new com.github.gigurra.scalego.core.System[SceneObject, UUIDIdType]("sceneObject", mutable.HashMap())
+    new com.github.gigurra.scalego.core.System[SceneObject, UUIDIdType]("sceneObject")
 
   override def makeSystems(): List[System[_, UUIDIdType]] = {
-    (new com.github.gigurra.scalego.core.System[Scene, UUIDIdType]("scene", mutable.HashMap())) ::
-    (new com.github.gigurra.scalego.core.System[SceneObject, UUIDIdType]("sceneObject", mutable.HashMap())) ::
+    (new com.github.gigurra.scalego.core.System[Scene, UUIDIdType]("scene")) ::
+    (new com.github.gigurra.scalego.core.System[SceneObject, UUIDIdType]("sceneObject")) ::
     Nil
   }
 

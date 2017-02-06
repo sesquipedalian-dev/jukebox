@@ -27,10 +27,10 @@ case class AsteroidCollisionWatcher(
     ticsExemptFromCollision -= 1
     if(ticsExemptFromCollision > 0) return
 
-    ecs.system[SceneObject].get(eid).foreach(sceneObject => {
+    ecs.system[SceneObject].getOrElse(eid, Nil).foreach(sceneObject => {
       for {
         (bulletEid, _) <- ecs.system[Renderer]
-        bulletObj <- ecs.system[SceneObject].get(bulletEid)
+        bulletObj <- ecs.system[SceneObject].getOrElse(bulletEid, Nil)
         bulletPos <- bulletObj.polygon.headOption if
           sceneObject.containsPoint(new Point2D(bulletPos.x, bulletPos.y))
       } {
@@ -53,8 +53,9 @@ case class AsteroidCollisionWatcher(
           )
         })
 
-        // remove this asteroid obj
+        // remove the collided objects
         ecs -= eid
+        ecs -= bulletEid
       }
     })
   }

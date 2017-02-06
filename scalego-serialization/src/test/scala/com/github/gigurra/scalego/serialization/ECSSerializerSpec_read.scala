@@ -18,8 +18,8 @@ class ECSSerializerSpec_read
 
       "Append a serializable representation of an ECS into an existing ECS" in {
 
-        implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-        implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+        implicit val positionSystem = new System[Position, StringIds]("position")
+        implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
 
         val ecs = ECS(positionSystem, velocitySystem)
 
@@ -39,16 +39,16 @@ class ECSSerializerSpec_read
 
         ecs.append(serializedData)
 
-        ecs.system[Position].get("1") shouldBe Some(Position(1, 2))
-        ecs.system[Position].get("2") shouldBe Some(Position(5, 6))
+        ecs.system[Position].get("1").getOrElse(Nil).headOption shouldBe Some(Position(1, 2))
+        ecs.system[Position].get("2").getOrElse(Nil).headOption shouldBe Some(Position(5, 6))
 
-        ecs.system[Velocity].get("1") shouldBe Some(Velocity(3, 4))
-        ecs.system[Velocity].get("2") shouldBe Some(Velocity(7, 8))
+        ecs.system[Velocity].get("1").getOrElse(Nil).headOption shouldBe Some(Velocity(3, 4))
+        ecs.system[Velocity].get("2").getOrElse(Nil).headOption shouldBe Some(Velocity(7, 8))
 
       }
 
       "Fail to append a serializable representation of an ECS into an existing ECS if reading unknown system Ids" in {
-        val ecs = ECS(new System[Position, StringIds]("position", mutable.HashMap()))
+        val ecs = ECS(new System[Position, StringIds]("position"))
 
         val serializer = ECSSerializer(TestMapper[StringIds]())
         import serializer._
@@ -69,7 +69,7 @@ class ECSSerializerSpec_read
       }
 
       "Fail to append a serializable representation of an ECS into an existing ECS if reading unknown sub type Ids" in {
-        val ecs = ECS(new System[BaseType, StringIds]("base-type", mutable.HashMap()))
+        val ecs = ECS(new System[BaseType, StringIds]("base-type"))
         val serializer = ECSSerializer(TestMapper[StringIds]())
         import serializer._
 
@@ -83,7 +83,7 @@ class ECSSerializerSpec_read
       }
 
       "Support sub types/class hierarchies if they are properly registered / Append a serializable representation of an ECS" in {
-        implicit val system = new System[BaseType, StringIds]("base-type", mutable.HashMap())
+        implicit val system = new System[BaseType, StringIds]("base-type")
         val ecs = ECS(system)
         val serializer = ECSSerializer(TestMapper[StringIds](), KnownSubTypes("cool-sub-type-id" -> classOf[SubType]))
         import serializer._
@@ -97,7 +97,7 @@ class ECSSerializerSpec_read
         ecs.append(serializedData)
         system.nonEmpty shouldBe true
 
-        system.get("1") shouldBe Some(SubType(1,2))
+        system.get("1").getOrElse(Nil).headOption shouldBe Some(SubType(1,2))
       }
     }
   }

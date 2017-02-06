@@ -23,9 +23,9 @@ case class SceneObjectRenderer(
 {
   def renderOrder(ecs: ECS[UUIDIdType], eid: UUIDIdType#EntityId): Int = {
     // use the scene object's z-sort
-    ecs.system[SceneObject].get(eid).map(scene => {
+    ecs.system[SceneObject].getOrElse(eid, Nil).map(scene => {
       scene.zSort
-    }).getOrElse(0)
+    }).headOption.getOrElse(0)
   }
 
   var currentFrame: Int = 0 // for animations
@@ -35,7 +35,7 @@ case class SceneObjectRenderer(
 
   override def render(eid: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
     logger.trace(s"SOR start render")
-    ecs.system[SceneObject].get(eid).foreach(sceneObject => {
+    ecs.system[SceneObject].getOrElse(eid, Nil).foreach(sceneObject => {
       logger.trace(s"SOR img1? ${sceneObject.currentAnimation}")
 
       // pick image to render depending on whether it's an animation or a static sprite currently

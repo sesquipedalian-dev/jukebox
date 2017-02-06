@@ -18,7 +18,7 @@ case class BulletRenderer() extends Renderer {
   override def renderOrder(ecs: ECS[UUIDIdType], eid: EntityIdType): Int = 0
 
   override def render(eid: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
-    ecs.system[SceneObject].get(eid).foreach(sceneObject => {
+    ecs.system[SceneObject].getOrElse(eid, Nil).foreach(sceneObject => {
       val position = sceneObject.polygon.head
       gc.setStroke(Color.Red)
       gc.setFill(Color.Red)

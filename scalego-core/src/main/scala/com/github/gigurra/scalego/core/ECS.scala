@@ -20,7 +20,7 @@ class ECS[T_IdTypes <: IdTypes] private(val systems: Map[T_IdTypes#SystemId, Sys
   }
 
   def componentsOf(entity: T_IdTypes#EntityId): Seq[Any] = {
-    systems.values.flatMap(_.get(entity)).toSeq
+    systems.values.flatMap(s => System.system2map(s).getOrElse(entity, Nil)).toSeq
   }
 
   def clear(): Unit = {

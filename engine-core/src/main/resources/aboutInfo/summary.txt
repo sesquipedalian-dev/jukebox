@@ -4,6 +4,7 @@ This is a learning project for Scott.  A simple game engine built on the followi
 - Scalego entity-component system in scala, for representing the game entities / scene graph, and providing
   serialization of same
 
+Additionally, the engine can load in various modules to play a specific game.
+
 Source code / project files located at https://github.com/sesquipedalian-dev/jukebox
 
-Additionally, the engine can load in various modules to play a specific game.

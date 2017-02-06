@@ -19,13 +19,13 @@ object GameLoopModule extends ComponentModule {
     * scalego systems for the various components we define in this package
     */
   implicit var rendererSystem =
-    new com.github.gigurra.scalego.core.System[Renderer, UUIDIdType]("renderer", mutable.HashMap())
+    new com.github.gigurra.scalego.core.System[Renderer, UUIDIdType]("renderer")
   implicit var updaterSystem =
-    new com.github.gigurra.scalego.core.System[Updater, UUIDIdType]("updater", mutable.HashMap())
+    new com.github.gigurra.scalego.core.System[Updater, UUIDIdType]("updater")
 
   override def makeSystems(): List[System[_, UUIDIdType]] = {
-    (new com.github.gigurra.scalego.core.System[Renderer, UUIDIdType]("renderer", mutable.HashMap())) ::
-    (new com.github.gigurra.scalego.core.System[Updater, UUIDIdType]("updater", mutable.HashMap())) ::
+    (new com.github.gigurra.scalego.core.System[Renderer, UUIDIdType]("renderer")) ::
+    (new com.github.gigurra.scalego.core.System[Updater, UUIDIdType]("updater")) ::
     Nil
   }
 

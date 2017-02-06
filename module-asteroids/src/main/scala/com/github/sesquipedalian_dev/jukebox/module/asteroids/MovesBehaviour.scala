@@ -20,7 +20,7 @@ case class MovesBehaviour(
   with LazyLogging
 {
   override def update(eid: EntityIdType)(implicit ecs: ECS[UUIDIdType]): Unit = {
-    ecs.system[SceneObject].get(eid).foreach(sceneObject => {
+    ecs.system[SceneObject].getOrElse(eid, Nil).foreach(sceneObject => {
       val velocityAngle = Math.atan2(velocityVector.y, velocityVector.x)
       val distanceThisTick = velocityVector.x / Math.cos(velocityAngle)
       distanceTraveled += Math.abs(distanceThisTick)

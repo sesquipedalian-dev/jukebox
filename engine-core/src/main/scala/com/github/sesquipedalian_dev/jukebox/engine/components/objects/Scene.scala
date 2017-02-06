@@ -28,7 +28,7 @@ case class SceneRenderer(
   var image: Option[Image] = None
   def render(entId: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
     logger.trace("rendering scene 1 {}", entId)
-    ecs.system[Scene].get(entId).foreach(scene => {
+    ecs.system[Scene].get(entId).getOrElse(Nil).foreach(scene => {
       logger.trace("rendering scene 2 {}", entId)
       if(image.isEmpty) {
         image = Some(new Image(scene.backgroundImagePath))

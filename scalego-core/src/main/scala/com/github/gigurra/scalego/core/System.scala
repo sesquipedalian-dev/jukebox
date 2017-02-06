@@ -1,3 +1,6 @@
+/*
+ * Modified by Scott on 2017-02-06
+ */
 package com.github.gigurra.scalego.core
 
 import scala.collection.mutable
@@ -5,9 +8,9 @@ import scala.language.implicitConversions
 import scala.reflect.ClassTag
 
 class System[ComponentType : ClassTag, T_IdTypes <: IdTypes](val typeInfo: ComponentTypeInfo[ComponentType, T_IdTypes])
-                                                            (private val backingStorage: mutable.Map[T_IdTypes#EntityId, ComponentType]) {
+                                                            (private val backingStorage: mutable.Map[T_IdTypes#EntityId, List[ComponentType]]) {
 
-  def this(systemId: T_IdTypes#SystemId, backingStorage: mutable.Map[T_IdTypes#EntityId, ComponentType]) = this(new ComponentTypeInfo[ComponentType, T_IdTypes](systemId))(backingStorage)
+  def this(systemId: T_IdTypes#SystemId, backingStorage: mutable.Map[T_IdTypes#EntityId, List[ComponentType]] = mutable.HashMap[T_IdTypes#EntityId, List[ComponentType]]()) = this(new ComponentTypeInfo[ComponentType, T_IdTypes](systemId))(backingStorage)
 
   override def hashCode(): Int = {
     typeInfo.hashCode() + backingStorage.hashCode()
@@ -25,7 +28,7 @@ class System[ComponentType : ClassTag, T_IdTypes <: IdTypes](val typeInfo: Compo
 }
 
 object System {
-  implicit def system2map[ComponentType, T_IdTypes <: IdTypes](system: System[ComponentType, T_IdTypes]): mutable.Map[T_IdTypes#EntityId, ComponentType] = {
+  implicit def system2map[ComponentType, T_IdTypes <: IdTypes](system: System[ComponentType, T_IdTypes]): mutable.Map[T_IdTypes#EntityId, List[ComponentType]] = {
     system.backingStorage
   }
 }

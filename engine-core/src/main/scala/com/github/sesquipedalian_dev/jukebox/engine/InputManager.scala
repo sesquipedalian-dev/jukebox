@@ -153,7 +153,7 @@ case object InputManager extends LazyLogging
   // TODO we could memoize this for a frame to improve performance
   def objectUnderMouse(ecs: ECS[UUIDIdType]): Option[ObjectUnderMouse] = {
     currentMousePointer.flatMap(mousePointer => {
-      ecs.system[SceneObject].toList.sortBy(-_._2.zSort)
+      ecs.system[SceneObject].flatMap(p => p._2.map(v => (p._1 -> v))).toList.sortBy(-_._2.zSort)
         .find(p => p._2.containsPoint(mousePointer))
         .map(p => {
           val (eid, obj) = p

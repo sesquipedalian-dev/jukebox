@@ -40,12 +40,12 @@ case object SceneController extends LazyLogging {
 
   def activeScene(ecs: ECS[UUIDIdType]): Option[Scene] = {
     activeScene.flatMap(sid => {
-      ecs.system[Scene].get(sid)
+      ecs.system[Scene].get(sid).getOrElse(Nil).headOption
     })
   }
 
   def sceneById(eid: UUIDIdType#EntityId, ecs: ECS[UUIDIdType]): Option[Scene] = {
-    ecs.system[Scene].get(eid)
+    ecs.system[Scene].get(eid).getOrElse(Nil).headOption
   }
 
   def update(ecs: ECS[UUIDIdType]): Unit = {
@@ -57,7 +57,7 @@ case object SceneController extends LazyLogging {
       case _ =>
     }
     logger.trace(s"SceneController updating my viewport? ${xScrollSpeed} ${InputManager.gameTickInputs}")
-    activeScene.flatMap(sceneId => ecs.system[Scene].get(sceneId)).foreach(activeScene => {
+    activeScene.flatMap(sceneId => ecs.system[Scene].get(sceneId).getOrElse(Nil).headOption).foreach(activeScene => {
       if(xScrollSpeed > .1 || xScrollSpeed < -.1) {
         val viewportRight = viewport.last
         val viewportLeft = viewport.head

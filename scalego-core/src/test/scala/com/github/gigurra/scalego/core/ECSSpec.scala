@@ -1,3 +1,6 @@
+/*
+ * Modified by Scott on 2017-02-06
+ */
 package com.github.gigurra.scalego.core
 
 import org.scalatest._
@@ -32,13 +35,13 @@ class ECSSpec
     }
 
     "Add a system" in {
-      val positionSystem = new System[(Int, Int), StringIds]("position", mutable.HashMap())
+      val positionSystem = new System[(Int, Int), StringIds]("position")
       noException should be thrownBy ECS(positionSystem)
     }
 
     "Get the system of a component type" in {
-      implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-      implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+      implicit val positionSystem = new System[Position, StringIds]("position")
+      implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
       val ecs = ECS(positionSystem, velocitySystem)
 
       ecs.system[Position] shouldBe positionSystem
@@ -47,8 +50,8 @@ class ECSSpec
     }
 
     "Create entities in the ecs" in {
-      implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-      implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+      implicit val positionSystem = new System[Position, StringIds]("position")
+      implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
 
       val ecs = ECS(positionSystem, velocitySystem)
 
@@ -60,15 +63,15 @@ class ECSSpec
       ecs.containsEntity("1") shouldBe true
       ecs.containsEntity("2") shouldBe true
 
-      e1[Position] shouldBe Position(1,2)
-      e1[Velocity] shouldBe Velocity(3,4)
-      e2[Position] shouldBe Position(5,6)
-      e2[Velocity] shouldBe Velocity(7,8)
+      e1[Position].head shouldBe Position(1,2)
+      e1[Velocity].head shouldBe Velocity(3,4)
+      e2[Position].head shouldBe Position(5,6)
+      e2[Velocity].head shouldBe Velocity(7,8)
     }
 
     "Have isEmpty and nonEmpty methods" in {
-      implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-      implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+      implicit val positionSystem = new System[Position, StringIds]("position")
+      implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
 
       val ecs = ECS(positionSystem, velocitySystem)
 
@@ -83,8 +86,8 @@ class ECSSpec
     }
 
     "Get components of an entity" in {
-      implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-      implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+      implicit val positionSystem = new System[Position, StringIds]("position")
+      implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
 
       val ecs = ECS(positionSystem, velocitySystem)
 
@@ -96,8 +99,8 @@ class ECSSpec
     }
 
     "Produce a debug info string of an entity" in {
-      implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-      implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+      implicit val positionSystem = new System[Position, StringIds]("position")
+      implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
       implicit val ecs = ECS(positionSystem, velocitySystem)
 
       val e = Entity.Builder + Position(1, 2) + Velocity(3, 4) build(entityId = "1")
@@ -105,8 +108,8 @@ class ECSSpec
     }
 
     "Delete entities from the entire ecs" in {
-      implicit val positionSystem = new System[Position, StringIds]("position", mutable.HashMap())
-      implicit val velocitySystem = new System[Velocity, StringIds]("velocity", mutable.HashMap())
+      implicit val positionSystem = new System[Position, StringIds]("position")
+      implicit val velocitySystem = new System[Velocity, StringIds]("velocity")
 
       val ecs = ECS(positionSystem, velocitySystem)
 
@@ -122,12 +125,12 @@ class ECSSpec
 
       a[Entity.HasNoSuchComponent] should be thrownBy e1[Position]
       a[Entity.HasNoSuchComponent] should be thrownBy e1[Velocity]
-      e2[Position] shouldBe Position(5,6)
-      e2[Velocity] shouldBe Velocity(7,8)
+      e2[Position].head shouldBe Position(5,6)
+      e2[Velocity].head shouldBe Velocity(7,8)
     }
 
     "Support different types of entity and component type Ids" in {
-      implicit val positionSystem = new System[Position, LongIds](1, mutable.HashMap())
+      implicit val positionSystem = new System[Position, LongIds](1)
       implicit val velocitySystem = new System[Velocity, LongIds](2, mutable.LongMap())
 
       val ecs = ECS(positionSystem, velocitySystem)
@@ -144,8 +147,8 @@ class ECSSpec
 
       a[Entity.HasNoSuchComponent] should be thrownBy e1[Position]
       a[Entity.HasNoSuchComponent] should be thrownBy e1[Velocity]
-      e2[Position] shouldBe Position(5,6)
-      e2[Velocity] shouldBe Velocity(7,8)
+      e2[Position].head shouldBe Position(5,6)
+      e2[Velocity].head shouldBe Velocity(7,8)
 
     }
   }

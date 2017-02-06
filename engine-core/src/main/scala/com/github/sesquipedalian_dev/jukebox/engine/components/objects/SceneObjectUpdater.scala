@@ -15,7 +15,7 @@ import com.typesafe.scalalogging.LazyLogging
 case class SceneObjectUpdater(
 ) extends Updater with LazyLogging {
   override def update(eid: EntityIdType)(implicit ecs: ECS[UUIDIdType]): Unit = {
-    ecs.system[SceneObject].get(eid).foreach(sceneObject => {
+    ecs.system[SceneObject].getOrElse(eid, Nil).foreach(sceneObject => {
       InputManager.gameTickInputs.foreach {
         case "HighlightObjects_DOWN" => sceneObject.isHighlighting = true
         case "HighlightObjects_UP" => sceneObject.isHighlighting = false

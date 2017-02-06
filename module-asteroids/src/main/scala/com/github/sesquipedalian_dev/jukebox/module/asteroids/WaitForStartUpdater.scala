@@ -23,7 +23,7 @@ case class WaitForStartUpdater() extends Updater {
         val asteroidId = AsteroidsModule.instance.spawnAsteroid(
           directionRadians = Some(Math.PI)
         )
-        val asteroidSceneObject = ecs.system[SceneObject].get(asteroidId)
+        val asteroidSceneObject = ecs.system[SceneObject].getOrElse(asteroidId, Nil).headOption
 
         AsteroidsModule.instance.spawnBullet(
           source = asteroidSceneObject.get,
