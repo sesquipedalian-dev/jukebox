@@ -5,7 +5,7 @@ Jukebox is a small game engine in Scala based on the JavaFX graphics / UI librar
 This is a small learning project for me. I wanted to try and make a small 2D game engine in my most recently fluent language (Scala).
 
 # How to Run
-1. Grab [Java](https://java.com/en/download/) > 1.8 Update 40 (when newest javafx library was added)
+1. Grab a [Java](https://java.com/en/download/) version greater than 1.8 Update 40 (when newest javafx library was added)
 2. Clone repo:
   * download zip: https://github.com/sesquipedalian-dev/jukebox/archive/master.zip 
   * svn: svn checkout https://github.com/sesquipedalian-dev/jukebox.git <target directory> 
