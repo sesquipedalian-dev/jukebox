@@ -19,7 +19,8 @@ case class AsteroidParams(
   width: Double,
   height: Double,
   initialVelocityScale: Double,
-  spriteImg: String
+  spriteImg: String,
+  scoreForDestroy: Int
 )
 case object ASTEROID_PARAMS_MAP extends ConfigSetting[Map[String, AsteroidParams]] {
   override def defaultValue: Map[String, AsteroidParams] = List(
@@ -28,21 +29,24 @@ case object ASTEROID_PARAMS_MAP extends ConfigSetting[Map[String, AsteroidParams
       width = 50,
       height = 50,
       initialVelocityScale = 4.0,
-      spriteImg = "img/smallAsteroid.jpg"
+      spriteImg = "img/smallAsteroid.gif",
+      scoreForDestroy = 1000
     ),
     AsteroidParams(
       size = "medium",
       width = 100,
       height = 100,
       initialVelocityScale = 2.0,
-      spriteImg = "img/mediumAsteroid.jpg"
+      spriteImg = "img/mediumAsteroid.gif",
+      scoreForDestroy = 500
     ),
     AsteroidParams(
       size = "large",
       width = 200,
       height = 200,
       initialVelocityScale = 1.0,
-      spriteImg = "img/largeAsteroid.jpg"
+      spriteImg = "img/largeAsteroid.gif",
+      scoreForDestroy = 250
     )
   ).map(ap => (ap.size -> ap)).toMap
 

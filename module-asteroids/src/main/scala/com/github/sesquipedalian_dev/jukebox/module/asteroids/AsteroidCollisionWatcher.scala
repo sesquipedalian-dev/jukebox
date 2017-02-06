@@ -29,7 +29,7 @@ case class AsteroidCollisionWatcher(
 
     ecs.system[SceneObject].getOrElse(eid, Nil).foreach(sceneObject => {
       for {
-        (bulletEid, _) <- ecs.system[Renderer]
+        (bulletEid, rList) <- ecs.system[Renderer] if rList.exists(_.isInstanceOf[BulletRenderer])
         bulletObj <- ecs.system[SceneObject].getOrElse(bulletEid, Nil)
         bulletPos <- bulletObj.polygon.headOption if
           sceneObject.containsPoint(new Point2D(bulletPos.x, bulletPos.y))
@@ -56,6 +56,9 @@ case class AsteroidCollisionWatcher(
         // remove the collided objects
         ecs -= eid
         ecs -= bulletEid
+
+        // count score
+        AsteroidsModule.instance.score += ASTEROID_PARAMS_MAP().get(size).map(_.scoreForDestroy).getOrElse(0)
       }
     })
   }
