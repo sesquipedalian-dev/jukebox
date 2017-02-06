@@ -25,8 +25,8 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
   override def subtypes: KnownSubTypes = KnownSubTypes.empty +
     ("scoreRenderer" -> classOf[ScoreRenderer]) +
     ("backgroundRenderer" -> classOf[BackgroundRenderer]) +
-    ("startRenderer" -> classOf[StartRenderer]) +
-    ("waitForStartUpdater" -> classOf[WaitForStartUpdater]) +
+    ("startRenderer" -> classOf[MessageTextRenderer]) +
+    ("waitForStartUpdater" -> classOf[AsteroidsGlobalController]) +
     ("movesBehaviour" -> classOf[MovesBehaviour]) +
     ("bulletRenderer" -> classOf[BulletRenderer])
 
@@ -41,8 +41,6 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     // set up some basic screen objects
     val backgroundRenderer = Entity.Builder + BackgroundRenderer() build randomEntityID
     val scoreRenderer = Entity.Builder + ScoreRenderer() build randomEntityID
-    val startRendererEnt = Entity.Builder + StartRenderer() build randomEntityID
-    startRenderer = Some(startRendererEnt.id)
 
     // set up inputs
     KEY_MAP.value = Some(KEY_MAP.getValue ++ Map(
@@ -53,13 +51,14 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     ))
 
     // set up wait for start button
-    val waitForStartUpdater = Entity.Builder + WaitForStartUpdater() build randomEntityID
+    val globalInputController = Entity.Builder +
+      MessageTextRenderer() +
+      AsteroidsGlobalController(READY_TO_START) build randomEntityID
   }
 
   // globally accessible data in this module
   var score: Int = 0
   var playerLives: Int = STARTING_PLAYER_LIVES.getValueOption.getOrElse(3)
-  var startRenderer: Option[UUIDIdType#EntityId] = None
 
   AsteroidsModule.instance = this
 
