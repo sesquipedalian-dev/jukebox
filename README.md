@@ -9,6 +9,7 @@ This is a small learning project for me. I wanted to try and make a small 2D gam
 2. Clone repo:
 ..* download zip: https://github.com/sesquipedalian-dev/jukebox/archive/master.zip
 ..* svn: svn checkout https://github.com/sesquipedalian-dev/jukebox.git <target directory>
+..* git: git clone https://github.com/sesquipedalian-dev/jukebox.git <target directory>
 3. Run game from 'out' directory':
 ..* windows: double-click jukebox.bat to get the command line right for you
 ..* command line start: java -cp jukebox.jar;libs/* com.github.sesquipedalian_dev.jukebox.engine.Main
