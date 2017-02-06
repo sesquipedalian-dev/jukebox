@@ -40,6 +40,8 @@ case class AsteroidsGlobalController(
             SerializablePoint2D(p.x + 500, p.y)
           })
           // DONE testing
+
+          AsteroidsModule.instance.spawnPlayer()
         }
         case PLAYING =>
         case DIED => {

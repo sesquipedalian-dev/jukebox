@@ -4,6 +4,7 @@
 package com.github.sesquipedalian_dev.jukebox.module.asteroids
 
 import com.github.gigurra.scalego.core.ECS
+import com.github.sesquipedalian_dev.jukebox.module.asteroids.AsteroidsModule._
 import com.github.sesquipedalian_dev.jukebox.engine.UUIDIdType
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.{Renderer, Updater}
@@ -13,7 +14,6 @@ import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsMo
 import com.typesafe.scalalogging.LazyLogging
 
 import scalafx.geometry.Point2D
-
 
 case class AsteroidCollisionWatcher(
   size: String,
@@ -58,7 +58,12 @@ case class AsteroidCollisionWatcher(
         ecs -= bulletEid
 
         // count score
-        AsteroidsModule.instance.score += ASTEROID_PARAMS_MAP().get(size).map(_.scoreForDestroy).getOrElse(0)
+        ecs.system[Player].foreach(kvp => {
+          val (key, lst) = kvp
+          lst.foreach(playerObj => {
+            playerObj.addScore(ASTEROID_PARAMS_MAP().get(size).map(_.scoreForDestroy).getOrElse(0))
+          })
+        })
       }
     })
   }

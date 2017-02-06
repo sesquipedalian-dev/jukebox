@@ -22,25 +22,30 @@ import scala.util.Random
  * Handles the systems for the asteroids game as well as top-level variables (score & lives remaining)
  */
 class AsteroidsModule extends ComponentModule with LazyLogging {
+  import AsteroidsModule._
+
   override def subtypes: KnownSubTypes = KnownSubTypes.empty +
-    ("scoreRenderer" -> classOf[ScoreRenderer]) +
+    ("playerRenderer" -> classOf[PlayerRenderer]) +
     ("backgroundRenderer" -> classOf[BackgroundRenderer]) +
     ("startRenderer" -> classOf[MessageTextRenderer]) +
     ("waitForStartUpdater" -> classOf[AsteroidsGlobalController]) +
     ("movesBehaviour" -> classOf[MovesBehaviour]) +
     ("bulletRenderer" -> classOf[BulletRenderer])
 
+
   override def makeSystems(): List[System[_, UUIDIdType]] = {
-    Nil
+    val newPlayerSystem = new System[Player, UUIDIdType]("playerSystem")
+    newPlayerSystem ::
+      Nil
   }
 
   override def systemsMadeCallback(systemsMade: List[System[_, UUIDIdType]]): Unit = {
+    AsteroidsModule.playerSystem = systemsMade.drop(0).head.asInstanceOf[System[Player, UUIDIdType]]
   }
 
   def onLoad(): Unit = {
     // set up some basic screen objects
     val backgroundRenderer = Entity.Builder + BackgroundRenderer() build randomEntityID
-    val scoreRenderer = Entity.Builder + ScoreRenderer() build randomEntityID
 
     // set up inputs
     KEY_MAP.value = Some(KEY_MAP.getValue ++ Map(
@@ -57,9 +62,6 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
   }
 
   // globally accessible data in this module
-  var score: Int = 0
-  var playerLives: Int = STARTING_PLAYER_LIVES.getValueOption.getOrElse(3)
-
   AsteroidsModule.instance = this
 
   def spawnBullet(source: SceneObject, direction: SerializablePoint2D): Unit = {
@@ -129,8 +131,19 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
 
     newAsteroid.id
   }
+
+  def spawnPlayer(): Unit = {
+    val playerEnt = Entity.Builder +
+      Player(
+        rotationRadians = 90.0,
+        livesRemaining  = 3,
+        score = 0
+      ) +
+      PlayerRenderer() build randomEntityID
+  }
 }
 
 object AsteroidsModule {
   var instance: AsteroidsModule = null
+  implicit var playerSystem: System[Player, UUIDIdType] = new System[Player, UUIDIdType]("playerSystem")
 }
