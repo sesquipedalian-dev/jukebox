@@ -3,6 +3,7 @@
   */
 package com.github.sesquipedalian_dev.jukebox.module.asteroids
 
+import javafx.geometry.Point2D
 import javafx.scene.canvas.GraphicsContext
 import javafx.scene.text.Font
 
@@ -16,13 +17,17 @@ import javafx.scene.image.Image
 
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.SceneController
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
+import com.typesafe.scalalogging.LazyLogging
 
 import scalafx.scene.paint.Color
 
-case class PlayerRenderer() extends Renderer {
+case class PlayerRenderer()
+  extends Renderer
+  with LazyLogging
+{
   var extraLifeImg: Option[Image] = None
 
-  override def renderOrder(ecs: ECS[UUIDIdType], eid: EntityIdType): Int = 0
+  override def renderOrder(ecs: ECS[UUIDIdType], eid: EntityIdType): Int = 1000
   override def render(eid: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
     ecs.system[Player].getOrElse(eid, Nil).foreach(player => {
       // render score
@@ -33,20 +38,39 @@ case class PlayerRenderer() extends Renderer {
 
       // render lives remaining
       if(extraLifeImg.isEmpty) {
-        extraLifeImg = ResourceLoader.loadImage("img/extra_life.jpg")
+        extraLifeImg = ResourceLoader.loadImage("img/extra_life.gif")
       }
-      var elPosition = SerializablePoint2D(0, 75)
+      var elPosition = SerializablePoint2D(10, 75)
       var livesRemaining = player.livesRemaining
       while(livesRemaining > 0) {
         extraLifeImg.foreach(image => {
           gc.drawImage(image, elPosition.x, elPosition.y)
         })
-        elPosition = SerializablePoint2D(elPosition.x + 60, elPosition.y)
+        elPosition = SerializablePoint2D(elPosition.x + 35, elPosition.y)
         livesRemaining -= 1
       }
 
       // render player avatar itself
-      // TODO
+      val position = player.position
+      val points = playerAvatarPoints
+      val rotatePoints = points.map(p => p.rotate(player.rotationRadians))
+      val positionedPoints = rotatePoints.map(p => SerializablePoint2D(position.x + p.x, position.y + p.y))
+      val lineSegments = (positionedPoints :+ positionedPoints.head /* connect back up to start */).sliding(2).toList
+      logger.info("player segments {}", lineSegments)
+      gc.setLineWidth(5)
+      gc.setStroke(Color.Yellow)
+      lineSegments.foreach(segment => {
+        logger.info("stroking segment {} {}", segment.head, segment.last)
+        gc.strokeLine(segment.head.x, segment.head.y, segment.last.x, segment.last.y)
+      })
     })
   }
+
+  // points that make up the player avatar, relative to the player's position
+  private val playerAvatarPoints = List[SerializablePoint2D](
+    SerializablePoint2D(25, 0), // tip of spaceship
+    SerializablePoint2D(-25, 15), // tip of left wing
+    SerializablePoint2D(-15, 0), // cleft in rear of ship
+    SerializablePoint2D(-25, -15) // tip of right wing
+  )
 }

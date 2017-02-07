@@ -4,10 +4,11 @@
 package com.github.sesquipedalian_dev.jukebox.module.asteroids
 
 import com.github.gigurra.scalego.core.ECS
-import com.github.sesquipedalian_dev.jukebox.engine.UUIDIdType
+import com.github.sesquipedalian_dev.jukebox.engine.{CANVAS_HEIGHT, CANVAS_WIDTH, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Updater
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
 import com.github.sesquipedalian_dev.util.config.ConfigSetting
+import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.config.Config
 
 case object DEATH_ANIM_DURATION_FRAMES extends ConfigSetting[Int] {
@@ -30,6 +31,10 @@ case class Player(
   var playingDeathAnim: Int = 0, // frames that we've been playing death 'anim',
   var pointsSinceExtraLife: Int = 0
 ) {
+  // player has fixed position
+  def position: SerializablePoint2D = {
+    SerializablePoint2D(CANVAS_WIDTH() / 2, CANVAS_HEIGHT() / 2)
+  }
 
   def hitByBullet(ecs: ECS[UUIDIdType]): Unit = {
     if(livesRemaining > 0) {

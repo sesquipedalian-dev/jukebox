@@ -135,7 +135,7 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
   def spawnPlayer(): Unit = {
     val playerEnt = Entity.Builder +
       Player(
-        rotationRadians = 90.0,
+        rotationRadians = -Math.PI / 2,
         livesRemaining  = 3,
         score = 0
       ) +
