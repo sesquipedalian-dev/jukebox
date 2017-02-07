@@ -20,9 +20,6 @@ This is a small learning project for me. I wanted to try and make a small 2D gam
 ## engine-core
 Game engine core - main game loop, main graphics window, entity-component system, etc
 
-## jukebox
-loads modules into tycoon-core to run various little games
-
 ## util
 utility classes that I could see using in other projects
 
