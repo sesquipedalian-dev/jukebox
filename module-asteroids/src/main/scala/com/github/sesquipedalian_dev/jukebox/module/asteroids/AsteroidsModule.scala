@@ -5,13 +5,15 @@ package com.github.sesquipedalian_dev.jukebox.module.asteroids
 
 import javafx.scene.input.KeyCode
 
-import com.github.gigurra.scalego.core.{Entity, System}
+import com.github.gigurra.scalego.core.{ECS, Entity, System}
 import com.github.gigurra.scalego.serialization.KnownSubTypes
-import com.github.sesquipedalian_dev.jukebox.engine.{KEY_MAP, UUIDIdType}
+import com.github.sesquipedalian_dev.jukebox.engine.{CANVAS_HEIGHT, CANVAS_WIDTH, KEY_MAP, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components.{randomEntityID, _}
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Updater
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.{SceneObject, SceneObjectRenderer}
+import com.github.sesquipedalian_dev.util.collections.ListExtensions
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.scalalogging.LazyLogging
 
@@ -99,8 +101,9 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     _params: Option[AsteroidParams] = None,
     _initialPosition: Option[SerializablePoint2D] = None,
     directionRadians: Option[Double] = None
-  ): UUIDIdType#EntityId = {
+  )(implicit ecs: ECS[UUIDIdType]): UUIDIdType#EntityId = {
     // pick a random asteroid type to spawn?
+    // TODO should be biased towards medium sized, then larger, then smallest
     val params = _params.getOrElse(Random.shuffle(ASTEROID_PARAMS_MAP().values).head)
 
     // calculate a random initial velocity / direction
@@ -110,10 +113,9 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     val velocityY = Math.sin(randomDirection) * initialSpeed
     logger.info("making a new asteroid; initial speed {" + initialSpeed + "} initial direction = {" + randomDirection + "}")
 
-    // TODO calculate a random initial position
-    // TODO no asteroids bounding box: 630, 350 // 970, 550 should keep them out of where the player is
-    val initialPosition = _initialPosition.getOrElse(SerializablePoint2D(100, 100))
-    val position = List[SerializablePoint2D](
+    // either use provided initial position or calculate a random one
+    val initialPosition = _initialPosition.getOrElse(randomAsteroidPosition(params, ecs))
+    val polygon = List[SerializablePoint2D](
       SerializablePoint2D(initialPosition.x, initialPosition.y),
       SerializablePoint2D(initialPosition.x + params.width, initialPosition.y),
       SerializablePoint2D(initialPosition.x + params.width, initialPosition.y + params.height),
@@ -123,11 +125,11 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     // build the entity
     val newAsteroid = Entity.Builder +
       SceneObject(
-        position,
-        Some(params.spriteImg),
-        None,
-        None,
-        0
+        polygon,
+        texturePath = Some(params.spriteImg),
+        currentAnimation = None,
+        mouseOverText = None,
+        zSort = 0
       ) +
       MovesBehaviour(destroyAfterDistance = None, SerializablePoint2D(velocityX, velocityY)) +
       SceneObjectRenderer() +
@@ -144,6 +146,52 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
         score = 0
       ) +
       PlayerRenderer() build randomEntityID
+  }
+
+  private val playerExclusionRanges: Set[(Int, Int)] = {
+    ListExtensions.cartesianProduct((630 to 970).toList, (350 to 550).toList).toSet
+  }
+
+  private val allPotentialAsteroidPositions: Map[String, Set[(Int, Int)]] = ASTEROID_PARAMS_MAP().map(kvp => {
+    val (name, params) = kvp
+    // construct initial range that contains the entire game area
+    val initialXRange = 0 to (CANVAS_WIDTH() - params.width).toInt
+    val initialYRange = 0 to (CANVAS_HEIGHT() - params.height).toInt
+    val wholeRange = ListExtensions.cartesianProduct(initialXRange.toList, initialYRange.toList).toSet
+
+    // subtract exclusion range so that no asteroids start too close to player
+    name -> (wholeRange diff playerExclusionRanges)
+  })
+
+  def randomAsteroidPosition(params: AsteroidParams, ecs: ECS[UUIDIdType]): SerializablePoint2D = {
+    // we want to position the asteroid in a place where it won't collide with other existing objects
+    // so we roll a random number over a range with a bunch of holes
+    // adapted from http://cs.stackexchange.com/questions/13271/generate-random-numbers-from-an-interval-with-holes
+
+    val initialRange = allPotentialAsteroidPositions.get(params.size).get
+
+    val holes =
+      // collect all scene objects that have an AsteroidCollisionWatcher (they're an asteroid)
+      ecs.system[SceneObject].toList.flatMap(kvp => kvp._2.map(v => kvp._1 -> v)).collect({
+        case (eid, so) if ecs.system[Updater].getOrElse(eid, Nil).collect({case u: AsteroidCollisionWatcher => u}).nonEmpty => {
+          so
+        }
+      })
+      // for each asteroid object, make a hole in the range for its polygon size
+      .flatMap(so => {
+        val xRange = so.polygon.head.x.toInt to so.polygon.drop(1).head.x.toInt
+        val yRange = so.polygon.head.y.toInt to so.polygon.last.y.toInt
+        ListExtensions.cartesianProduct(xRange.toList, yRange.toList)
+      })
+      .toSet
+
+    // construct ranges that don't include the holes
+    val validRange = (initialRange diff holes).toList
+
+    // grab a random x / y from the valid ranges
+    val randomXY = Random.shuffle(validRange).head
+
+    SerializablePoint2D(randomXY._1, randomXY._2)
   }
 }
 

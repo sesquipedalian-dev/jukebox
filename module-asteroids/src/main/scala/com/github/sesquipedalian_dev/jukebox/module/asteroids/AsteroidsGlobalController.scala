@@ -25,7 +25,7 @@ case class AsteroidsGlobalController(
   with LazyLogging
 {
   override def update(eid: EntityIdType)(implicit ecs: ECS[UUIDIdType]): Unit = {
-    logger.info("asteroids module global input handler {} {}", InputManager.gameTickInputs, state)
+    logger.trace("asteroids module global input handler {} {}", InputManager.gameTickInputs, state)
     if(framesToWaitBeforeSpawningMoreBullets > 0) { framesToWaitBeforeSpawningMoreBullets -= 1 }
 
     if(InputManager.gameTickInputs.contains("Shoot_DOWN")) {
@@ -33,21 +33,9 @@ case class AsteroidsGlobalController(
         case READY_TO_START => {
           state = PLAYING
 
-          // testing
-          val asteroidId = AsteroidsModule.instance.spawnAsteroid(
-            directionRadians = Some(Math.PI)
-          )
-          val asteroidSceneObject = ecs.system[SceneObject].getOrElse(asteroidId, Nil).headOption
-
-          AsteroidsModule.instance.spawnBullet(
-            source = asteroidSceneObject.get,
-            direction = SerializablePoint2D(1.0, 0)
-          )
-
-          asteroidSceneObject.get.polygon = asteroidSceneObject.get.polygon.map(p => {
-            SerializablePoint2D(p.x + 500, p.y)
-          })
-          // DONE testing
+          for { i <- 1 to INITIAL_ASTEROID_COUNT() } {
+            AsteroidsModule.instance.spawnAsteroid()
+          }
 
           AsteroidsModule.instance.spawnPlayer()
         }

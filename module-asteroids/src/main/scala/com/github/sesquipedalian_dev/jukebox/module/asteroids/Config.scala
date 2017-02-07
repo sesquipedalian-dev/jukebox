@@ -63,3 +63,23 @@ case object MIN_FRAMES_BETWEEN_BULLETS extends ConfigSetting[Int] {
   override def defaultValue: Int = 40 // one sec
   override def populateFromConfig(newConfig: Config): Unit = {} // Nop
 }
+
+case object DEATH_ANIM_DURATION_FRAMES extends ConfigSetting[Int] {
+  override def defaultValue: Int = 300
+  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
+}
+
+case object POINTS_FOR_EXTRA_LIFE extends ConfigSetting[Int] {
+  override def defaultValue: Int = 50000
+  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
+}
+
+case object INITIAL_ASTEROID_COUNT extends ConfigSetting[Int] {
+  override def defaultValue: Int = 4
+  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
+}
+
+case object FRAMES_BETWEEN_ASTEROID_SPAWN extends ConfigSetting[Int] {
+  override def defaultValue: Int = 600
+  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
+}

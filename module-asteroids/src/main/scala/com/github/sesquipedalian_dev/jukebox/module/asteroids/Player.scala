@@ -11,16 +11,6 @@ import com.github.sesquipedalian_dev.util.config.ConfigSetting
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.config.Config
 
-case object DEATH_ANIM_DURATION_FRAMES extends ConfigSetting[Int] {
-  override def defaultValue: Int = 300
-  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
-}
-
-case object POINTS_FOR_EXTRA_LIFE extends ConfigSetting[Int] {
-  override def defaultValue: Int = 50000
-  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
-}
-
 /*
  * Data struct for the player
  */
