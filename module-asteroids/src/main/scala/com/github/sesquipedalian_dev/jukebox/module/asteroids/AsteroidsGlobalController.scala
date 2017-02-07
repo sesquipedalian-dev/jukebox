@@ -20,14 +20,35 @@ case object DIED extends GlobalControllerState
 
 case class AsteroidsGlobalController(
   var state: GlobalControllerState,
-  var framesToWaitBeforeSpawningMoreBullets: Int = 0
+  var framesToWaitBeforeSpawningMoreBullets: Int = 0,
+  var framesSinceAsteroidSpawn: Int = 60
 ) extends Updater
   with LazyLogging
 {
   override def update(eid: EntityIdType)(implicit ecs: ECS[UUIDIdType]): Unit = {
-    logger.trace("asteroids module global input handler {} {}", InputManager.gameTickInputs, state)
+    logger.trace("asteroids module global input handler {} {} {" + framesSinceAsteroidSpawn + "}", InputManager.gameTickInputs, state)
     if(framesToWaitBeforeSpawningMoreBullets > 0) { framesToWaitBeforeSpawningMoreBullets -= 1 }
 
+    // check asteroid spawner
+    state match {
+      case PLAYING => {
+        if (framesSinceAsteroidSpawn > 0) {
+          framesSinceAsteroidSpawn -= 1
+        }
+
+        if (framesSinceAsteroidSpawn <= 0) {
+          AsteroidsModule.instance.spawnAsteroid()
+          framesSinceAsteroidSpawn = Math.max(90, FRAMES_BETWEEN_ASTEROID_SPAWN())
+          // increase spawn rate over time
+          FRAMES_BETWEEN_ASTEROID_SPAWN.value = Some(
+            (FRAMES_BETWEEN_ASTEROID_SPAWN.value.getOrElse(FRAMES_BETWEEN_ASTEROID_SPAWN()) * .75).toInt
+          )
+        }
+      }
+      case _ =>
+    }
+
+    // check player inputs
     if(InputManager.gameTickInputs.contains("Shoot_DOWN")) {
       state match {
         case READY_TO_START => {

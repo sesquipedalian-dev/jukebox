@@ -80,6 +80,6 @@ case object INITIAL_ASTEROID_COUNT extends ConfigSetting[Int] {
 }
 
 case object FRAMES_BETWEEN_ASTEROID_SPAWN extends ConfigSetting[Int] {
-  override def defaultValue: Int = 600
+  override def defaultValue: Int = 1200
   override def populateFromConfig(newConfig: Config): Unit = {} // Nop
 }

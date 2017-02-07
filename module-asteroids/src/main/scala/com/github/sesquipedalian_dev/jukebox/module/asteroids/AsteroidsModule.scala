@@ -102,6 +102,7 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     _initialPosition: Option[SerializablePoint2D] = None,
     directionRadians: Option[Double] = None
   )(implicit ecs: ECS[UUIDIdType]): UUIDIdType#EntityId = {
+    logger.info("SPAWNING ASTEROID")
     // pick a random asteroid type to spawn?
     // TODO should be biased towards medium sized, then larger, then smallest
     val params = _params.getOrElse(Random.shuffle(ASTEROID_PARAMS_MAP().values).head)
