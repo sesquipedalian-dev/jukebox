@@ -22,6 +22,7 @@ case class AsteroidParams(
   spriteImg: String,
   scoreForDestroy: Int
 )
+
 case object ASTEROID_PARAMS_MAP extends ConfigSetting[Map[String, AsteroidParams]] {
   override def defaultValue: Map[String, AsteroidParams] = List(
     AsteroidParams(
@@ -50,5 +51,10 @@ case object ASTEROID_PARAMS_MAP extends ConfigSetting[Map[String, AsteroidParams
     )
   ).map(ap => (ap.size -> ap)).toMap
 
+  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
+}
+
+case object PLAYER_ROTATION_SPEED_RADIANS extends ConfigSetting[Double] {
+  override def defaultValue: Double = Math.PI / 180 * 7.5
   override def populateFromConfig(newConfig: Config): Unit = {} // Nop
 }

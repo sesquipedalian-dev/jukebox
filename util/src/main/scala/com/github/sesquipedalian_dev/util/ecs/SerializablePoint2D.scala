@@ -30,7 +30,7 @@ case class SerializablePoint2D(
   def *(rhs: Double) = SerializablePoint2D(x * rhs, y * rhs)
 
   /**
-   * Rotate point through the angle counterclockwise using matrix math
+   * Rotate point through the angle counterclockwise using matrix multiplication
    * @param angleRadians angle to rotate through, in radians
    * @param counterClockwise if true rotate counterclockwise, otherwise clockwise
    * @return rotated point

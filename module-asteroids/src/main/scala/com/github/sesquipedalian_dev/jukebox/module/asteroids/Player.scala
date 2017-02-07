@@ -25,7 +25,7 @@ case object POINTS_FOR_EXTRA_LIFE extends ConfigSetting[Int] {
  * Data struct for the player
  */
 case class Player(
-  rotationRadians: Double,
+  var rotationRadians: Double,
   var livesRemaining: Int,
   var score: Int,
   var playingDeathAnim: Int = 0, // frames that we've been playing death 'anim',

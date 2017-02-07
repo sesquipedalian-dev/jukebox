@@ -56,11 +56,11 @@ case class PlayerRenderer()
       val rotatePoints = points.map(p => p.rotate(player.rotationRadians))
       val positionedPoints = rotatePoints.map(p => SerializablePoint2D(position.x + p.x, position.y + p.y))
       val lineSegments = (positionedPoints :+ positionedPoints.head /* connect back up to start */).sliding(2).toList
-      logger.info("player segments {}", lineSegments)
+      logger.trace("player segments {}", lineSegments)
       gc.setLineWidth(5)
       gc.setStroke(Color.Yellow)
       lineSegments.foreach(segment => {
-        logger.info("stroking segment {} {}", segment.head, segment.last)
+        logger.trace("stroking segment {} {}", segment.head, segment.last)
         gc.strokeLine(segment.head.x, segment.head.y, segment.last.x, segment.last.y)
       })
     })
