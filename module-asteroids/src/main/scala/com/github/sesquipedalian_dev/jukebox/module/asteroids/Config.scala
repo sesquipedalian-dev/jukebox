@@ -58,3 +58,8 @@ case object PLAYER_ROTATION_SPEED_RADIANS extends ConfigSetting[Double] {
   override def defaultValue: Double = Math.PI / 180 * 7.5
   override def populateFromConfig(newConfig: Config): Unit = {} // Nop
 }
+
+case object MIN_FRAMES_BETWEEN_BULLETS extends ConfigSetting[Int] {
+  override def defaultValue: Int = 40 // one sec
+  override def populateFromConfig(newConfig: Config): Unit = {} // Nop
+}

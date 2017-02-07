@@ -19,12 +19,15 @@ case object PLAYING extends GlobalControllerState
 case object DIED extends GlobalControllerState
 
 case class AsteroidsGlobalController(
-  var state: GlobalControllerState
+  var state: GlobalControllerState,
+  var framesToWaitBeforeSpawningMoreBullets: Int = 0
 ) extends Updater
   with LazyLogging
 {
   override def update(eid: EntityIdType)(implicit ecs: ECS[UUIDIdType]): Unit = {
     logger.info("asteroids module global input handler {} {}", InputManager.gameTickInputs, state)
+    if(framesToWaitBeforeSpawningMoreBullets > 0) { framesToWaitBeforeSpawningMoreBullets -= 1 }
+
     if(InputManager.gameTickInputs.contains("Shoot_DOWN")) {
       state match {
         case READY_TO_START => {
@@ -50,7 +53,12 @@ case class AsteroidsGlobalController(
         }
         case PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
-            // TODO spawn bullets
+            if(framesToWaitBeforeSpawningMoreBullets <= 0) {
+              val direction = SerializablePoint2D(1, 0).rotate(player.rotationRadians)
+              AsteroidsModule.instance.spawnBullet(player.position, direction)
+
+              framesToWaitBeforeSpawningMoreBullets = MIN_FRAMES_BETWEEN_BULLETS()
+            }
           })
         }
         case DIED => {

@@ -65,12 +65,16 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
   AsteroidsModule.instance = this
 
   def spawnBullet(source: SceneObject, direction: SerializablePoint2D): Unit = {
+    val initialPosition = source.polygon.head
+    spawnBullet(initialPosition, direction)
+  }
+
+  def spawnBullet(initialPosition: SerializablePoint2D, direction: SerializablePoint2D): Unit = {
     // calculate a initial velocity / direction
     val initialSpeed = Random.nextFloat() + 4.0
     val velocity = direction * initialSpeed
 
     // initial position
-    val initialPosition = source.polygon.head
     val position = List[SerializablePoint2D](
       SerializablePoint2D(initialPosition.x, initialPosition.y),
       SerializablePoint2D(initialPosition.x + 10, initialPosition.y),
@@ -81,11 +85,11 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     // build the entity
     val newAsteroid = Entity.Builder +
       SceneObject(
-        position,
-        None,
-        None,
-        None,
-        0
+        polygon = position,
+        texturePath = None,
+        currentAnimation = None,
+        mouseOverText = None,
+        zSort = 0
       ) +
       MovesBehaviour(destroyAfterDistance = Some(800.0), SerializablePoint2D(velocity.x, velocity.y)) +
       BulletRenderer() build randomEntityID
