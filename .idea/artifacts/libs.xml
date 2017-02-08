@@ -21,6 +21,9 @@
       <element id="library" level="project" name="SBT: org.slf4j:slf4j-api:1.7.21:jar" />
       <element id="library" level="project" name="SBT: org.scala-lang:scala-library:2.12.1:jar" />
       <element id="library" level="module" name="SBT: sbt-and-plugins" module-name="engine_core-build" />
+      <element id="library" level="project" name="SBT: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.4:jar" />
+      <element id="library" level="project" name="SBT: org.scala-lang:scala-compiler:2.11.8:jar" />
+      <element id="library" level="project" name="SBT: org.scala-lang:scalap:2.11.8:jar" />
     </root>
   </artifact>
 </component>

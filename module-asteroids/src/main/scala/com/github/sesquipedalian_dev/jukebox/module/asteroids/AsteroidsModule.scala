@@ -60,7 +60,7 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     // set up wait for start button
     val globalInputController = Entity.Builder +
       MessageTextRenderer() +
-      AsteroidsGlobalController(READY_TO_START) build randomEntityID
+      AsteroidsGlobalController(GlobalControllerState.READY_TO_START) build randomEntityID
   }
 
   // globally accessible data in this module

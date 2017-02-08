@@ -14,13 +14,14 @@ import com.github.sesquipedalian_dev.jukebox.module.asteroids.AsteroidsModule._
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.scalalogging.LazyLogging
 
-sealed trait GlobalControllerState
-case object READY_TO_START extends GlobalControllerState
-case object PLAYING extends GlobalControllerState
-case object DIED extends GlobalControllerState
+object GlobalControllerState {
+  val READY_TO_START = "ready"
+  val PLAYING = "steady"
+  val DIED = "stop"
+}
 
 case class AsteroidsGlobalController(
-  var state: GlobalControllerState,
+  var state: String,
   var framesToWaitBeforeSpawningMoreBullets: Int = 0,
   var framesSinceAsteroidSpawn: Int = 60
 ) extends Updater
@@ -32,7 +33,7 @@ case class AsteroidsGlobalController(
 
     // check asteroid spawner
     state match {
-      case PLAYING => {
+      case GlobalControllerState.PLAYING => {
         if (framesSinceAsteroidSpawn >= 0) {
           framesSinceAsteroidSpawn -= 1
         }
@@ -52,8 +53,8 @@ case class AsteroidsGlobalController(
     // check player inputs
     if(InputManager.gameTickInputs.contains("Shoot_DOWN")) {
       state match {
-        case READY_TO_START => {
-          state = PLAYING
+        case GlobalControllerState.READY_TO_START => {
+          state = GlobalControllerState.PLAYING
 
           for { i <- 1 to INITIAL_ASTEROID_COUNT() } {
             AsteroidsModule.instance.spawnAsteroid()
@@ -61,7 +62,7 @@ case class AsteroidsGlobalController(
 
           AsteroidsModule.instance.spawnPlayer()
         }
-        case PLAYING => {
+        case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
             if(framesToWaitBeforeSpawningMoreBullets <= 0) {
               val direction = SerializablePoint2D(1, 0).rotate(player.rotationRadians)
@@ -71,11 +72,11 @@ case class AsteroidsGlobalController(
             }
           })
         }
-        case DIED => {
+        case GlobalControllerState.DIED => {
           ecs.system[Player].foreach(kvp => ecs -= kvp._1) // the player is dead
           AsteroidsModule.instance.spawnPlayer() // long live the player!
 
-          state = PLAYING
+          state = GlobalControllerState.PLAYING
 
           // reset asteroid spawn rate
           FRAMES_BETWEEN_ASTEROID_SPAWN.value = None
@@ -94,7 +95,7 @@ case class AsteroidsGlobalController(
       }
     } else if (InputManager.gameTickInputs.contains("TurnLeft_DOWN")) {
       state match {
-        case PLAYING => {
+        case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
             player.rotationRadians -= PLAYER_ROTATION_SPEED_RADIANS()
           })
@@ -103,7 +104,7 @@ case class AsteroidsGlobalController(
       }
     } else if (InputManager.gameTickInputs.contains("TurnRight_DOWN")) {
       state match {
-        case PLAYING => {
+        case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
             player.rotationRadians += PLAYER_ROTATION_SPEED_RADIANS()
           })

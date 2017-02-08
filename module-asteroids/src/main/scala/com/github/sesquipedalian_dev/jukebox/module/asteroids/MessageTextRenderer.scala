@@ -24,13 +24,13 @@ case class MessageTextRenderer()
   override def render(eid: EntityIdType, gc: GraphicsContext)(implicit ecs: ECS[UUIDIdType]): Unit = {
     ecs.system[Updater].getOrElse(eid, Nil).collect({case x: AsteroidsGlobalController => x}).foreach(globalController => {
       val text = globalController.state match {
-        case READY_TO_START => {
+        case GlobalControllerState.READY_TO_START => {
           Some("*** Press Enter to Start ***")
         }
-        case PLAYING => {
+        case GlobalControllerState.PLAYING => {
           None
         }
-        case DIED => {
+        case GlobalControllerState.DIED => {
           Some("*** Game Over! Enter to re-start ***")
         }
       }

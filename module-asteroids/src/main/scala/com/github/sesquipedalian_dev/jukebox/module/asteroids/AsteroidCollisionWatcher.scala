@@ -34,7 +34,7 @@ case class AsteroidCollisionWatcher(
 
       val isPlaying = ecs.system[Updater].toList.flatMap(kvp => kvp._2.map(v => (kvp._1 -> v))).collect({case (k, v: AsteroidsGlobalController) => (k, v)}).exists(kvp => {
         val (id, globalController) = kvp
-        globalController.state == PLAYING
+        globalController.state == GlobalControllerState.PLAYING
       })
       if(isPlaying) {
         ecs.system[Player].toList.flatMap(kvp => kvp._2.map(v => (kvp._1 -> v))).foreach(playerStruct => {

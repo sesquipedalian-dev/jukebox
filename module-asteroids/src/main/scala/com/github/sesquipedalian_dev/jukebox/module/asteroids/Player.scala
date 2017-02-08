@@ -41,7 +41,7 @@ case class Player(
           case controller: AsteroidsGlobalController => controller
         }
       }).flatten.foreach(controller => {
-        controller.state = DIED
+        controller.state = GlobalControllerState.DIED
       })
     }
   }

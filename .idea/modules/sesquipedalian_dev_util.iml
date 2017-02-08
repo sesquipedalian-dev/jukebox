@@ -24,6 +24,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="scalego_core" exported="" />
+    <orderEntry type="library" name="SBT: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.4:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scalap:2.11.8:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-compiler:2.11.8:jar" level="project" />
     <orderEntry type="library" name="SBT: org.slf4j:slf4j-api:1.7.21:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scalafx:scalafx_2.11:8.0.92-R10:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scala-lang.modules:scala-xml_2.11:1.0.5:jar" level="project" />

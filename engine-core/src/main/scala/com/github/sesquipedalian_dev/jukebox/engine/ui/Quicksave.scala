@@ -28,7 +28,7 @@ case class Quicksave()(implicit ecs: ECS[UUIDIdType], gameLoop: GameLoop) extend
   // lookup save menu item and hook up our handler
   val saveMenu = MenuLookup.oneLevelLookup(Main.stage.scene(), "fileMenu", "quickSave")
   saveMenu.foreach(menu => {
-    menu.setDisable(true)
+//    menu.setDisable(true)
     ModuleController.onModuleLoad((moduleName) => menu.setDisable(false))
     menu.setOnAction(new EventHandler[ActionEvent]() {
       override def handle(event: ActionEvent): Unit = save()
@@ -38,7 +38,7 @@ case class Quicksave()(implicit ecs: ECS[UUIDIdType], gameLoop: GameLoop) extend
   // hook up our quick load handler to the menu item
   val loadMenu = MenuLookup.oneLevelLookup(Main.stage.scene(), "fileMenu", "quickLoad")
   loadMenu.foreach(menu => {
-    menu.setDisable(true)
+//    menu.setDisable(true)
     ModuleController.onModuleLoad((moduleName) => menu.setDisable(false))
     menu.setOnAction(new EventHandler[ActionEvent]() {
       override def handle(event: ActionEvent): Unit = load()

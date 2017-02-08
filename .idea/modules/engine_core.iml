@@ -24,6 +24,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="scalego_core" exported="" />
+    <orderEntry type="library" name="SBT: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.4:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scalap:2.11.8:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-compiler:2.11.8:jar" level="project" />
     <orderEntry type="module" module-name="scalego_serialization" exported="" />
     <orderEntry type="module" module-name="scalego_serialization_json" exported="" />
     <orderEntry type="module" module-name="sesquipedalian_dev_util" exported="" />
