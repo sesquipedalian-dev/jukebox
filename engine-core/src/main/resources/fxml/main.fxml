@@ -61,12 +61,12 @@
       </MenuBar>
       <FlowPane prefHeight="20.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0">
          <children>
-            <Text fx:id="fpsText" strokeType="OUTSIDE" strokeWidth="0.0" text="0 FPS">
+            <Text fx:id="fpsText" fill="#0eccda" strokeType="OUTSIDE" strokeWidth="0.0" text="0 FPS">
                <FlowPane.margin>
                   <Insets left="5.0" />
                </FlowPane.margin>
             </Text>
-            <Text fx:id="tpsText" strokeType="OUTSIDE" strokeWidth="0.0" text="0 TPS">
+            <Text fx:id="tpsText" fill="#0eccda" strokeType="OUTSIDE" strokeWidth="0.0" text="0 TPS">
                <FlowPane.margin>
                   <Insets left="5.0" />
                </FlowPane.margin>
