@@ -31,17 +31,24 @@ case class AsteroidCollisionWatcher(
     ecs.system[SceneObject].getOrElse(eid, Nil).foreach(sceneObject => {
       // check for player collision
       var collidedWithPlayer: Boolean = false
-      ecs.system[Player].toList.flatMap(kvp => kvp._2.map(v => (kvp._1 -> v))).foreach(playerStruct => {
-        val (pid, player) = playerStruct
-        val playerInvincible = player.playingDeathAnim > 0
-        val weCollided = sceneObject.containsPoint(new Point2D(player.position.x, player.position.y))
-        if((!playerInvincible) && weCollided){
-          logger.info("Handling player collision!")
-          ecs -= eid
-          player.hitByObject(ecs)
-          collidedWithPlayer = true
-        }
+
+      val isPlaying = ecs.system[Updater].toList.flatMap(kvp => kvp._2.map(v => (kvp._1 -> v))).collect({case (k, v: AsteroidsGlobalController) => (k, v)}).exists(kvp => {
+        val (id, globalController) = kvp
+        globalController.state == PLAYING
       })
+      if(isPlaying) {
+        ecs.system[Player].toList.flatMap(kvp => kvp._2.map(v => (kvp._1 -> v))).foreach(playerStruct => {
+          val (pid, player) = playerStruct
+          val playerInvincible = player.playingDeathAnim > 0
+          val weCollided = sceneObject.containsPoint(new Point2D(player.position.x, player.position.y))
+          if ((!playerInvincible) && weCollided) {
+            logger.info("Handling player collision!")
+            ecs -= eid
+            player.hitByObject(pid, ecs)
+            collidedWithPlayer = true
+          }
+        })
+      }
 
       // check for bullet positions
       for {

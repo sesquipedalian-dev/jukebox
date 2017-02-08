@@ -10,6 +10,7 @@ import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoop
 import com.github.sesquipedalian_dev.util.config.ConfigSetting
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.config.Config
+import com.typesafe.scalalogging.LazyLogging
 
 /*
  * Data struct for the player
@@ -20,17 +21,19 @@ case class Player(
   var score: Int,
   var playingDeathAnim: Int = 0, // frames that we've been playing death 'anim',
   var pointsSinceExtraLife: Int = 0
-) {
+) extends LazyLogging
+{
   // player has fixed position
   def position: SerializablePoint2D = {
     SerializablePoint2D(CANVAS_WIDTH() / 2, CANVAS_HEIGHT() / 2)
   }
 
-  def hitByObject(ecs: ECS[UUIDIdType]): Unit = {
+  def hitByObject(pid: UUIDIdType#EntityId, ecs: ECS[UUIDIdType]): Unit = {
+    logger.info("hitByObject, dropping lives remaining {" + livesRemaining + "}")
+    livesRemaining -= 1
     if(livesRemaining > 0) {
       // give us some invincibility frames and do some sort of blink effect
       playingDeathAnim = DEATH_ANIM_DURATION_FRAMES()
-      livesRemaining -= 1
     } else {
       // do game over
       ecs.system[Updater].collect({

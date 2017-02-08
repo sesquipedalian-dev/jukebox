@@ -7,6 +7,7 @@ import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.{InputManager, UUIDIdType}
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Updater
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.SceneObject
 import com.github.sesquipedalian_dev.jukebox.engine.components.objects.ObjectsModule._
 import com.github.sesquipedalian_dev.jukebox.module.asteroids.AsteroidsModule._
@@ -32,7 +33,7 @@ case class AsteroidsGlobalController(
     // check asteroid spawner
     state match {
       case PLAYING => {
-        if (framesSinceAsteroidSpawn > 0) {
+        if (framesSinceAsteroidSpawn >= 0) {
           framesSinceAsteroidSpawn -= 1
         }
 
@@ -71,7 +72,24 @@ case class AsteroidsGlobalController(
           })
         }
         case DIED => {
-          // TODO restart game
+          ecs.system[Player].foreach(kvp => ecs -= kvp._1) // the player is dead
+          AsteroidsModule.instance.spawnPlayer() // long live the player!
+
+          state = PLAYING
+
+          // reset asteroid spawn rate
+          FRAMES_BETWEEN_ASTEROID_SPAWN.value = None
+
+          // delete any existing asteroids
+          ecs.system[Updater].toList.flatMap(kvp => kvp._2.map(v => kvp._1 -> v)).collect({case (k, v: AsteroidCollisionWatcher) => (k,v)}).foreach(asteroidPair => {
+            val (aid, watcher) = asteroidPair
+            ecs -= aid
+          })
+
+          // reconfigure the starting asteroids
+          for { i <- 1 to INITIAL_ASTEROID_COUNT() } {
+            AsteroidsModule.instance.spawnAsteroid()
+          }
         }
       }
     } else if (InputManager.gameTickInputs.contains("TurnLeft_DOWN")) {

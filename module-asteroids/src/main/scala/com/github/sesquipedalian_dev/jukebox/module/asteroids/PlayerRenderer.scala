@@ -51,15 +51,20 @@ case class PlayerRenderer()
       }
 
       // render player avatar itself
-      if(player.playingDeathAnim > 0) {
-        player.playingDeathAnim -= 1
-        if(player.playingDeathAnim % 10 > 5) {
-          renderAvatar(player, gc)
-        } else {
-          // don't play on some of the frames to generate a blinky effect
-        }
+      logger.trace("player lives remaining {" + player.livesRemaining + "}")
+      if(player.livesRemaining <= 0) {
+        // don't render when dead
       } else {
-        renderAvatar(player, gc)
+        if (player.playingDeathAnim > 0) {
+          player.playingDeathAnim -= 1
+          if (player.playingDeathAnim % 10 > 5) {
+            renderAvatar(player, gc)
+          } else {
+            // don't play on some of the frames to generate a blinky effect
+          }
+        } else {
+          renderAvatar(player, gc)
+        }
       }
     })
   }
