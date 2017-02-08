@@ -25,13 +25,13 @@ case class MessageTextRenderer()
     ecs.system[Updater].getOrElse(eid, Nil).collect({case x: AsteroidsGlobalController => x}).foreach(globalController => {
       val text = globalController.state match {
         case READY_TO_START => {
-          Some("***Press Enter to Start***")
+          Some("*** Press Enter to Start ***")
         }
         case PLAYING => {
           None
         }
         case DIED => {
-          Some("***Game Over! Enter to re-start")
+          Some("*** Game Over! Enter to re-start ***")
         }
       }
       logger.trace("rendering some text? {}", text)

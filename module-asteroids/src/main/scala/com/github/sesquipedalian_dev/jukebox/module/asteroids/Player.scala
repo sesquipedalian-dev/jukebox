@@ -26,10 +26,11 @@ case class Player(
     SerializablePoint2D(CANVAS_WIDTH() / 2, CANVAS_HEIGHT() / 2)
   }
 
-  def hitByBullet(ecs: ECS[UUIDIdType]): Unit = {
+  def hitByObject(ecs: ECS[UUIDIdType]): Unit = {
     if(livesRemaining > 0) {
       // give us some invincibility frames and do some sort of blink effect
       playingDeathAnim = DEATH_ANIM_DURATION_FRAMES()
+      livesRemaining -= 1
     } else {
       // do game over
       ecs.system[Updater].collect({

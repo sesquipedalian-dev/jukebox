@@ -27,9 +27,25 @@ case class AsteroidCollisionWatcher(
     ticsExemptFromCollision -= 1
     if(ticsExemptFromCollision > 0) return
 
+
     ecs.system[SceneObject].getOrElse(eid, Nil).foreach(sceneObject => {
+      // check for player collision
+      var collidedWithPlayer: Boolean = false
+      ecs.system[Player].toList.flatMap(kvp => kvp._2.map(v => (kvp._1 -> v))).foreach(playerStruct => {
+        val (pid, player) = playerStruct
+        val playerInvincible = player.playingDeathAnim > 0
+        val weCollided = sceneObject.containsPoint(new Point2D(player.position.x, player.position.y))
+        if((!playerInvincible) && weCollided){
+          logger.info("Handling player collision!")
+          ecs -= eid
+          player.hitByObject(ecs)
+          collidedWithPlayer = true
+        }
+      })
+
+      // check for bullet positions
       for {
-        (bulletEid, rList) <- ecs.system[Renderer] if rList.exists(_.isInstanceOf[BulletRenderer])
+        (bulletEid, rList) <- ecs.system[Renderer] if rList.exists(_.isInstanceOf[BulletRenderer]) if !collidedWithPlayer
         bulletObj <- ecs.system[SceneObject].getOrElse(bulletEid, Nil)
         bulletPos <- bulletObj.polygon.headOption if
           sceneObject.containsPoint(new Point2D(bulletPos.x, bulletPos.y))

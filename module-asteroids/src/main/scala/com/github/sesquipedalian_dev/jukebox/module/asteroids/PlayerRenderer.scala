@@ -51,18 +51,31 @@ case class PlayerRenderer()
       }
 
       // render player avatar itself
-      val position = player.position
-      val points = playerAvatarPoints
-      val rotatePoints = points.map(p => p.rotate(player.rotationRadians))
-      val positionedPoints = rotatePoints.map(p => SerializablePoint2D(position.x + p.x, position.y + p.y))
-      val lineSegments = (positionedPoints :+ positionedPoints.head /* connect back up to start */).sliding(2).toList
-      logger.trace("player segments {}", lineSegments)
-      gc.setLineWidth(5)
-      gc.setStroke(Color.Yellow)
-      lineSegments.foreach(segment => {
-        logger.trace("stroking segment {} {}", segment.head, segment.last)
-        gc.strokeLine(segment.head.x, segment.head.y, segment.last.x, segment.last.y)
-      })
+      if(player.playingDeathAnim > 0) {
+        player.playingDeathAnim -= 1
+        if(player.playingDeathAnim % 10 > 5) {
+          renderAvatar(player, gc)
+        } else {
+          // don't play on some of the frames to generate a blinky effect
+        }
+      } else {
+        renderAvatar(player, gc)
+      }
+    })
+  }
+
+  def renderAvatar(player: Player, gc: GraphicsContext): Unit = {
+    val position = player.position
+    val points = playerAvatarPoints
+    val rotatePoints = points.map(p => p.rotate(player.rotationRadians))
+    val positionedPoints = rotatePoints.map(p => SerializablePoint2D(position.x + p.x, position.y + p.y))
+    val lineSegments = (positionedPoints :+ positionedPoints.head /* connect back up to start */).sliding(2).toList
+    logger.trace("player segments {}", lineSegments)
+    gc.setLineWidth(5)
+    gc.setStroke(Color.Yellow)
+    lineSegments.foreach(segment => {
+      logger.trace("stroking segment {} {}", segment.head, segment.last)
+      gc.strokeLine(segment.head.x, segment.head.y, segment.last.x, segment.last.y)
     })
   }
 

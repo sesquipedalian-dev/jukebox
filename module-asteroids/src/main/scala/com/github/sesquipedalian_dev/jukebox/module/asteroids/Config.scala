@@ -65,7 +65,7 @@ case object MIN_FRAMES_BETWEEN_BULLETS extends ConfigSetting[Int] {
 }
 
 case object DEATH_ANIM_DURATION_FRAMES extends ConfigSetting[Int] {
-  override def defaultValue: Int = 300
+  override def defaultValue: Int = 120
   override def populateFromConfig(newConfig: Config): Unit = {} // Nop
 }
 
