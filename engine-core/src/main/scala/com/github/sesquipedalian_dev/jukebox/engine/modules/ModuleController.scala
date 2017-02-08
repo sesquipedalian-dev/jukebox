@@ -64,10 +64,18 @@ object ModuleController extends LazyLogging {
 
   private var moduleMap: Map[String, Any] = Map() // TODO need some object to store module details!? for loading!?
 
+  val moduleFileRegex = "module_(.*).jar".r
   def apply()(implicit gameLoop: GameLoop): Unit = {
-    // TODO some way to load modules
-    // TODO check for jars in a specific place or something...?
-    val foundModules: List[String] = List("Asteroids")
+    // check what modules are available in the directory
+    val myJarPath = ModuleController.getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath
+    val myModulePath = new File(new File(myJarPath).getParent + "/modules/")
+    val foundModules = if(myModulePath.isDirectory) {
+      myModulePath.listFiles().map(_.getName).collect({
+        case moduleFileRegex(moduleName) => moduleName.head.toUpper +: moduleName.drop(1)
+      }).toList
+    } else {
+      Nil
+    }
 
     // hook up module loading to UI
     MenuLookup.topLevelLookup(Main.stage.scene(), "modulesMenu").foreach(menu => {
