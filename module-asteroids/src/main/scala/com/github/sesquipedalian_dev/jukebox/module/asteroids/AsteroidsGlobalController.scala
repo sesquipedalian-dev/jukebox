@@ -51,7 +51,7 @@ case class AsteroidsGlobalController(
     }
 
     // check player inputs
-    if(InputManager.gameTickInputs.contains("Shoot_DOWN")) {
+    if(InputManager.gameTickInputs.contains("Shoot_HELD") || InputManager.gameTickInputs.contains("Shoot_DOWN")) {
       state match {
         case GlobalControllerState.READY_TO_START => {
           state = GlobalControllerState.PLAYING
@@ -93,7 +93,9 @@ case class AsteroidsGlobalController(
           }
         }
       }
-    } else if (InputManager.gameTickInputs.contains("TurnLeft_DOWN")) {
+    }
+
+    if (InputManager.gameTickInputs.contains("TurnLeft_HELD") || InputManager.gameTickInputs.contains("TurnLeft_DOWN")) {
       state match {
         case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
@@ -102,7 +104,7 @@ case class AsteroidsGlobalController(
         }
         case _ =>
       }
-    } else if (InputManager.gameTickInputs.contains("TurnRight_DOWN")) {
+    } else if (InputManager.gameTickInputs.contains("TurnRight_HELD") || InputManager.gameTickInputs.contains("TurnRight_DOWN")) {
       state match {
         case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {

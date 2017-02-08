@@ -46,7 +46,7 @@ case object KEY_MAP extends ConfigSetting[Map[KeyCode, String]] {
 case object InputManager extends LazyLogging
 {
   var gatheredKeyCodes: Queue[(KeyCode, EventType[javafx.scene.input.KeyEvent])] = Queue()
-  var gameTickInputs: List[String] = Nil
+  var gameTickInputs: Set[String] = Set()
   var gatheredMousePos: Option[Point2D] = None
   var currentMousePointer: Option[Point2D] = None
   var gatheredMouseEvents: Map[javafx.scene.input.MouseButton, Set[EventType[javafx.scene.input.MouseEvent]]] = Map()
@@ -105,17 +105,21 @@ case object InputManager extends LazyLogging
     // copy current key status from the place where they've been collected
     // and stick them in a stable list for consumption by other updaters
     gatheredKeyCodes.synchronized {
-      logger.trace("input manager capturing key codes 2 {}", gatheredKeyCodes)
-      gameTickInputs = gatheredKeyCodes.toList.flatMap(p => {
-        val (kc, t) = p
-        KEY_MAP.getValue.get(kc).map(virtualKey => { // convert to virtual keys
-          val suffix = t match {
-            case KeyEvent.KeyPressed => "_DOWN"
-            case KeyEvent.KeyReleased => "_UP"
-          }
-          virtualKey + suffix
-        })
+      KEY_MAP().foreach(pair => {
+        val (keyCode, virtualName) = pair
+        val downEvent = gatheredKeyCodes.exists(p => p._1 == keyCode && p._2 == KeyEvent.KeyPressed)
+        val upEvent = gatheredKeyCodes.exists(p => p._1 == keyCode && p._2 == KeyEvent.KeyReleased)
+
+        if(downEvent && upEvent) {
+          gameTickInputs = gameTickInputs.filterNot(_ == s"${virtualName}_HELD") +
+            s"${virtualName}_DOWN" + s"${virtualName}_UP"
+        } else if (downEvent) {
+          gameTickInputs = gameTickInputs + s"${virtualName}_DOWN" + s"${virtualName}_HELD"
+        } else if (upEvent) {
+          gameTickInputs = gameTickInputs.filterNot(_ == s"${virtualName}_HELD") + s"${virtualName}_UP"
+        }
       })
+
       gatheredKeyCodes = Queue()
     }
 
@@ -143,7 +147,7 @@ case object InputManager extends LazyLogging
   def postUpdate(): Unit = {
     // clear this frame's inputs
     gameTickInputs.synchronized {
-      gameTickInputs = List()
+      gameTickInputs = gameTickInputs.filter(_.matches(".*_HELD")) // keep _HELD inputs
     }
     gatheredMouseEvents.synchronized {
       gatheredMouseEvents = Map()
