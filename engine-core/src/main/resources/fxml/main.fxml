@@ -23,24 +23,6 @@
         <menus>
           <Menu fx:id="fileMenu" mnemonicParsing="false" text="%menu.file">
                <items>
-                  <MenuItem fx:id="quickSave" mnemonicParsing="false" text="%menu.quicksave">
-                     <accelerator>
-                        <KeyCodeCombination alt="ANY" code="F5" control="ANY" meta="ANY" shift="ANY" shortcut="ANY" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem fx:id="quickLoad" mnemonicParsing="false" text="%menu.quickload">
-                     <accelerator>
-                        <KeyCodeCombination alt="ANY" code="F9" control="ANY" meta="ANY" shift="ANY" shortcut="ANY" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem fx:id="saveMenu" mnemonicParsing="false" text="%menu.save">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator></MenuItem>
-                  <MenuItem fx:id="loadMenu" mnemonicParsing="false" text="%menu.load">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="prefMenu" mnemonicParsing="false" text="%menu.preferences" />
                   <SeparatorMenuItem mnemonicParsing="false" />
