@@ -12,10 +12,14 @@ object Direction {
   val Left = "L"
   val Right = "R"
 }
+
+case class TurnStruct(direction: Direction.DirectionType, point: SerializablePoint2D)
+
 case class Player(
   var segments: List[SerializablePoint2D] = Nil,
   var directionOfTravel: Direction.DirectionType = Direction.Up,
-  var pendingTail: List[SerializablePoint2D] = Nil
+  var pendingTail: List[SerializablePoint2D] = Nil,
+  var turns: List[TurnStruct] = Nil
 ) {
 
   def turnDirection(direction: Direction.DirectionType): Unit = {

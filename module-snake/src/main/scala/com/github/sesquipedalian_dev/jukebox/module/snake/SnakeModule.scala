@@ -8,7 +8,7 @@ import javafx.scene.input.KeyCode
 import com.github.gigurra.scalego.core.{Entity, System}
 import com.github.gigurra.scalego.serialization.KnownSubTypes
 import com.github.sesquipedalian_dev.jukebox.engine.components._
-import com.github.sesquipedalian_dev.jukebox.engine.{KEY_MAP, UUIDIdType}
+import com.github.sesquipedalian_dev.jukebox.engine.{KEY_MAP, MS_PER_UPDATE, UUIDIdType}
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.scalalogging.LazyLogging
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
@@ -21,10 +21,11 @@ class SnakeModule extends ComponentModule with LazyLogging {
   import SnakeModule._
 
   override def subtypes: KnownSubTypes = KnownSubTypes.empty +
-//    ("playerRenderer" -> classOf[PlayerRenderer]) +
+    ("playerRenderer" -> classOf[PlayerRenderer]) +
     ("backgroundRenderer" -> classOf[BackgroundRenderer]) +
     ("startRenderer" -> classOf[MessageTextRenderer]) +
-    ("waitForStartUpdater" -> classOf[SnakeInputController])
+    ("waitForStartUpdater" -> classOf[SnakeInputController]) +
+    ("playerUpdater" -> classOf[PlayerUpdater])
 
   override def makeSystems(): List[System[_, UUIDIdType]] = {
     val newPlayerSystem = new System[Player, UUIDIdType]("playerSystem")
@@ -54,6 +55,9 @@ class SnakeModule extends ComponentModule with LazyLogging {
     val globalInputController = Entity.Builder +
       MessageTextRenderer() +
       SnakeInputController(GlobalControllerState.READY_TO_START) build randomEntityID
+
+    // this game ticks at much less than 60 fps
+    MS_PER_UPDATE.value = Some(16666666 /*60fps*/ * 60)
   }
 
   // globally accessible data in this module
@@ -70,7 +74,8 @@ class SnakeModule extends ComponentModule with LazyLogging {
           SerializablePoint2D(startX, startY + 2)
         )
       ) +
-      PlayerRenderer() build randomEntityID
+      PlayerRenderer() +
+      PlayerUpdater() build randomEntityID
   }
 }
 
