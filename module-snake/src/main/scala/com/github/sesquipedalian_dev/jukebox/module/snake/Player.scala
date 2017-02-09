@@ -23,6 +23,7 @@ case class Player(
 ) {
 
   def turnDirection(direction: Direction.DirectionType): Unit = {
-
+    turns = TurnStruct(directionOfTravel, segments.head) :: turns
+    directionOfTravel = direction
   }
 }
