@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$/engine-core/project" />
             <option value="$PROJECT_DIR$/module-asteroids" />
             <option value="$PROJECT_DIR$/module-asteroids/project" />
+            <option value="$PROJECT_DIR$/module-snake" />
+            <option value="$PROJECT_DIR$/module-snake/project" />
             <option value="$PROJECT_DIR$/project" />
             <option value="$PROJECT_DIR$/scalego-core" />
             <option value="$PROJECT_DIR$/scalego-core/project" />

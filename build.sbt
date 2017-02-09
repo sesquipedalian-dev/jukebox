@@ -96,3 +96,14 @@ lazy val module_asteroids = (project in file("module-asteroids"))
     engine_core,
     sesquipedalian_dev_util
   )
+
+lazy val module_snake = (project in file("module-snake"))
+  .settings(
+    sesquipedalianSettings ++ Seq(
+      name := "module-snake"
+    )
+  )
+  .dependsOn(
+    engine_core,
+    sesquipedalian_dev_util
+  )

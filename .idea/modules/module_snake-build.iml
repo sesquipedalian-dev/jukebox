@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="sesquipedalian_dev_util-build" external.linked.project.path="$MODULE_DIR$/../../util/project" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" sbt.imports="$d3c3cba8662f9e5bb7d4.engine_core, $d3c3cba8662f9e5bb7d4.module_asteroids, $d3c3cba8662f9e5bb7d4.module_snake, $d3c3cba8662f9e5bb7d4.scalego_core, $d3c3cba8662f9e5bb7d4.scalego_serialization, $d3c3cba8662f9e5bb7d4.scalego_serialization_json, $d3c3cba8662f9e5bb7d4.sesquipedalian_dev_util, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, sbt._, Keys._, dsl._" sbt.resolvers="https://repo1.maven.org/maven2/|maven|public, C:\Users\Scott\.ivy2\cache|ivy|Local cache" type="SBT_MODULE" version="4">
+<module external.linked.project.id="module_snake-build" external.linked.project.path="$MODULE_DIR$/../../module-snake/project" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" sbt.imports="$d3c3cba8662f9e5bb7d4.engine_core, $d3c3cba8662f9e5bb7d4.module_asteroids, $d3c3cba8662f9e5bb7d4.module_snake, $d3c3cba8662f9e5bb7d4.scalego_core, $d3c3cba8662f9e5bb7d4.scalego_serialization, $d3c3cba8662f9e5bb7d4.scalego_serialization_json, $d3c3cba8662f9e5bb7d4.sesquipedalian_dev_util, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, sbt._, Keys._, dsl._" sbt.resolvers="https://repo1.maven.org/maven2/|maven|public, C:\Users\Scott\.ivy2\cache|ivy|Local cache" type="SBT_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/../../util/project/target/idea-classes" />
-    <output-test url="file://$MODULE_DIR$/../../util/project/target/idea-test-classes" />
+    <output url="file://$MODULE_DIR$/../../module-snake/project/target/idea-classes" />
+    <output-test url="file://$MODULE_DIR$/../../module-snake/project/target/idea-test-classes" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../util/project">
-      <sourceFolder url="file://$MODULE_DIR$/../../util/project" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../util/project/project/target" />
-      <excludeFolder url="file://$MODULE_DIR$/../../util/project/target" />
+    <content url="file://$MODULE_DIR$/../../module-snake/project">
+      <sourceFolder url="file://$MODULE_DIR$/../../module-snake/project" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../module-snake/project/project/target" />
+      <excludeFolder url="file://$MODULE_DIR$/../../module-snake/project/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

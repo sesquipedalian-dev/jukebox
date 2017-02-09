@@ -7,6 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jukebox.iml" filepath="$PROJECT_DIR$/.idea/modules/jukebox.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/module_asteroids.iml" filepath="$PROJECT_DIR$/.idea/modules/module_asteroids.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/module_asteroids-build.iml" filepath="$PROJECT_DIR$/.idea/modules/module_asteroids-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/module_snake.iml" filepath="$PROJECT_DIR$/.idea/modules/module_snake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/module_snake-build.iml" filepath="$PROJECT_DIR$/.idea/modules/module_snake-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalego_core.iml" filepath="$PROJECT_DIR$/.idea/modules/scalego_core.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalego_core-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scalego_core-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalego_serialization.iml" filepath="$PROJECT_DIR$/.idea/modules/scalego_serialization.iml" />
