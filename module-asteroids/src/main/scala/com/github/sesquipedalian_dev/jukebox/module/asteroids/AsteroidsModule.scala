@@ -7,7 +7,7 @@ import javafx.scene.input.KeyCode
 
 import com.github.gigurra.scalego.core.{ECS, Entity, System}
 import com.github.gigurra.scalego.serialization.KnownSubTypes
-import com.github.sesquipedalian_dev.jukebox.engine.{CANVAS_HEIGHT, CANVAS_WIDTH, KEY_MAP, UUIDIdType}
+import com.github.sesquipedalian_dev.jukebox.engine._
 import com.github.sesquipedalian_dev.jukebox.engine.components.{randomEntityID, _}
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Updater
@@ -115,7 +115,7 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     logger.info("making a new asteroid; initial speed {" + initialSpeed + "} initial direction = {" + randomDirection + "}")
 
     // either use provided initial position or calculate a random one
-    val initialPosition = _initialPosition.getOrElse(randomAsteroidPosition(params, ecs))
+    val initialPosition = _initialPosition.getOrElse(randomAsteroidPosition(params.size, ecs))
     val polygon = List[SerializablePoint2D](
       SerializablePoint2D(initialPosition.x, initialPosition.y),
       SerializablePoint2D(initialPosition.x + params.width, initialPosition.y),
@@ -153,47 +153,48 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     ListExtensions.cartesianProduct((630 to 970).toList, (350 to 550).toList).toSet
   }
 
-  private val allPotentialAsteroidPositions: Map[String, Set[(Int, Int)]] = ASTEROID_PARAMS_MAP().map(kvp => {
-    val (name, params) = kvp
-    // construct initial range that contains the entire game area
-    val initialXRange = 0 to (CANVAS_WIDTH() - params.width).toInt
-    val initialYRange = 0 to (CANVAS_HEIGHT() - params.height).toInt
-    val wholeRange = ListExtensions.cartesianProduct(initialXRange.toList, initialYRange.toList).toSet
+  private def randomAsteroidPosition(size: String, ecs: ECS[UUIDIdType]): SerializablePoint2D = {
+    if(allPotentialAsteroidPositions.getOrElse(size, List[(Int, Int)]()).isEmpty) {
+      GameLoop.instance.pause()
 
-    // subtract exclusion range so that no asteroids start too close to player
-    name -> (wholeRange diff playerExclusionRanges)
-  })
+      val params = ASTEROID_PARAMS_MAP().get(size).get
 
-  def randomAsteroidPosition(params: AsteroidParams, ecs: ECS[UUIDIdType]): SerializablePoint2D = {
-    // we want to position the asteroid in a place where it won't collide with other existing objects
-    // so we roll a random number over a range with a bunch of holes
-    // adapted from http://cs.stackexchange.com/questions/13271/generate-random-numbers-from-an-interval-with-holes
+      // construct initial range that contains the entire game area
+      val initialXRange = 0 to (CANVAS_WIDTH() - params.width).toInt
+      val initialYRange = 0 to (CANVAS_HEIGHT() - params.height).toInt
+      val wholeRange = ListExtensions.cartesianProduct(initialXRange.toList, initialYRange.toList).toSet
 
-    val initialRange = allPotentialAsteroidPositions.get(params.size).get
+      val holes =
+        // collect all scene objects that have an AsteroidCollisionWatcher (they're an asteroid)
+        ecs.system[SceneObject].toList.flatMap(kvp => kvp._2.map(v => kvp._1 -> v)).collect({
+          case (eid, so) if ecs.system[Updater].getOrElse(eid, Nil).collect({case u: AsteroidCollisionWatcher => u}).nonEmpty => {
+            so
+          }
+        })
+        // for each asteroid object, make a hole in the range for its polygon size
+        .flatMap(so => {
+          val xRange = so.polygon.head.x.toInt to so.polygon.drop(1).head.x.toInt
+          val yRange = so.polygon.head.y.toInt to so.polygon.last.y.toInt
+          ListExtensions.cartesianProduct(xRange.toList, yRange.toList)
+        })
+        .toSet
 
-    val holes =
-      // collect all scene objects that have an AsteroidCollisionWatcher (they're an asteroid)
-      ecs.system[SceneObject].toList.flatMap(kvp => kvp._2.map(v => kvp._1 -> v)).collect({
-        case (eid, so) if ecs.system[Updater].getOrElse(eid, Nil).collect({case u: AsteroidCollisionWatcher => u}).nonEmpty => {
-          so
-        }
-      })
-      // for each asteroid object, make a hole in the range for its polygon size
-      .flatMap(so => {
-        val xRange = so.polygon.head.x.toInt to so.polygon.drop(1).head.x.toInt
-        val yRange = so.polygon.head.y.toInt to so.polygon.last.y.toInt
-        ListExtensions.cartesianProduct(xRange.toList, yRange.toList)
-      })
-      .toSet
+      // construct ranges that don't include the holes
 
-    // construct ranges that don't include the holes
-    val validRange = (initialRange diff holes).toList
+      // subtract exclusion ranges so that no asteroids start too close to player or on other asteroids
+      allPotentialAsteroidPositions += (size -> Random.shuffle((wholeRange diff playerExclusionRanges diff holes).toList))
 
-    // grab a random x / y from the valid ranges
-    val randomXY = Random.shuffle(validRange).head
+      GameLoop.instance.unpause()
+    }
 
-    SerializablePoint2D(randomXY._1, randomXY._2)
+    val lst = allPotentialAsteroidPositions.getOrElse(size, List())
+    val retval = lst.head
+    allPotentialAsteroidPositions += (size -> lst.tail)
+
+    SerializablePoint2D(retval._1, retval._2)
   }
+
+  private var allPotentialAsteroidPositions: Map[String, List[(Int, Int)]] = Map()
 }
 
 object AsteroidsModule {

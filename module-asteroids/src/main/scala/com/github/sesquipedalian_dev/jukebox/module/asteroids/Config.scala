@@ -70,7 +70,7 @@ case object DEATH_ANIM_DURATION_FRAMES extends ConfigSetting[Int] {
 }
 
 case object POINTS_FOR_EXTRA_LIFE extends ConfigSetting[Int] {
-  override def defaultValue: Int = 50000
+  override def defaultValue: Int = 10000
   override def populateFromConfig(newConfig: Config): Unit = {} // Nop
 }
 

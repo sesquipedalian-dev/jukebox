@@ -32,6 +32,7 @@ lazy val scalego_serialization_json = (project in file("scalego-serialization-js
     scalegoSettings ++ Seq(
       name := "scalego-serialization-json",
       libraryDependencies ++= Seq(
+//        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.1.3"
         "org.json4s" %% "json4s-core" % "3.4.0",
         "org.json4s" %% "json4s-jackson" % "3.4.0"
       )

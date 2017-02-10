@@ -109,6 +109,8 @@ class GameLoop() extends EventHandler[ActionEvent] with LazyLogging  {
     makeSureAllConfigLoaded()
 
     logger.info("GameLoop init!")
+    GameLoop.instance = this
+
     components.addComponent(ObjectsModule)
     components.addComponent(GameLoopModule)
     val (cb, systems) = components.makeNewECSSystems()
@@ -205,6 +207,10 @@ class GameLoop() extends EventHandler[ActionEvent] with LazyLogging  {
 
   var renderCallbacks: List[(Int, (GraphicsContext, ECS[UUIDIdType]) => Unit)] = Nil
   def onRender(func: (GraphicsContext, ECS[UUIDIdType]) => Unit, sortOrder: Int): Unit = renderCallbacks :+= (sortOrder, func)
+}
+
+object GameLoop {
+  var instance: GameLoop = null
 }
 
 
