@@ -6,7 +6,7 @@ package com.github.sesquipedalian_dev.jukebox.module.snake
 import com.github.gigurra.scalego.core.ECS
 import com.github.sesquipedalian_dev.jukebox.engine.components.EntityIdType
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
-import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.Updater
+import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.{Renderer, Updater}
 import com.github.sesquipedalian_dev.jukebox.engine.{InputManager, UUIDIdType}
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.scalalogging.LazyLogging
@@ -30,7 +30,7 @@ case class SnakeInputController(
         case GlobalControllerState.READY_TO_START => {
           SnakeModule.instance.spawnPlayer()
 
-          // TODO spawn initial pellet
+          SnakeModule.instance.spawnPellet()
 
           state = GlobalControllerState.PLAYING
 
@@ -42,7 +42,13 @@ case class SnakeInputController(
           ecs.system[Player].foreach(kvp => ecs -= kvp._1) // the player is dead
           SnakeModule.instance.spawnPlayer() // long live the player!
 
-          // TODO delete the pellet and make a new one
+          ecs.system[Renderer].toList.flatMap(kvp => kvp._2.map(v => kvp._1 -> v)).foreach({
+            case (k, x: PelletRenderer) => {
+              ecs -= k
+            }
+            case _ =>
+          })
+          SnakeModule.instance.spawnPellet()
 
           state = GlobalControllerState.PLAYING
         }

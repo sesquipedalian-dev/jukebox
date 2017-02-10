@@ -55,8 +55,8 @@
       <file leaf-file-name="SnakeModule.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeModule.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="77" column="10" lean-forward="true" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
+            <state relative-caret-position="656">
+              <caret line="82" column="46" lean-forward="true" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#143#176#0" expanded="true" />
@@ -75,18 +75,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageTextRenderer.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/MessageTextRenderer.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="40" column="52" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="40" selection-end-column="52" />
-              <folding>
-                <element signature="e#143#185#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GameLoop.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/GameLoop.scala">
           <provider selected="true" editor-type-id="text-editor">
@@ -100,8 +88,8 @@
       <file leaf-file-name="SnakeInputController.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeInputController.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="64" column="23" lean-forward="true" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
+            <state relative-caret-position="547">
+              <caret line="49" column="12" lean-forward="true" selection-start-line="44" selection-start-column="10" selection-end-line="49" selection-end-column="12" />
               <folding>
                 <element signature="e#143#185#0" expanded="true" />
               </folding>
@@ -137,8 +125,8 @@
       <file leaf-file-name="PlayerRenderer.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PlayerRenderer.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+            <state relative-caret-position="496">
+              <caret line="34" column="8" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="34" selection-end-column="8" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#103#145#0" expanded="true" />
@@ -147,11 +135,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerUpdater.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PlayerUpdater.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PlayerUpdater.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="27" column="79" lean-forward="false" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
+            <state relative-caret-position="425">
+              <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#103#145#0" expanded="true" />
@@ -160,11 +148,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerializablePoint2D.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PelletRenderer.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PelletRenderer.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="25" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#103#145#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SerializablePoint2D.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ecs/SerializablePoint2D.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+            <state relative-caret-position="325">
+              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -221,7 +222,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ResourceLoader.scala" />
         <option value="$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/scalafx/SimpleModalDialogs.scala" />
         <option value="$PROJECT_DIR$/scalego-core/src/main/scala/com/github/gigurra/scalego/core/Entity.scala" />
         <option value="$PROJECT_DIR$/scalego-core/src/main/scala/com/github/gigurra/scalego/core/ECS.scala" />
@@ -266,11 +266,12 @@
         <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/snake.scala" />
         <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/BackgroundRenderer.scala" />
         <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/AsteroidsGlobalController.scala" />
-        <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeInputController.scala" />
         <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/Config.scala" />
         <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PlayerRenderer.scala" />
-        <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeModule.scala" />
         <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/Player.scala" />
+        <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PelletRenderer.scala" />
+        <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeInputController.scala" />
+        <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeModule.scala" />
         <option value="$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PlayerUpdater.scala" />
       </list>
     </option>
@@ -1393,13 +1394,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine-core/src/main/scala/com/github/sesquipedalian_dev/jukebox/engine/components/objects/SceneObjectUpdater.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scalego-serialization/src/test/scala/com/github/gigurra/scalego/serialization/ECSSerializerSpec_write.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1686,28 +1680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/Config.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#103#165#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PlayerRenderer.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#103#145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/config/ConfigSetting.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
@@ -1724,27 +1696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeModule.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="77" column="10" lean-forward="true" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#143#176#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeInputController.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="64" column="23" lean-forward="true" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
-          <folding>
-            <element signature="e#143#185#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/Player.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
@@ -1755,10 +1706,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PlayerUpdater.scala">
+    <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ecs/SerializablePoint2D.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="27" column="79" lean-forward="false" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
+        <state relative-caret-position="325">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PlayerRenderer.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="34" column="8" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="34" selection-end-column="8" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#103#145#0" expanded="true" />
@@ -1766,11 +1725,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/src/main/scala/com/github/sesquipedalian_dev/util/ecs/SerializablePoint2D.scala">
+    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PelletRenderer.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="206">
+          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#103#145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeInputController.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="49" column="12" lean-forward="true" selection-start-line="44" selection-start-column="10" selection-end-line="49" selection-end-column="12" />
+          <folding>
+            <element signature="e#143#185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/Config.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#103#165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/SnakeModule.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="82" column="46" lean-forward="true" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#143#176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module-snake/src/main/scala/com/github/sesquipedalian_dev/jukebox/module/snake/PlayerUpdater.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#103#145#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

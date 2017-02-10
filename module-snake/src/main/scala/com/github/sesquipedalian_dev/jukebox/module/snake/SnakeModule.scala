@@ -25,7 +25,8 @@ class SnakeModule extends ComponentModule with LazyLogging {
     ("backgroundRenderer" -> classOf[BackgroundRenderer]) +
     ("startRenderer" -> classOf[MessageTextRenderer]) +
     ("waitForStartUpdater" -> classOf[SnakeInputController]) +
-    ("playerUpdater" -> classOf[PlayerUpdater])
+    ("playerUpdater" -> classOf[PlayerUpdater]) +
+    ("pelletRenderer" -> classOf[PelletRenderer])
 
   override def makeSystems(): List[System[_, UUIDIdType]] = {
     val newPlayerSystem = new System[Player, UUIDIdType]("playerSystem")
@@ -57,7 +58,7 @@ class SnakeModule extends ComponentModule with LazyLogging {
       SnakeInputController(GlobalControllerState.READY_TO_START) build randomEntityID
 
     // this game ticks at much less than 60 fps
-    MS_PER_UPDATE.value = Some(16666666 /*60fps*/ * 60)
+    MS_PER_UPDATE.value = Some(16666666 /*60fps*/ * 30)
   }
 
   // globally accessible data in this module
@@ -76,6 +77,13 @@ class SnakeModule extends ComponentModule with LazyLogging {
       ) +
       PlayerRenderer() +
       PlayerUpdater() build randomEntityID
+  }
+
+  def spawnPellet(): Unit = {
+    val position = SerializablePoint2D(10, 10)
+
+    val pelletEnt = Entity.Builder +
+      PelletRenderer(position) build randomEntityID
   }
 }
 
