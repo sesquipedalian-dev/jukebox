@@ -5,13 +5,16 @@ package com.github.sesquipedalian_dev.jukebox.module.snake
 
 import javafx.scene.input.KeyCode
 
-import com.github.gigurra.scalego.core.{Entity, System}
+import com.github.gigurra.scalego.core.{ECS, Entity, System}
 import com.github.gigurra.scalego.serialization.KnownSubTypes
 import com.github.sesquipedalian_dev.jukebox.engine.components._
 import com.github.sesquipedalian_dev.jukebox.engine.{KEY_MAP, MS_PER_UPDATE, UUIDIdType}
 import com.github.sesquipedalian_dev.util.ecs.SerializablePoint2D
 import com.typesafe.scalalogging.LazyLogging
 import com.github.sesquipedalian_dev.jukebox.engine.components.gameloop.GameLoopModule._
+import com.github.sesquipedalian_dev.util.collections.ListExtensions
+
+import scala.util.Random
 
 /*
  * 'Main' class for the asteroids module in jukebox.
@@ -79,11 +82,37 @@ class SnakeModule extends ComponentModule with LazyLogging {
       PlayerUpdater() build randomEntityID
   }
 
-  def spawnPellet(): Unit = {
-    val position = SerializablePoint2D(10, 10)
+  def spawnPellet(ecs: ECS[UUIDIdType]): Unit = {
+    val position = randomPelletPosition(ecs)
 
     val pelletEnt = Entity.Builder +
       PelletRenderer(position) build randomEntityID
+  }
+
+  private val allPotentialPelletPositions: Set[(Int, Int)] = {
+    // construct initial range that contains the entire game area
+    val initialXRange = 0 to (CANVAS_PIXELS_WIDTH() - 1).toInt
+    val initialYRange = 0 to (CANVAS_PIXELS_HEIGHT() - 1).toInt
+    ListExtensions.cartesianProduct(initialXRange.toList, initialYRange.toList).toSet
+  }
+
+  def randomPelletPosition(ecs: ECS[UUIDIdType]): SerializablePoint2D = {
+    // we want to position the pellet in a place where it won't collide with other existing objects
+    // so we roll a random number over a range with a bunch of holes
+    // adapted from http://cs.stackexchange.com/questions/13271/generate-random-numbers-from-an-interval-with-holes
+
+    val initialRange = allPotentialPelletPositions
+
+    // subtract the player segments
+    val holes = ecs.system[Player].toList.flatMap(_._2).flatMap(p => p.segments.map(p => (p.x.toInt, p.y.toInt))).toSet
+
+    // construct ranges that don't include the holes
+    val validRange = (initialRange diff holes).toList
+
+    // grab a random x / y from the valid ranges
+    val randomXY = Random.shuffle(validRange).head
+
+    SerializablePoint2D(randomXY._1, randomXY._2)
   }
 }
 

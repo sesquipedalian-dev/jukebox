@@ -36,7 +36,7 @@ case class PlayerUpdater(
           case (k, x: PelletRenderer) if x.position == nextSpace => {
             ecs -= k
             player.pendingTail = player.pendingTail :+ x.position
-            SnakeModule.instance.spawnPellet()
+            SnakeModule.instance.spawnPellet(ecs)
           }
           case _ =>
         })

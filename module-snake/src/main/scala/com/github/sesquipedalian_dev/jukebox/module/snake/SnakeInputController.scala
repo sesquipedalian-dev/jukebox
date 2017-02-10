@@ -30,7 +30,7 @@ case class SnakeInputController(
         case GlobalControllerState.READY_TO_START => {
           SnakeModule.instance.spawnPlayer()
 
-          SnakeModule.instance.spawnPellet()
+          SnakeModule.instance.spawnPellet(ecs)
 
           state = GlobalControllerState.PLAYING
 
@@ -48,7 +48,7 @@ case class SnakeInputController(
             }
             case _ =>
           })
-          SnakeModule.instance.spawnPellet()
+          SnakeModule.instance.spawnPellet(ecs)
 
           state = GlobalControllerState.PLAYING
         }
