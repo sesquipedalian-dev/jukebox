@@ -61,6 +61,9 @@ class AsteroidsModule extends ComponentModule with LazyLogging {
     val globalInputController = Entity.Builder +
       MessageTextRenderer() +
       AsteroidsGlobalController(GlobalControllerState.READY_TO_START) build randomEntityID
+
+    // make sure game tick rate is set to 60 FPS
+    MS_PER_UPDATE.value = Some(16666666 /*60fps*/)
   }
 
   // globally accessible data in this module
