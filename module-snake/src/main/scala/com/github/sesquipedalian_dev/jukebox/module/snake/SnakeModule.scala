@@ -61,7 +61,7 @@ class SnakeModule extends ComponentModule with LazyLogging {
       SnakeInputController(GlobalControllerState.READY_TO_START) build randomEntityID
 
     // this game ticks at much less than 60 fps
-    MS_PER_UPDATE.value = Some(16666666 /*60fps*/ * 30)
+    MS_PER_UPDATE.value = Some(16666666 /*60fps*/ * 5)
   }
 
   // globally accessible data in this module
@@ -91,8 +91,9 @@ class SnakeModule extends ComponentModule with LazyLogging {
 
   private val allPotentialPelletPositions: Set[(Int, Int)] = {
     // construct initial range that contains the entire game area
-    val initialXRange = 0 to (CANVAS_PIXELS_WIDTH() - 1).toInt
-    val initialYRange = 0 to (CANVAS_PIXELS_HEIGHT() - 1).toInt
+    // keep away from edges by 2 to make sure pixels don't appear 'off screen'
+    val initialXRange = 2 to (CANVAS_PIXELS_WIDTH() - 3).toInt
+    val initialYRange = 2 to (CANVAS_PIXELS_HEIGHT() - 3).toInt
     ListExtensions.cartesianProduct(initialXRange.toList, initialYRange.toList).toSet
   }
 

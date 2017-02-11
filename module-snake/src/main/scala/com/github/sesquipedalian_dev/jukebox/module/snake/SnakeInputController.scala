@@ -59,7 +59,9 @@ case class SnakeInputController(
       state match {
         case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
-            player.turnDirection(Direction.Left)
+            if((player.directionOfTravel == Direction.Down) || (player.directionOfTravel == Direction.Up)) {
+              player.turnDirection(Direction.Left)
+            }
           })
         }
         case _ =>
@@ -68,7 +70,9 @@ case class SnakeInputController(
       state match {
         case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
-            player.turnDirection(Direction.Right)
+            if((player.directionOfTravel == Direction.Down) || (player.directionOfTravel == Direction.Up)) {
+              player.turnDirection(Direction.Right)
+            }
           })
         }
         case _ =>
@@ -77,7 +81,9 @@ case class SnakeInputController(
       state match {
         case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
-            player.turnDirection(Direction.Up)
+            if((player.directionOfTravel == Direction.Left) || (player.directionOfTravel == Direction.Right)) {
+              player.turnDirection(Direction.Up)
+            }
           })
         }
         case _ =>
@@ -86,7 +92,9 @@ case class SnakeInputController(
       state match {
         case GlobalControllerState.PLAYING => {
           ecs.system[Player].toList.flatMap(_._2).foreach(player => {
-            player.turnDirection(Direction.Down)
+            if((player.directionOfTravel == Direction.Left) || (player.directionOfTravel == Direction.Right)) {
+              player.turnDirection(Direction.Down)
+            }
           })
         }
         case _ =>
