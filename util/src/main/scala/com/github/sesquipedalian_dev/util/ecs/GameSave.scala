@@ -121,7 +121,7 @@ object GameSave extends LazyLogging {
     logger.info("Pretty JSON: " + pretty)
 
     val outStream = new PrintWriter(new FileOutputStream(saveFile))
-    outStream.print(moduleName + "\n") // TODO
+    outStream.print(moduleName + "\n") // TODO we want a way to specify the module that a save file goes with
     outStream.print(pretty)
     outStream.close
 

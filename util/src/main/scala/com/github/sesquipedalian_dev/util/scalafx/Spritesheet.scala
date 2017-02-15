@@ -34,7 +34,6 @@ case class Spritesheet(
   chunkSize: SerializablePoint2D,
   framesPerImg: Int
 ) extends LazyLogging {
-
   // TODO generalize for other OS; make user-editable config setting
   val SPLIT_SPRITES_LOC = System.getenv("AppData") + "/Jukebox/sprites"
 

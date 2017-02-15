@@ -54,7 +54,7 @@ object ModuleController extends LazyLogging {
   }
 
   def availableModules(): List[String] = {
-    moduleMap.keys.toList
+    moduleMap
   }
 
   var moduleLoadCallbacks: List[(String) => Unit] = List()
@@ -62,7 +62,7 @@ object ModuleController extends LazyLogging {
     moduleLoadCallbacks :+= cb
   }
 
-  private var moduleMap: Map[String, Any] = Map() // TODO need some object to store module details!? for loading!?
+  private var moduleMap: List[String] = List()
 
   val moduleFileRegex = "module_(.*).jar".r
   def apply()(implicit gameLoop: GameLoop): Unit = {
@@ -80,7 +80,7 @@ object ModuleController extends LazyLogging {
     // hook up module loading to UI
     MenuLookup.topLevelLookup(Main.stage.scene(), "modulesMenu").foreach(menu => {
       val menuItems = foundModules.map(module => {
-        moduleMap += (module -> "ANY")
+        moduleMap :+= module
         val menuItem = new MenuItem(module){
         }
         menuItem.onAction = new EventHandler[ActionEvent](){

@@ -39,9 +39,8 @@ case object KEY_MAP extends ConfigSetting[Map[KeyCode, String]] {
   // work with the map being KeyCode to virtual key ID? we would need Mouse button ID as well
 }
 
-// TODO - we want to capture input and store it in a queue as tokens
+// we want to capture input and store it in a queue as tokens
 // for processing on our game loop at our desired rate
-// dunno so much how to do that with Javafx platform
 //
 case object InputManager extends LazyLogging
 {
